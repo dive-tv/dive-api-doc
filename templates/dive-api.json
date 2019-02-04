@@ -3348,7 +3348,7 @@
 				"type": {
 					"description": "Device OS",
 					"type": "string",
-					"enum": [ "ios", "android", "tizentv", "netcasttv" ]
+					"enum": [ "android", "tizentv", "netcasttv" ]
 				},
 				"device": {
 					"description": "Device type",
@@ -3422,7 +3422,7 @@
 				"type": {
 					"description": "Device OS",
 					"type": "string",
-					"enum": [ "ios", "android", "tizentv", "netcasttv" ]
+					"enum": [ "android", "tizentv", "netcasttv" ]
 				},
 				"device": {
 					"description": "Device type",
@@ -3434,11 +3434,11 @@
 					"type": "string"
 				},
 				"token": {
-					"description": "Push notifications token. Only required for ios and android devices",
+					"description": "Push notifications token. Only required for android devices",
 					"type": "string"
 				},
 				"environment": {
-					"description": "Push notifications environment. Only required for ios and android devices",
+					"description": "Push notifications environment. Only required for android devices",
 					"type": "string"
 				}
 			},
@@ -4054,7 +4054,7 @@
 			"type": "object",
 			"properties":{
 				"platform": {
-					"description": "Application platform ('ios', 'android', etc...)",
+					"description": "Application platform ('i'android', etc...)",
 					"type": "string"
 				},
 				"app_version": {
