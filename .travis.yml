@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 
 language: java
 
@@ -33,9 +33,9 @@ install:
 - ruby --version
 - pip install --user awscli
 - aws configure set preview.cloudfront true
-- scr/install-swagger-codegen.sh
-- scr/install-slate.sh
-- chmod +x scr/deploy.sh scr/deploy-client.sh scr/deploy-doc.sh scr/deploy-slate-doc.sh scr/deploy-template.sh scr/git-version.sh
+- ./scr/install-swagger-codegen.sh
+- ./scr/install-slate.sh
+- chmod +x ./scr/deploy.sh ./scr/deploy-client.sh ./scr/deploy-doc.sh ./scr/deploy-slate-doc.sh ./scr/deploy-template.sh ./scr/git-version.sh
 - scr/deploy-template.sh
 
 script:
