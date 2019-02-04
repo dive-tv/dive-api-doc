@@ -14,8 +14,6 @@ if [[ -z ${TRAVIS} ]]; then
     export SWAGGER_CODEGEN_CLI=${SWAGGER_CODEGEN_DIR}/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar
     export SWAGGER_CODEGEN_TMPL_DIR=${SWAGGER_CODEGEN_DIR}/modules/swagger-codegen/src/main/resources
     export SWAGGER_CODEGEN_CONF_DIR=${SWAGGER_CODEGEN_DIR}/bin/touchvie
-    export SWIFT_DIVE_DIR=${TMP_DIR}/api-dive-ios
-    export SWIFT_MODEL_DIR=${TMP_DIR}/data-model-ios
     export SLATE_DIR=${TMP_DIR}/slate
 
     # Install swagger-codegen repo in '/tmp' directory
@@ -49,19 +47,7 @@ if [[ -z ${TRAVIS} || ${TRAVIS} = false || "$TRAVIS_BRANCH" == "master" ]]; then
 
                 pushd $TRAVIS_BUILD_DIR
 
-                echo "Generating Swift client for $tmpl, version $VERS..."
-                java -jar ${SWAGGER_CODEGEN_CLI} generate -t ${SWAGGER_CODEGEN_TMPL_DIR}/swift3/touchvie -i ${TMPL_DIR} -l swift3 -c ${SWAGGER_CODEGEN_CONF_DIR}/swift-touchvie.json -o ${SWIFT_DIVE_DIR}
-                if [[ $? -eq 0 ]]; then
-                    echo "Deploying Swift client for $tmpl, version $VERS..."
-                    source scr/deploy-client.sh swift
-                    if [ $? -ne 0 ]; then
-                        echo "ERROR: Deploying Swift client for $tmpl, version $VERS..."
-                        exit 1
-                    fi
-                else
-                    echo "ERROR: Generating Swift client for $tmpl, version $VERS..."
-                    exit 1
-                fi
+
 
                 echo "Deploying Java client for $tmpl, version $VERS... (TODO)"
                 echo "Deploying TypeScript client for $tmpl, version $VERS... (TODO)"
