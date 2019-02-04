@@ -80,28 +80,9 @@ add_deploy_key() {
 
 main() {
 	load_api_doc_info
-	if [[ $client_name = "swift" ]]; then
-	
-		echo "Copying '${SWIFT_DIVE_DIR}/iOSSwaggerClient/Classes/Swaggers/Models' folder to 'data-model-ios' repository..."
-		cp -R $SWIFT_DIVE_DIR/iOSSwaggerClient/Classes/Swaggers/Models/* $SWIFT_MODEL_DIR/Models/
-		echo "Removing '${SWIFT_DIVE_DIR}/iOSSwaggerClient/Classes/Swaggers/Models' folder of 'api-dive-ios' repository..."
-		rm -rf $SWIFT_DIVE_DIR/iOSSwaggerClient/Classes/Swaggers/Models
 
-		pushd $SWIFT_DIVE_DIR
-		add_deploy_key ${client_name}
-		echo "Deploying '${client_name}' clients code..."
-		incremental_deploy
-		popd
 
-		pushd $SWIFT_MODEL_DIR
-		add_deploy_key ${client_name}-model
-		echo "Deploying '${client_name}' models code..."
-		incremental_deploy
-		popd
-	fi
-}
-
-if [ $client_name = "swift" ] || [ $client_name = "java" ] || [ $client_name = "typescript" ]; then
+if [ $client_name = "java" ] || [ $client_name = "typescript" ]; then
 	main
 else
 	echo $"Unsupported client: $client_name"
