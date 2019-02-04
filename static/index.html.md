@@ -26,7 +26,7 @@ Dive EA REST and Streaming API services documentation can be found in the follow
 
 ## EA Client SDKs
 
-Dive EA Client SDK implements EA API business logic, providing programatic access to the API features:
+Dive EA Client SDK implements EA API business logic, providing programatic access to the API features: 
 
 - Authentication and token renewal
 - Real time content reception through socket.io (streaming API)
