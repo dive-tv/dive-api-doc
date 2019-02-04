@@ -1,0 +1,2127 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Dive AR REST API",
+		"description": "Dive Ad Resonance REST API provides a set of services which leverage obtaining client catalog info and its related contexts and situations data",
+		"version": "1.0.0"
+	},
+	"host": "rest.dive.tv",
+	"basePath": "/v1",
+	"schemes": [
+		"https"
+	],
+	"paths": {
+		"/token_client_user": {
+			"post": {
+				"summary": "Token endpoint",
+				"description": "Registers a user into Dive apis using the client id user name and provided password",
+				"operationId": "postTokenClientUser",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "TokenDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ClientRegistrationDataRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AccessToken"
+						},
+						"examples": {
+							"application/json": {
+								"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU",
+								"token_type": "bearer",
+								"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0",
+								"expires_in": 900,
+								"scope": "user"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+		"/token": {
+			"post": {
+				"summary": "Token endpoint",
+				"description": "The token endpoint is used to obtain access tokens which allow clients to make API requests",
+				"operationId": "postToken",
+				"consumes": [
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/BasicAuthorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "grant_type",
+						"in": "query",
+						"description": "Grant type used to obtain the token",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"user_credentials",
+							"refresh_token"
+						]
+					},
+					{
+						"name": "username",
+						"in": "formData",
+						"description": "User name",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "password",
+						"in": "formData",
+						"description": "User password",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "refresh_token",
+						"in": "formData",
+						"description": "Refresh token, used to issue a new token without resending client credentials. Required only for \"refresh_token\" grant type",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AccessToken"
+						},
+						"examples": {
+							"application/json": {
+								"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU",
+								"token_type": "bearer",
+								"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0",
+								"expires_in": 900,
+								"scope": "user"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/AuthError"
+						},
+						"examples": {
+							"application/json": {
+								"error": "unsupported_grant_type",
+								"error_description": "Unsupported grant type"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"schema": {
+							"$ref": "#/definitions/AuthError"
+						},
+						"examples": {
+							"application/json": {
+								"error": "invalid_client",
+								"error_description": "Bad client credentials"
+							}
+						}
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/register/user": {
+			"post": {
+				"summary": "Register user account",
+				"description": "Registers a new user into Add Resonance application using the user name and provided password",
+				"operationId": "postRegisterUser",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/BasicAuthorization"
+					},
+					{
+						"name": "RegistrationDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/RegistrationDataRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+		"/ar/movies": {
+			"get": {
+				"summary": "List AR-available movies",
+				"description": "Returns the list of movies which are ready for AR analysis",
+				"operationId": "getARMovies",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogMovie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"client_movie_id": "m0001",
+									"title": "Blade Runner",
+									"year": 1982
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/series": {
+			"get": {
+				"summary": "List AR-available series",
+				"description": "Returns the list of series which are ready for AR analysis",
+				"operationId": "getARSeries",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogSerie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"client_serie_id": "s0001",
+									"title": "Game of thrones",
+									"year": 2011,
+									"season_count": 7
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/series/{client_serie_id}/seasons": {
+			"get": {
+				"summary": "List serie seasons and chapters",
+				"description": "Returns the list of seasons and chapters which are available for AR analysis for a given client serie",
+				"operationId": "getARSerieSeasons",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "client_serie_id",
+						"in": "path",
+						"description": "Client serie identifier",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogSerieSeason"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"season_index": 1,
+									"chapters": [
+										{
+											"chapter_index": 1,
+											"client_movie_id": "s0001s01e01",
+											"title": "Winter is coming"
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/taxonomies": {
+			"get": {
+				"summary": "List AR-available taxonomies",
+				"description": "Returns the list of taxonomies on an optional subset of movies",
+				"operationId": "getARTaxonomies",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogCategory"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"category": "Objects",
+									"taxonomies": [
+										{
+											"tx_id": "TAX-2461",
+											"name": "Technology",
+											"breadcrumb": "Objects > Technology",
+											"children": [
+												{
+													"tx_id": "TAX-2462",
+													"name": "Laptops",
+													"breadcrumb": "Objects > Technology > Laptops",
+													"children": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/attributes": {
+			"get": {
+				"summary": "List AR-available context attributes",
+				"description": "Returns the list of attributes and values on an optional subset of movies",
+				"operationId": "getARAttributes",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogAttribute"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"name": "country",
+									"values": [
+										"China",
+										"Mexico",
+										"Monaco",
+										"Russia",
+										"United Kingdom",
+										"United States"
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/actors": {
+			"get": {
+				"summary": "List AR-available actors",
+				"description": "Returns the list of actors which are ready for AR analysis on an optional subset of movies",
+				"operationId": "getARActors",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogPerson"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"person_id": "ee6b1959-dbd5-32b9-8070-c1b81e006d50",
+									"name": "Bradley Stryker"
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/characters": {
+			"get": {
+				"summary": "List AR-available characters",
+				"description": "Returns the list of characters which are ready for AR analysis on an optional subset of movies",
+				"operationId": "getARCharacters",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogPerson"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"person_id": "702090",
+									"name": "Alice Dominguez"
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/search/contexts": {
+			"post": {
+				"summary": "Search contexts at movie level",
+				"description": "Returns the list of contexts which fulfill the search terms, filtered at movie level and grouped by taxonomy branch",
+				"operationId": "postSearch",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "search_request",
+						"in": "body",
+						"description": "Search terms",
+						"schema": {
+							"$ref": "#/definitions/ARSearchRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARSearchResultCategory"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"category": "Objects",
+									"taxonomies": [
+										{
+											"tx_id": "TAX#2461",
+											"name": "Laptops",
+											"breadcrumb": [
+												"Technology",
+												"Electronics",
+												"Computers",
+												"Laptops"
+											],
+											"movies": [
+												{
+													"client_movie_id": "40460fc0-8d6d-3ff7-8f8a-15f7e92ee345",
+													"title": "Blade Runner",
+													"is_chapter": false,
+													"season_index": null,
+													"chapter_index": null,
+													"serie_title": null,
+													"video_url": "https://video.tagvie.com/movies/m00001/movie.avi",
+													"contexts": [
+														{
+															"start_ts": 1756.64,
+															"end_ts": 1785.56,
+															"kfts": [
+																"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg",
+																"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"
+															],
+															"attributes": {
+																"brand": "Dell",
+																"name": "Laptops"
+															}
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/search/scenes": {
+			"post": {
+				"summary": "Search contexts at scene level",
+				"description": "Returns the list of scenes which fulfill the requested search filters, grouped by movie",
+				"operationId": "postSearchScenes",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "search_request",
+						"in": "body",
+						"description": "Search terms",
+						"schema": {
+							"$ref": "#/definitions/ARSearchRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARSearchResultMovie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"client_movie_id": "40460fc0-8d6d-3ff7-8f8a-15f7e92ee345",
+									"title": "Blade Runner",
+									"is_chapter": false,
+									"season_index": null,
+									"chapter_index": null,
+									"serie_title": null,
+									"video_url": "https://video.tagvie.com/movies/m00001/movie.avi",
+									"scenes": [
+										{
+											"sc_id": "SC-2733",
+											"title": "Chase at the market",
+											"start_ts": 1756.64,
+											"end_ts": 1785.56,
+											"kfts": [
+												"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg",
+												"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"
+											]
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/movies": {
+			"get": {
+				"summary": "List AR-available filter movies",
+				"description": "Returns the list of movies which are ready for AR analysis",
+				"operationId": "getARFilterMovies",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARFilterMovie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "m-002",
+									"data": {
+										"year": 2008
+									},
+									"name": "Iron Man"
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/series": {
+			"get": {
+				"summary": "List AR-available filter series",
+				"description": "Returns the list of series which are ready for AR analysis",
+				"operationId": "getARFilterSeries",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARFilterSerie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "s-002",
+									"name": "CSI: Crime Scene Investigation",
+									"data": {
+										"season_count": 1,
+										"year": 2000
+									},
+									"children": [
+										{
+											"id": 4,
+											"children": [
+												{
+													"data": {
+														"chapter_index": 1
+													},
+													"name": "Assume Nothing",
+													"id": "ms-001"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/contexts": {
+			"get": {
+				"summary": "List AR-available filter contexts",
+				"description": "Returns the list of contexts on an optional subset of movies",
+				"operationId": "getARFilterContexts",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARCatalogCategory"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "TAX-01",
+									"name": "Location",
+									"data": {
+										"breadcrumb": "Location"
+									},
+									"children": [
+										{
+											"id": "TAX-011",
+											"name": "Administrative",
+											"data": {
+												"breadcrumb": "Location > Administrative"
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/objects": {
+			"get": {
+				"summary": "List AR-available filter objects",
+				"description": "Returns the list of objects on an optional subset of movies",
+				"operationId": "getARFilterObjects",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARFilterObject"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "TAX-1",
+									"name": "Fashion",
+									"data": {
+										"breadcrumb": "Fashion"
+									},
+									"children": [
+										{
+											"id": "TAX-2",
+											"name": "Men",
+											"data": {
+												"breadcrumb": "Fashion > Men"
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/actors": {
+			"get": {
+				"summary": "List AR-available filter actors",
+				"description": "Returns the list of actors which are ready for AR analysis on an optional subset of movies",
+				"operationId": "getARFilterActors",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARFilterPerson"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "ee6b1959-dbd5-32b9-8070-c1b81e006d50",
+									"name": "Bradley Stryker"
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/filters/attributes": {
+			"get": {
+				"summary": "List AR-available context attributes",
+				"description": "Returns the list of attributes and values on an optional subset of movies",
+				"operationId": "getARFilterAttributes",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"$ref": "#/parameters/MovieIDs"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARFilterAttribute"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "country",
+									"name": "country",
+									"data": {
+										"description": "Country"
+									},
+									"children": [
+										{
+											"id": "country=China",
+											"name": "China"
+										},
+										{
+											"id": "country=United States",
+											"name": "United States"
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/search/context": {
+			"post": {
+				"summary": "Search specific context at movie level",
+				"description": "Returns the specific context which in some or all client's movies",
+				"operationId": "postContextSearch",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "search_request",
+						"in": "body",
+						"description": "Search terms",
+						"schema": {
+							"$ref": "#/definitions/ARSearchByIdsRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARSearchResultMovie"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"client_movie_id": "40460fc0-8d6d-3ff7-8f8a-15f7e92ee345",
+									"title": "Blade Runner",
+									"is_chapter": false,
+									"season_index": null,
+									"chapter_index": null,
+									"serie_title": null,
+									"video_url": "https://video.tagvie.com/movies/m00001/movie.avi",
+									"contexts": [
+										{
+											"cx_id": "CTX-4172",
+											"start_ts": 1756.64,
+											"end_ts": 1785.56,
+											"kfts": [
+												"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg",
+												"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"
+											],
+											"attributes": {
+												"brand": "Dell",
+												"name": "Laptops"
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		},
+		"/ar/search/count": {
+			"post": {
+				"summary": "Count taxonomies at movie level",
+				"description": "Returns the list of taxonomies which fulfill the search terms, filtered at movie level and grouped by taxonomy branch",
+				"operationId": "postContextCountSearch",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"$ref": "#/parameters/Authorization"
+					},
+					{
+						"$ref": "#/parameters/AcceptLanguage"
+					},
+					{
+						"name": "search_request",
+						"in": "body",
+						"description": "Search terms",
+						"schema": {
+							"$ref": "#/definitions/ARSearchByIdsRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ARSearchCountResultCategory"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"category": "Actors",
+									"context_count": 1,
+									"taxonomies": [
+										{
+											"id": "0000000-0000-0000-0000-0000000001",
+											"name": "Andrew Leeds",
+											"context_count": 1,
+											"breadcrumb": [
+												"Actors"
+											]
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"AccessToken": {
+			"description": "API access token",
+			"type": "object",
+			"properties": {
+				"access_token": {
+					"type": "string",
+					"description": "Auth token, must be included on every API request"
+				},
+				"token_type": {
+					"type": "string",
+					"description": "Token type",
+					"enum": [
+						"bearer"
+					]
+				},
+				"refresh_token": {
+					"type": "string",
+					"description": "Allows to issue new access tokens without resending client credentials"
+				},
+				"expires_in": {
+					"type": "integer",
+					"description": "Expiration time (in seconds)."
+				},
+				"scope": {
+					"type": "string",
+					"description": "Granted auth scope",
+					"enum": [
+						"device"
+					]
+				}
+			}
+		},
+		"AuthError": {
+			"description": "Authentication error description",
+			"type": "object",
+			"properties": {
+				"error": {
+					"type": "string",
+					"description": "Short error identifier"
+				},
+				"error_description": {
+					"type": "string",
+					"description": "Extended error description"
+				}
+			}
+		},
+		"RegistrationDataRequest": {
+			"description": "User registration data request",
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": "User name"
+				},
+				"password": {
+					"type": "string",
+					"description": "User password in MD5 format",
+					"format": "password"
+				}
+			},
+			"required": [
+				"username",
+				"password"
+			]
+		},
+		"ClientRegistrationDataRequest": {
+			"description": "Client User registration data request",
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string",
+					"description": "user name"
+				},
+				"password": {
+					"type": "string",
+					"description": "password in MD5 format",
+					"format": "password"
+				},
+				"client_id": {
+					"type": "string",
+					"description": "client id"
+				}
+			}
+		},
+		"ARCatalogMovie": {
+			"description": "Catalog movie information",
+			"type": "object",
+			"properties": {
+				"client_movie_id": {
+					"type": "string",
+					"description": "Movie identifier for the requester client"
+				},
+				"title": {
+					"type": "string",
+					"description": "Movie title in the request locale"
+				},
+				"year": {
+					"type": "integer",
+					"description": "Year of production"
+				}
+			},
+			"required": [
+				"client_movie_id",
+				"title",
+				"year"
+			]
+		},
+		"ARCatalogSerie": {
+			"description": "Catalog serie information",
+			"type": "object",
+			"properties": {
+				"client_serie_id": {
+					"type": "string",
+					"description": "Serie identifier for the requester client"
+				},
+				"title": {
+					"type": "string",
+					"description": "Serie title in the request locale"
+				},
+				"year": {
+					"type": "integer",
+					"description": "Year of production for first season"
+				},
+				"season_count": {
+					"type": "integer",
+					"description": "Number of available seasons"
+				}
+			},
+			"required": [
+				"client_serie_id",
+				"title",
+				"year",
+				"season_count"
+			]
+		},
+		"ARCatalogSerieSeason": {
+			"description": "Catalog serie seasons information",
+			"type": "object",
+			"properties": {
+				"season_index": {
+					"type": "integer",
+					"description": "Index of the season amongst serie seasons, starting from 1"
+				},
+				"chapters": {
+					"type": "array",
+					"description": "List of chapters of the season",
+					"items": {
+						"$ref": "#/definitions/ARCatalogSerieChapter"
+					}
+				}
+			},
+			"required": [
+				"season_index",
+				"chapters"
+			]
+		},
+		"ARCatalogSerieChapter": {
+			"description": "Catalog serie chapter information",
+			"type": "object",
+			"properties": {
+				"chapter_index": {
+					"type": "integer",
+					"description": "Index of the chapter amongst season chapters, starting from 1"
+				},
+				"client_movie_id": {
+					"type": "string",
+					"description": "Movie ID for this chapter"
+				},
+				"title": {
+					"type": "string",
+					"description": "Chapter title in the requested locale"
+				}
+			},
+			"required": [
+				"chapter_index",
+				"client_movie_id",
+				"title"
+			]
+		},
+		"ARSearchRequest": {
+			"description": "Context search request",
+			"type": "object",
+			"properties": {
+				"movie_ids": {
+					"type": "array",
+					"description": "Optional list of searched movie and chapter IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"taxonomy_ids": {
+					"type": "array",
+					"description": "Optional list of searched context taxonomy IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"person_ids": {
+					"type": "array",
+					"description": "Optional list of searched context actor and character IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"attributes": {
+					"type": "array",
+					"description": "Optional list of searched context attributes and values",
+					"items": {
+						"$ref": "#/definitions/ARCatalogAttribute"
+					}
+				}
+			}
+		},
+		"ARSearchByIdsRequest": {
+			"description": "Context search request",
+			"type": "object",
+			"properties": {
+				"movie_ids": {
+					"type": "array",
+					"description": "Optional list of searched movie and chapter IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"taxonomy_ids": {
+					"type": "array",
+					"description": "Optional list of searched context taxonomy IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"person_ids": {
+					"type": "array",
+					"description": "Optional list of searched context actor and character IDs",
+					"items": {
+						"type": "string"
+					}
+				},
+				"attribute_ids": {
+					"type": "array",
+					"description": "Optional list of searched context attributes and values",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"ARSearchResultCategory": {
+			"description": "Context search results category",
+			"type": "object",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": "Result category name"
+				},
+				"context_count": {
+					"type": "integer",
+					"description": "Number of detected contexts under this category"
+				},
+				"taxonomies": {
+					"type": "array",
+					"description": "List of taxonomies detected for this category",
+					"items": {
+						"$ref": "#/definitions/ARSearchResultTaxonomy"
+					}
+				}
+			},
+			"required": [
+				"category",
+				"taxonomies"
+			]
+		},
+		"ARSearchResultTaxonomy": {
+			"description": "Context search results taxonomy item",
+			"type": "object",
+			"properties": {
+				"tx_id": {
+					"type": "string",
+					"description": "Taxonomy ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Taxonomy friendly name"
+				},
+				"breadcrumb": {
+					"type": "array",
+					"description": "List of taxonomy nodes traversed from the root to this item",
+					"items": {
+						"type": "string"
+					}
+				},
+				"context_count": {
+					"type": "integer",
+					"description": "Number of detected contexts under this taxonomy"
+				},
+				"movies": {
+					"type": "array",
+					"description": "List of movies where this taxonomy has been detected",
+					"items": {
+						"$ref": "#/definitions/ARSearchResultMovie"
+					}
+				}
+			},
+			"required": [
+				"tx_id",
+				"name",
+				"breadcrumb",
+				"movies"
+			]
+		},
+		"ARCatalogCategory": {
+			"description": "Catalog category",
+			"type": "object",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": "Category name"
+				},
+				"taxonomies": {
+					"type": "array",
+					"description": "List of taxonomies included in this category",
+					"items": {
+						"$ref": "#/definitions/ARCatalogTaxonomy"
+					}
+				}
+			},
+			"required": [
+				"category",
+				"taxonomies"
+			]
+		},
+		"ARCatalogTaxonomy": {
+			"description": "Catalog taxonomy item",
+			"type": "object",
+			"properties": {
+				"tx_id": {
+					"type": "string",
+					"description": "Taxonomy ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Taxonomy friendly name"
+				},
+				"breadcrumb": {
+					"type": "string",
+					"description": "Taxonomy node breadcrumb from root"
+				},
+				"children": {
+					"type": "array",
+					"description": "List of child nodes for this taxonomy node",
+					"items": {
+						"$ref": "#/definitions/ARCatalogTaxonomy"
+					}
+				}
+			},
+			"required": [
+				"tx_id",
+				"name"
+			]
+		},
+		"ARCatalogAttribute": {
+			"description": "Catalog attribute",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Attribute name"
+				},
+				"description": {
+					"type": "string",
+					"description": "Attribute displayable description"
+				},
+				"values": {
+					"type": "array",
+					"description": "List of available values for this attribute",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"name",
+				"values",
+				"description"
+			]
+		},
+		"ARCatalogPerson": {
+			"description": "Catalog actor / character",
+			"type": "object",
+			"properties": {
+				"person_id": {
+					"type": "string",
+					"description": "Actor / character ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Name of the actor or character"
+				}
+			},
+			"required": [
+				"person_id",
+				"name"
+			]
+		},
+		"ARSearchResultMovie": {
+			"description": "Context search results movie",
+			"type": "object",
+			"properties": {
+				"client_movie_id": {
+					"type": "string",
+					"description": "Movie identifier for the client"
+				},
+				"title": {
+					"type": "string",
+					"description": "Movie title in the request locale"
+				},
+				"video_url": {
+					"type": "string",
+					"description": "Movie video location URL"
+				},
+				"framerate": {
+					"type": "number",
+					"description": "Video frame rate"
+				},
+				"is_chapter": {
+					"type": "boolean",
+					"description": "Indicates if detected media is a movie or a chapter"
+				},
+				"season_index": {
+					"type": "integer",
+					"description": "Index of the season where this chapter belongs, only if is_chapter = true"
+				},
+				"chapter_index": {
+					"type": "integer",
+					"description": "Index of this chapter amongst season chapters, only if is_chapter = true"
+				},
+				"serie_title": {
+					"type": "string",
+					"description": "Title of the serie where this chapter belongs, only if is_chapter = true"
+				},
+				"contexts": {
+					"type": "array",
+					"description": "List of contexts detected on this movie related to the parent taxonomy (returned on context search)",
+					"items": {
+						"$ref": "#/definitions/ARSearchResultContext"
+					}
+				},
+				"scenes": {
+					"type": "array",
+					"description": "List of movie scenes which fulfill search terms (returned on scene search)",
+					"items": {
+						"$ref": "#/definitions/ARSearchResultScene"
+					}
+				}
+			},
+			"required": [
+				"client_movie_id",
+				"title",
+				"video_url"
+			]
+		},
+		"ARSearchResultContext": {
+			"description": "Search results movie context",
+			"type": "object",
+			"properties": {
+				"start_ts": {
+					"type": "integer",
+					"description": "Context start timestamp in seconds"
+				},
+				"end_ts": {
+					"type": "integer",
+					"description": "Context end timestamp in seconds"
+				},
+				"kfts": {
+					"type": "array",
+					"description": "List of key frame image URLs for this context",
+					"items": {
+						"type": "string"
+					}
+				},
+				"attributes": {
+					"$ref": "#/definitions/ARSearchResultContextAttributes"
+				}
+			},
+			"required": [
+				"start_ts",
+				"end_ts",
+				"kfts"
+			]
+		},
+		"ARSearchResultScene": {
+			"description": "Search results movie scene",
+			"type": "object",
+			"properties": {
+				"sc_id": {
+					"type": "string",
+					"description": "Scene ID"
+				},
+				"title": {
+					"type": "string",
+					"description": "Scene title"
+				},
+				"start_ts": {
+					"type": "integer",
+					"description": "Scene start timestamp in seconds"
+				},
+				"end_ts": {
+					"type": "integer",
+					"description": "Scene end timestamp in seconds"
+				},
+				"kfts": {
+					"type": "array",
+					"description": "List of key frame image URLs for this scene",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"sc_id",
+				"title",
+				"start_ts",
+				"end_ts",
+				"kfts"
+			]
+		},
+		"ARSearchResultContextAttributes": {
+			"description": "Additional attributes linked to a detected context",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Generic name for the context"
+				},
+				"brand": {
+					"type": "string",
+					"description": "Detected object brand"
+				},
+				"model": {
+					"type": "string",
+					"description": "Detected object model"
+				},
+				"year": {
+					"type": "string",
+					"description": "Year(s) of production of a detected object"
+				},
+				"author": {
+					"type": "string",
+					"description": "Name of the author of an artistic or cultural item"
+				},
+				"artist": {
+					"type": "string",
+					"description": "Name of the performing artist of a song"
+				},
+				"performer": {
+					"type": "string",
+					"description": "Name of the performer of a song"
+				},
+				"country": {
+					"type": "string",
+					"description": "Country where a location belongs"
+				},
+				"city": {
+					"type": "string",
+					"description": "City where a location belongs"
+				},
+				"region": {
+					"type": "string",
+					"description": "Region where a location belongs"
+				},
+				"street": {
+					"type": "string",
+					"description": "Street address of a location"
+				}
+			}
+		},
+		"ARFilterMovie": {
+			"description": "Filter movie information",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Movie identifier for the requester client"
+				},
+				"name": {
+					"type": "string",
+					"description": "Movie title in the request locale"
+				},
+				"data": {
+					"type": "object",
+					"description": "Movie specified data",
+					"properties": {
+						"year": {
+							"type": "integer",
+							"description": "Year of production"
+						}
+					},
+					"required": [
+						"year"
+					]
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"data"
+			]
+		},
+		"ARFilterSerie": {
+			"description": "Filter serie information",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Serie identifier for the requester client"
+				},
+				"name": {
+					"type": "string",
+					"description": "Serie title in the request locale"
+				},
+				"data": {
+					"type": "object",
+					"description": "Serie specific data",
+					"properties": {
+						"year": {
+							"type": "integer",
+							"description": "Year of production for first season"
+						},
+						"season_count": {
+							"type": "integer",
+							"description": "Number of available seasons"
+						}
+					},
+					"required": [
+						"year",
+						"season_count"
+					]
+				},
+				"children": {
+					"type": "array",
+					"description": "Available serie seasons",
+					"items": {
+						"$ref": "#/definitions/ARFilterSerieSeason"
+					}
+				}
+			},
+			"required": [
+				"client_serie_id",
+				"title",
+				"data"
+			]
+		},
+		"ARFilterSerieSeason": {
+			"description": "Catalog serie seasons information",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"description": "Index of the season amongst serie seasons, starting from 1"
+				},
+				"children": {
+					"type": "array",
+					"description": "List of chapters of the season",
+					"items": {
+						"$ref": "#/definitions/ARFilterSerieChapter"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"children"
+			]
+		},
+		"ARFilterSerieChapter": {
+			"description": "Filter serie chapter information",
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "object",
+					"description": "Chapter specified info",
+					"properties": {
+						"chapter_index": {
+							"type": "integer",
+							"description": "Index of the chapter amongst season chapters, starting from 1"
+						}
+					},
+					"required": [
+						"chapter_index"
+					]
+				},
+				"id": {
+					"type": "string",
+					"description": "Movie ID for this chapter"
+				},
+				"name": {
+					"type": "string",
+					"description": "Chapter title in the requested locale"
+				}
+			},
+			"required": [
+				"data",
+				"id",
+				"name"
+			]
+		},
+		"ARFilterPerson": {
+			"description": "Filter actor / character",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Actor / character ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Name of the actor or character"
+				}
+			},
+			"required": [
+				"id",
+				"name"
+			]
+		},
+		"ARFilterContext": {
+			"description": "Catalog context item",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Context ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Context friendly name"
+				},
+				"data": {
+					"type": "object",
+					"description": "Context specified data",
+					"properties": {
+						"breadcrumb": {
+							"type": "string",
+							"description": "Context node breadcrumb from root"
+						}
+					},
+					"required": [
+						"breadcrumb"
+					]
+				},
+				"children": {
+					"type": "array",
+					"description": "List of child nodes for this context node",
+					"items": {
+						"$ref": "#/definitions/ARFilterContext"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"name"
+			]
+		},
+		"ARFilterObject": {
+			"description": "Catalog object item",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Object ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Object friendly name"
+				},
+				"data": {
+					"type": "object",
+					"description": "Object specified data",
+					"properties": {
+						"breadcrumb": {
+							"type": "string",
+							"description": "Object node breadcrumb from root"
+						}
+					},
+					"required": [
+						"breadcrumb"
+					]
+				},
+				"children": {
+					"type": "array",
+					"description": "List of child nodes for this object node",
+					"items": {
+						"$ref": "#/definitions/ARFilterObject"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"name"
+			]
+		},
+		"ARFilterAttribute": {
+			"description": "Filter attribute",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Attribute id"
+				},
+				"name": {
+					"type": "string",
+					"description": "Attribute name"
+				},
+				"data": {
+					"type": "object",
+					"description": "Attribute specified data",
+					"properties": {
+						"description": {
+							"type": "string",
+							"description": "Attribute displayable description"
+						}
+					},
+					"required": [
+						"description"
+					]
+				},
+				"children": {
+					"type": "array",
+					"description": "List of available values for this attribute",
+					"items": {
+						"$ref": "#/definitions/ARFilterAttribute"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"name"
+			]
+		},
+		"ARSearchCountResultCategory": {
+			"description": "Context count search results category",
+			"type": "object",
+			"properties": {
+				"category": {
+					"type": "string",
+					"description": "Result category name"
+				},
+				"context_count": {
+					"type": "integer",
+					"description": "Number of detected contexts under this category"
+				},
+				"taxonomies": {
+					"type": "array",
+					"description": "List of taxonomies detected for this category",
+					"items": {
+						"$ref": "#/definitions/ARSearchCountResultTaxonomy"
+					}
+				}
+			},
+			"required": [
+				"category",
+				"context_count",
+				"taxonomies"
+			]
+		},
+		"ARSearchCountResultTaxonomy": {
+			"description": "Context count search results taxonomy",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "Taxonomy ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "Taxonomy friendly name"
+				},
+				"breadcrumb": {
+					"type": "array",
+					"description": "List of taxonomy nodes traversed from the root to this item",
+					"items": {
+						"type": "string"
+					}
+				},
+				"context_count": {
+					"type": "integer",
+					"description": "Number of detected contexts under this taxonomy"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"context_count",
+				"breadcrumb"
+			]
+		}
+	},
+	"parameters": {
+		"Authorization": {
+			"name": "Authorization",
+			"in": "header",
+			"description": "Authorization token ('Bearer <token>')",
+			"required": true,
+			"type": "string"
+		},
+		"BasicAuthorization": {
+			"name": "Authorization",
+			"in": "header",
+			"description": "Basic authorization token ('Basic <client_key>')",
+			"required": true,
+			"type": "string"
+		},
+		"AcceptLanguage": {
+			"name": "Accept-Language",
+			"in": "header",
+			"description": "Client locale, as language-country",
+			"required": false,
+			"type": "string"
+		},
+		"MovieIDs": {
+			"name": "movie_ids",
+			"in": "query",
+			"description": "Optional comma-separated list of movie IDs to filter returned taxonomies",
+			"required": false,
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	}
+} 

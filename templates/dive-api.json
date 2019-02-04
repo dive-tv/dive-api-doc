@@ -1,0 +1,4921 @@
+{
+	"swagger": "2.0",
+
+	"info": {
+		"title": "Dive Legacy Apps API",
+		"description": "This is the Dive Legacy Apps API",
+		"version": "1.0.0"
+	},
+
+	"host": "api.dive.tv",
+	"basePath": "/v1",
+	"schemes": [
+		"https"
+	],
+
+	"paths": {
+
+		"/token": {
+			"post": {
+				"summary": "Create access token",
+				"description": "The token endpoint is used to obtain access tokens which allow clients to make API requests",
+				"operationId": "postToken",
+				"consumes": [ "application/x-www-form-urlencoded" ],
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Basic authorization token ('Basic <client_key>')",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "grant_type",
+						"in": "query",
+						"description": "Grant type used to obtain the token.",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"password", "facebook", "google", "dive_device", "user_credentials", "refresh_token"
+						]
+					},
+					{
+						"name": "username",
+						"in": "formData",
+						"description": "User email. Required only for \"password\" and \"user_credentials\" grant types",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "password",
+						"in": "formData",
+						"description": "User password. Required only for \"password\" and \"user_credentials\" grant types",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "token",
+						"in": "formData",
+						"description": "Facebook / Google token. Required only for \"facebook\" and \"google\" grant types",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "device_id",
+						"in": "formData",
+						"description": "Device identifier, must uniquely identify the user or device accessing the API. Required only for \"dive_device\" grant type",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "refresh_token",
+						"in": "formData",
+						"description": "Refresh token, used to issue a new token without resending client credentials. Required only for \"refresh_token\" grant type",
+						"required": false,
+						"type": "string"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AccessTokenResponse"
+						},
+						"examples": {
+							"application/json": {
+								"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU",
+								"token_type": "bearer",
+								"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0",
+								"expires_in": 900,
+								"scope": "user"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/register/email": {
+			"post": {
+				"summary": "Register email account",
+				"description": "Registers a new user into Dive application using the user email and provided password",
+				"operationId": "postRegisterEmail",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token ('Bearer <token>') required when a user is transitioning from device registration to email registration",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"$ref": "#/parameters/DiveBrandParam"
+					},
+					{
+						"name": "RegistrationDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"schema": {
+						"$ref": "#/definitions/RegistrationDataRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/register/facebook": {
+			"post": {
+				"summary": "Register Facebook account",
+				"description": "Registers a new user into Dive application using user's Facebook token",
+				"operationId": "postRegisterFacebook",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token ('Bearer <token>') required when a user is transitioning from device registration to facebook registration",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"$ref": "#/parameters/DiveBrandParam"
+					},
+					{
+						"name": "RegistrationDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"schema": {
+						"$ref": "#/definitions/RegistrationDataRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/register/google": {
+			"post": {
+				"summary": "Register Google account",
+				"description": "Registers a new user into Dive application using user's Google token",
+				"operationId": "postRegisterGoogle",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token ('Bearer <token>') required when a user is transitioning from device registration to Google registration",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"$ref": "#/parameters/DiveBrandParam"
+					},
+					{
+						"name": "RegistrationDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"schema": {
+						"$ref": "#/definitions/RegistrationDataRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/register/device": {
+			"post": {
+				"summary": "Register anonymous device",
+				"description": "Register a new user on Dive App by using an anonymous device identifier",
+				"operationId": "postRegisterDevice",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/DiveBrandParam"
+					},
+					{
+						"name": "RegistrationDataRequest",
+						"in": "body",
+						"description": "User registration data",
+						"schema": {
+						"$ref": "#/definitions/RegistrationDataRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"422": {
+						"description": "Unprocessable Entity"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/account/password": {
+			"post": {
+				"summary": "Set password",
+				"description": "Sets a password for the user for the first time (only for users that have signed up with Facebook and have no password set)",
+				"operationId": "postAccountPassword",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+				{
+					"$ref": "#/parameters/AcceptLanguageParam"
+				},
+				{
+					"$ref": "#/parameters/ConnectionKeepAliveParam"
+				},
+				{
+					"$ref": "#/parameters/AcceptEncodingGzipParam"
+				},
+				{
+					"$ref": "#/parameters/AuthorizationParam"
+				},
+				{
+					"name": "PasswordUpdateRequest",
+					"in": "body",
+					"description": "New password data",
+					"schema": {
+					"$ref": "#/definitions/PasswordUpdateRequest"
+					}
+				}
+				],
+
+				"responses": {
+				"200": {
+					"description": "OK"
+				},
+				"400": {
+					"description": "Bad Request"
+				},
+				"401": {
+					"description": "Unauthorized"
+				},
+				"403": {
+					"description": "Forbidden"
+				},
+				"406": {
+					"description": "Not Acceptable"
+				},
+				"500": {
+					"description": "Internal Server Error"
+				},
+				"502": {
+					"description": "Bad Gateway"
+				},
+				"503": {
+					"description": "Service Unavailable"
+				},
+				"504": {
+					"description": "Gateway Timeout"
+				}
+				}
+			},
+
+			"put": {
+				"summary": "Update password",
+				"description": "Updates user's password",
+				"operationId": "putAccountPassword",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "PasswordUpdateRequest",
+						"in": "body",
+						"description": "Password update data",
+						"schema": {
+						"$ref": "#/definitions/PasswordUpdateRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"406": {
+						"description": "Not Acceptable"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/account/password/reset": {
+			"put": {
+				"summary": "Reset password",
+				"description": "Requests to start user's password reset process",
+				"operationId": "putAccountPasswordReset",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "PasswordResetRequest",
+						"in": "body",
+						"description": "Password reset data",
+						"schema": {
+						"$ref": "#/definitions/PasswordResetRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"409": {
+						"description": "Conflict"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/account": {
+			"delete": {
+				"summary": "Delete user account",
+				"description": "Removes the user account and all its associated data",
+				"operationId": "deleteAccount",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cognito/credentials": {
+			"get": {
+				"summary": "Get AWS Cognito credentials",
+				"description": "Generates the AWS Cognito credentials to be used by AWS Mobile Analytics",
+				"operationId": "getCognitoCredentials",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/CognitoCredentialsResponse"
+						},
+						"examples": {
+							"application/json": {
+								"identity_id": "1f3c65b4-78fa-11e5-b7c2-0684985cbbe3",
+								"token": "09s6kqDVvt5Qj-307YB1n+Emi"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/version": {
+			"post": {
+				"summary": "Check app version",
+				"description": "Allows client applications to check if their current version is enabled, outdated or disabled",
+				"operationId": "postVersion",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"name": "DeviceInfoRequest",
+						"in": "body",
+						"description": "Application version data",
+						"schema": {
+						"$ref": "#/definitions/DeviceInfoRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"307": {
+						"description": "Temporary Redirect"
+					},
+					"308": {
+						"description": "Permanent Redirect"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/devices": {
+			"post": {
+				"summary": "Add user device",
+				"description": "Registers a device in the user profile",
+				"operationId": "postDevices",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "DeviceInfoRequest",
+						"in": "body",
+						"description": "New device info",
+						"schema": {
+						"$ref": "#/definitions/DeviceInfoRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			},
+			
+			"delete": {
+				"summary": "Delete user device",
+				"description": "Deregisters a device from user profile, to be used when a user logs out",
+				"operationId": "deleteDevices",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "token",
+						"in": "query",
+						"description": "Push notifications token",
+						"required": true,
+						"type": "string"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/profile": {
+			"get": {
+				"summary": "Get user profile",
+				"description": "Retrieves the user profile",
+				"operationId": "getProfile",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/UserProfileResponse"
+						},
+						"examples": {
+							"application/json": {
+								"user_id": "db0b413a-85e5-499f-91bb-99d187b97cbd",
+								"device_id": "d0ed974c10cd8a1371aec840637361a6",
+								"email": "user@dive.tv",
+								"is_password_set": true,
+								"is_device_account": false,
+								"tv_region": "ESP",
+								"tv_region_name": "España",
+								"notification_config": {
+									"email": true,
+									"dive": true
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/profile/email": {
+			"post": {
+				"summary": "Update user email",
+				"description": "Updates user email",
+				"operationId": "postProfileEmail",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "NewEmailRequest",
+						"in": "body",
+						"description": "New user email",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/NewEmailRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/profile/notifications/config": {
+			"post": {
+				"summary": "Update notifications configuration",
+				"description": "Updates user notifications configuration",
+				"operationId": "postProfileNotificationsConfig",
+				"consumes": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "NotificationsConfigRequest",
+						"in": "body",
+						"description": "User notifications preferences",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/NotificationsConfigRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/tv/events/alarm": {
+			"post": {
+				"summary": "Add TV event alarm",
+				"description": "Adds a new alarm related to a TV event",
+				"operationId": "postTvEventsAlarm",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "tv_event_id",
+						"in": "query",
+						"description": "TV event ID",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "minutes_before",
+						"in": "query",
+						"description": "Number of minutes before",
+						"required": true,
+						"type": "string",
+						"enum": [ "0", "5", "10", "15" ]
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			},
+
+			"delete": {
+				"summary": "Delete TV event alarm",
+				"description": "Removes an existing TV event alarm",
+				"operationId": "deleteTvEventsAlarm",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "tv_event_id",
+						"in": "query",
+						"description": "TV event ID",
+						"required": true,
+						"type": "string"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/tv/channels": {
+			"get": {
+				"summary": "Get TV channels",
+				"description": "Requests the list of TV channels available on the user TV region",
+				"operationId": "getTvChannels",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "TV channels list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TvChannelResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "16",
+									"name": "La 1",
+									"image": "https://cdn.dive.tv/img/channels/16_m.png",
+									"is_active": true
+								},
+								{
+									"id": "17",
+									"name": "La 2",
+									"image": "https://cdn.dive.tv/img/channels/17_m.png",
+									"is_active": false
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			},
+
+			"post": {
+				"summary": "Enable / disable TV channel",
+				"description": "Enables or disables a TV channel",
+				"operationId": "postTvChannels",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "id",
+						"in": "query",
+						"description": "TV channel ID",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "is_active",
+						"in": "query",
+						"description": "TV channel enabled flag",
+						"required": true,
+						"type": "string",
+						"enum": [ "true", "false" ]
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/tv/regions": {
+			"get": {
+				"summary": "Get TV regions",
+				"description": "Retrieves the available TV regions",
+				"operationId": "getTvRegions",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "TV regions list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TvRegionResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"id": "GER",
+									"name": "Germany",
+									"is_active": false
+								},
+								{
+									"id": "ESP",
+									"name": "Spain",
+									"is_active": true
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			},
+
+			"post": {
+				"summary": "Update user TV region",
+				"description": "Updates user selected TV region",
+				"operationId": "postTvRegions",
+				"consumes": [ "application/json" ],
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "TvRegionRequest",
+						"in": "body",
+						"description": "User TV region setting",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/TvRegionRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/TvRegionResponse"
+						},
+						"examples": {
+							"application/json": {
+								"id": "GER",
+								"name": "Germany",
+								"is_active": false
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/tv/grid": {
+			"get": {
+				"summary": "Get TV grid",
+				"description": "Retrieves the current TV grid for user's region",
+				"operationId": "getTvGrid",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/GenresParam"
+					},
+					{
+						"$ref": "#/parameters/ContainersParam"
+					},
+					{
+						"name": "card_type",
+						"in": "query",
+						"description": "Selected card type to retrieve",
+						"required": false,
+						"type": "string",
+						"enum": [ "movie", "chapter" ]
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/TvGridResponse"
+						},
+						"examples": {
+						"application/json": {
+							"broadcast": [
+								{
+									"tv_event_id": "00000000-0000-0000-0000-000000000000",
+									"channel_id": "10",
+									"channel_name": "Channel 1",
+									"start_date": 1492668000000,
+									"end_date": 1493968000000,
+									"card": {
+										"card_id": "00000000-0000-0000-0000-000000000000",
+										"locale": "es_ES",
+										"title": "Card title",
+										"subtitle": "Card subtitle",
+										"type": "movie",
+										"image": {
+											"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+											"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+											"anchor_x": 50,
+											"anchor_y": 50,
+											"source": {
+												"name": "Dive",
+												"url": "https://www.dive.tv",
+												"disclaimer": "Disclaimer",
+												"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+											}
+										},
+										"has_content": true
+									},
+									"alarm_minutes_before": 5
+								}
+							],
+							"upcoming": [
+								{
+									"tv_event_id": "00000000-0000-0000-0000-000000000000",
+									"channel_id": "10",
+									"channel_name": "Channel 1",
+									"start_date": 1492668000000,
+									"card": {
+										"card_id": "00000000-0000-0000-0000-000000000000",
+										"locale": "es_ES",
+										"title": "Card title",
+										"subtitle": "Card subtitle",
+										"type": "movie",
+										"image": {
+											"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+											"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+											"anchor_x": 50,
+											"anchor_y": 50,
+											"source": {
+												"name": "Dive",
+												"url": "https://www.dive.tv",
+												"disclaimer": "Disclaimer",
+												"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+											}
+										},
+										"has_content": true
+									},
+									"alarm_minutes_before": 5
+								}
+							]
+						}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/catalog": {
+			"get": {
+				"summary": "Get Dive catalog",
+				"description": "Retrieves a paginated list of movies and series which conform the Dive catalog",
+				"operationId": "getCatalog",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/PaginateKeyParam"
+					},
+					{
+						"$ref": "#/parameters/ResultSizeParam"
+					},
+					{
+						"$ref": "#/parameters/GenresParam"
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"description": "Selected card type. 1:movie, 2:serie",
+						"required": false,
+						"type": "string",
+						"enum": [ "1", "2" ]
+					},
+					{
+						"name": "is_synchronizable",
+						"in": "query",
+						"description": "Flag indicating if the results should be synchronizable cards or not",
+						"required": false,
+						"type": "string",
+						"enum": [ "true", "false" ]
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Search result list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/SearchResultResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"card": {
+										"card_id": "00000000-0000-0000-0000-000000000000",
+										"locale": "es_ES",
+										"title": "Card title",
+										"subtitle": "Card subtitle",
+										"type": "movie",
+										"image": {
+											"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+											"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+											"anchor_x": 50,
+											"anchor_y": 50,
+											"source": {
+												"name": "Dive",
+												"url": "https://www.dive.tv",
+												"disclaimer": "Disclaimer",
+												"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+											}
+										},
+										"has_content": true
+									},
+									"is_synchronizable": true,
+									"year": 2016,
+									"events": [],
+									"paginate_key": "1",
+									"directors": "Robert Zemeckis"
+								}
+							]
+						}
+					},
+					"206": {
+						"description": "Partial Content",
+						"schema": {
+							"description": "Search result list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/SearchResultResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"card": {
+										"card_id": "00000000-0000-0000-0000-000000000000",
+										"locale": "es_ES",
+										"title": "Card title",
+										"subtitle": "Card subtitle",
+										"type": "movie",
+										"image": {
+											"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+											"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+											"anchor_x": 50,
+											"anchor_y": 50,
+											"source": {
+												"name": "Dive",
+												"url": "https://www.dive.tv",
+												"disclaimer": "Disclaimer",
+												"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+											}
+										},
+										"has_content": true
+									},
+									"is_synchronizable": true,
+									"year": 2016,
+									"events": [],
+									"paginate_key": "1",
+									"directors": "Robert Zemeckis"
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/catalog/search": {
+			"get": {
+				"summary": "Search catalog",
+				"description": "Performs searches on Dive catalog titles",
+				"operationId": "getCatalogSearch",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/PaginateKeyParam"
+					},
+					{
+						"$ref": "#/parameters/ResultSizeParam"
+					},
+					{
+						"$ref": "#/parameters/SearchQueryParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SearchResultsSummaryResponse"
+						},
+						"examples": {
+							"application/json": {
+								"results": [
+									{
+										"card": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										},
+										"is_synchronizable": true,
+										"year": 2002,
+										"highlights": {
+											"subtitle": "Signs",
+											"title": "***Señales***"
+										},
+										"paginate_key": "1",
+										"directors": "M. Night Shyamalan"
+									}
+								],
+								"results_nr": 1,
+								"related": [
+									{
+										"card": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										},
+										"is_synchronizable": true,
+										"year": 2014,
+										"highlights": {},
+										"directors": "Francis Lawrence"
+									}
+								]
+							}
+						}
+					},
+					"206": {
+						"description": "Partial Content",
+						"schema": {
+							"$ref": "#/definitions/SearchResultsSummaryResponse"
+						},
+						"examples": {
+							"application/json": {
+								"results": [
+									{
+										"card": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										},
+										"is_synchronizable": true,
+										"year": 2002,
+										"highlights": {
+											"subtitle": "Signs",
+											"title": "***Señales***"
+										},
+										"paginate_key": "1",
+										"directors": "M. Night Shyamalan"
+									}
+								],
+								"results_nr": 1,
+								"related": [
+									{
+										"card": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										},
+										"is_synchronizable": true,
+										"year": 2014,
+										"highlights": {},
+										"directors": "Francis Lawrence"
+									}
+								]
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cards/mini/{card_id_list}": {
+			"get": {
+				"summary": "Get mini card list",
+				"description": "Retrieves a a list of previews of Dive cards",
+				"operationId": "getCardsMini",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "card_id_list",
+						"in": "path",
+						"description": "List of card IDs, provided as a comma separated list",
+						"required": true,
+						"type": "array",
+						"collectionFormat": "csv",
+						"items": {
+							"type": "string"
+						}
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/AddProductsFlag"
+					},
+					{
+						"$ref": "#/parameters/AddUserDataFlag"
+					},
+					{
+						"$ref": "#/parameters/ContainersParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Mini cards list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"card_id": "00000000-0000-0000-0000-000000000000",
+									"locale": "es_ES",
+									"title": "Card title",
+									"subtitle": "Card subtitle",
+									"type": "movie",
+									"image": {
+										"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+										"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+										"anchor_x": 50,
+										"anchor_y": 50,
+										"source": {
+											"name": "Dive",
+											"url": "https://www.dive.tv",
+											"disclaimer": "Disclaimer",
+											"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+										}
+									},
+									"has_content": true
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"412": {
+						"description": "Precondition Failed"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cards/{card_id}": {
+			"get": {
+				"summary": "Get card",
+				"description": "Retrieves a full Dive card",
+				"operationId": "getCards",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/AddProductsFlag"
+					},
+					{
+						"$ref": "#/parameters/AddUserDataFlag"
+					},
+					{
+						"$ref": "#/parameters/RelationsParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/CardDetailResponse"
+						},
+						"examples": {
+							"application/json": {
+								"card_id": "00000000-0000-0000-0000-000000000000",
+								"locale": "es_ES",
+								"title": "Card title",
+								"subtitle": "Card subtitle",
+								"type": "movie",
+								"image": {
+									"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+									"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+									"anchor_x": 50,
+									"anchor_y": 50,
+									"source": {
+										"name": "Dive",
+										"url": "https://www.dive.tv",
+										"disclaimer": "Disclaimer",
+										"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+									}
+								},
+								"has_content": true,
+								"products": [
+									{
+										"product_id": "13#ad3184cbe6cc522840f49c2f022141a4",
+										"category": "electro",
+										"source": {
+											"name": "Dive",
+											"url": "https://www.dive.tv",
+											"disclaimer": "Disclaimer",
+											"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+										},
+										"title": "Product title",
+										"image": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201404/23/00125940954149____1__1000x1000.jpg",
+										"url": "https://www.elcorteingles.es/cine/A16749003/",
+										"price": 10.39,
+										"currency": "EUR",
+										"is_exact": false,
+										"is_up_to_date": true
+									}
+								],
+								"info": [
+									{
+										"type": "text",
+										"content_type": "overview",
+										"data": [
+											{
+												"text": "Película basada en hechos reales y protagonizada por Jordan Belfort. Belfort llegó a Wall Street persiguiendo el sueño americano, aunque pronto descubrirá que lo más importante no es hacer clientes sino ser ambicioso para obtener una buena comisión. Fiel al consejo, amasó un gran éxito y fortuna lo que le valió el mote de \"El lobo de Wall Street\". Una vida donde el dinero, el sexo y las drogas están a la orden del día y el temor a la ley es irrelevante.",
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											}
+										]
+									}
+								],
+								"relations": [
+									{
+										"type": "duple",
+										"content_type": "casting",
+										"size": 1,
+										"data": [
+											{
+												"rel_type": "starred_by",
+												"from": {
+													"card_id": "00000000-0000-0000-0000-000000000000",
+													"locale": "es_ES",
+													"title": "Card title",
+													"subtitle": "Card subtitle",
+													"type": "movie",
+													"image": {
+														"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+														"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+														"anchor_x": 50,
+														"anchor_y": 50,
+														"source": {
+															"name": "Dive",
+															"url": "https://www.dive.tv",
+															"disclaimer": "Disclaimer",
+															"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+														}
+													},
+													"has_content": true
+												},
+												"to": {
+													"card_id": "00000000-0000-0000-0000-000000000000",
+													"locale": "es_ES",
+													"title": "Card title",
+													"subtitle": "Card subtitle",
+													"type": "movie",
+													"image": {
+														"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+														"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+														"anchor_x": 50,
+														"anchor_y": 50,
+														"source": {
+															"name": "Dive",
+															"url": "https://www.dive.tv",
+															"disclaimer": "Disclaimer",
+															"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+														}
+													},
+													"has_content": true
+												}
+											}
+										]
+									}
+								],
+								"user": {
+									"is_liked": true,
+									"has_synchronized": true
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cards/{card_id}/relations": {
+			"get": {
+				"summary": "Get card relations",
+				"description": "Retrieves the full list of relations associated to a Dive card",
+				"operationId": "getCardRelations",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Card relation modules list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/RelationModule"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"type": "duple",
+									"content_type": "casting",
+									"size": 1,
+									"data": [
+										{
+											"rel_type": "starred_by",
+											"from": {
+												"card_id": "00000000-0000-0000-0000-000000000000",
+												"locale": "es_ES",
+												"title": "Card title",
+												"subtitle": "Card subtitle",
+												"type": "movie",
+												"image": {
+													"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+													"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+													"anchor_x": 50,
+													"anchor_y": 50,
+													"source": {
+														"name": "Dive",
+														"url": "https://www.dive.tv",
+														"disclaimer": "Disclaimer",
+														"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+													}
+												},
+												"has_content": true
+											},
+											"to": {
+												"card_id": "00000000-0000-0000-0000-000000000000",
+												"locale": "es_ES",
+												"title": "Card title",
+												"subtitle": "Card subtitle",
+												"type": "movie",
+												"image": {
+													"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+													"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+													"anchor_x": 50,
+													"anchor_y": 50,
+													"source": {
+														"name": "Dive",
+														"url": "https://www.dive.tv",
+														"disclaimer": "Disclaimer",
+														"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+													}
+												},
+												"has_content": true
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cards/{card_id}/relations/summary": {
+			"get": {
+				"summary": "Get card relations summary",
+				"description": "Retrieves a summary of the list of relations associated to a Dive card",
+				"operationId": "getCardRelationsSummary",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Card relation modules list summary (modules without data)",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/RelationModule"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"type": "duple",
+									"content_type": "casting",
+									"size": 10
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/cards/{card_id}/relations/{content_type}": {
+			"get": {
+				"summary": "Get card relations module",
+				"description": "Retrieves a single relations module associated to a Dive card",
+				"operationId": "getCardRelationsModule",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					},
+					{
+						"$ref": "#/parameters/ContentTypeParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/RelationModule"
+						},
+						"examples": {
+							"application/json": {
+								"type": "duple",
+								"content_type": "casting",
+								"size": 1,
+								"data": [
+									{
+										"rel_type": "starred_by",
+										"from": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										},
+										"to": {
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										}
+									}
+								]
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/likes/{card_id}": {
+			"post": {
+				"summary": "Add card like",
+				"description": "Stores a card under current user's likes list",
+				"operationId": "postLikes",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			},
+
+			"delete": {
+				"summary": "Delete card like",
+				"description": "Removes a card from current user's likes list",
+				"operationId": "deleteLikes",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/likes": {
+			"get": {
+				"summary": "Get card likes",
+				"description": "Returns the paginatd list of user liked cards",
+				"operationId": "getLikes",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/ImageSizeParam"
+					},
+					{
+						"$ref": "#/parameters/PaginateKeyParam"
+					},
+					{
+						"$ref": "#/parameters/AddProductsFlag"
+					},
+					{
+						"$ref": "#/parameters/ResultSizeParam"
+					},
+					{
+						"$ref": "#/parameters/ContainersParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Mini cards list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"card_id": "00000000-0000-0000-0000-000000000000",
+									"locale": "es_ES",
+									"title": "Card title",
+									"subtitle": "Card subtitle",
+									"type": "movie",
+									"image": {
+										"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+										"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+										"anchor_x": 50,
+										"anchor_y": 50,
+										"source": {
+											"name": "Dive",
+											"url": "https://www.dive.tv",
+											"disclaimer": "Disclaimer",
+											"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+										}
+									},
+									"has_content": true
+								}
+							]
+						}
+					},
+					"206": {
+						"description": "Partial Content",
+						"schema": {
+							"description": "Mini cards list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"card_id": "00000000-0000-0000-0000-000000000000",
+									"locale": "es_ES",
+									"title": "Card title",
+									"subtitle": "Card subtitle",
+									"type": "movie",
+									"image": {
+										"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+										"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+										"anchor_x": 50,
+										"anchor_y": 50,
+										"source": {
+											"name": "Dive",
+											"url": "https://www.dive.tv",
+											"disclaimer": "Disclaimer",
+											"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+										}
+									},
+									"has_content": true
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/sync/audio/{card_id}/{version}": {
+			"post": {
+				"summary": "Sync by audio",
+				"description": "Retrieves given movie timestamp calculated from the included audio hash",
+				"operationId": "postSyncAudio",
+				"consumes": [ "application/json" ],
+				"produces": [ "application/json" ],
+
+				"parameters": [
+				{
+					"$ref": "#/parameters/AcceptLanguageParam"
+				},
+				{
+					"$ref": "#/parameters/ConnectionKeepAliveParam"
+				},
+				{
+					"$ref": "#/parameters/AcceptEncodingGzipParam"
+				},
+				{
+					"$ref": "#/parameters/AuthorizationParam"
+				},
+				{
+					"$ref": "#/parameters/CardIdPathParam"
+				},
+				{
+					"$ref": "#/parameters/VersionPathParam"
+				},
+				{
+					"name": "AudioSyncRequest",
+					"in": "body",
+					"description": "Sync audio hashes and offsets",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/AudioSyncRequest"
+					}
+				}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AudioSyncResponse"
+						},
+						"examples": {
+							"application/json": {
+								"is_synchronized": true,
+								"offset": 1568.453,
+								"time_ratio": 1.04
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/sync/chunk/{card_id}/{version}": {
+			"get": {
+				"summary": "Get movie chunk",
+				"description": "Requests the signed URL for a given movie chunk",
+				"operationId": "getSyncChunk",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/CardIdPathParam"
+					},
+					{
+						"$ref": "#/parameters/VersionPathParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"properties": {
+								"url": {
+								"description": "Chunk URL",
+								"type": "string"
+								}
+							},
+							"required": [ "url" ]
+						},
+						"examples": {
+							"application/json": {
+								"url": "https://chunk.dive.tv/0ce73f6d-6616-38e3-ba22-21009c91ba81?sign_key=ervbererofekwf459534gm9g5g5"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"423": {
+						"description": "Locked"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/trailers": {
+			"get": {
+				"summary": "Get trailer list",
+				"description": "Retrieves the list of available trailers",
+				"operationId": "getTrailers",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Trailers list",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TrailerResponse"
+							}
+						},
+						"examples": {
+							"application/json": {
+								"card_id": "00000000-0000-0000-0000-000000000000",
+								"title": "Trailer title",
+								"source": {
+									"name": "YouTube",
+									"url": "https://www.youtube.com/watch?v=dqE7zYn7Ts",
+									"disclaimer": null,
+									"image": null
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/lists/{context}": {
+			"get": {
+				"summary": "Get context lists",
+				"description": "Retrieves the set of lists associated to the given context",
+				"operationId": "getLists",
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "context",
+						"in": "path",
+						"description": "List context",
+						"required": true,
+						"type": "string"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"description": "Context lists",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ListResponse"
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"title": "Card list",
+									"type": "card",
+									"items": [
+										{
+											"card_id": "00000000-0000-0000-0000-000000000000",
+											"locale": "es_ES",
+											"title": "Card title",
+											"subtitle": "Card subtitle",
+											"type": "movie",
+											"image": {
+												"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+												"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+												"anchor_x": 50,
+												"anchor_y": 50,
+												"source": {
+													"name": "Dive",
+													"url": "https://www.dive.tv",
+													"disclaimer": "Disclaimer",
+													"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+												}
+											},
+											"has_content": true
+										}
+									]
+								},
+								{
+									"title": "Lo mejor en la TV",
+									"type": "tv_event",
+									"items": [
+										{
+											"tv_event_id": "00000000-0000-0000-0000-000000000000",
+											"channel_id": "10",
+											"channel_name": "Channel 1",
+											"start_date": 1492668000000,
+											"card": {
+												"card_id": "00000000-0000-0000-0000-000000000000",
+												"locale": "es_ES",
+												"title": "Card title",
+												"subtitle": "Card subtitle",
+												"type": "movie",
+												"image": {
+													"thumb": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg",
+													"full": "https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg",
+													"anchor_x": 50,
+													"anchor_y": 50,
+													"source": {
+														"name": "Dive",
+														"url": "https://www.dive.tv",
+														"disclaimer": "Disclaimer",
+														"image": "https://cdn.touchvie.com/img/sources/ico_dive.png"
+													}
+												},
+												"has_content": true
+											},
+											"alarm_minutes_before": 5
+										}
+									]
+								}
+							]
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/alarm/start": {
+			"post": {
+				"summary": "Create app test alarm",
+				"description": "Creates an alarm that will send a push notification reminder to test the app",
+				"operationId": "postAlarmStart",
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "alarm_date",
+						"in": "query",
+						"description": "Alarm date. UTC milliseconds since EPOCH",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/feedback": {
+			"post": {
+				"summary": "Create feedback ticket",
+				"description": "Opens a new feedback ticket in the ticketing tool",
+				"operationId": "postFeedback",
+				"consumes": [ "application/json" ],
+				"produces": [ "application/json" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"$ref": "#/parameters/DiveBrandParam"
+					},
+					{
+						"name": "user_email",
+						"in": "query",
+						"description": "User email for anonimous users",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "FeedbackRequest",
+						"in": "body",
+						"description": "User feedback message",
+						"required": true,
+						"schema": {
+						"$ref": "#/definitions/FeedbackRequest"
+						}
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/FeedbackResponse"
+						},
+						"examples": {
+							"application/json": {
+								"feedback_id": "0034c61d-966d-ef15-b2fa-531e2aefbd50"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		},
+
+		"/feedback/{feedback_id}/images": {
+			"post": {
+				"summary": "Adds image to feedback ticket",
+				"description": "Adds an image to an existing feedback ticket",
+				"operationId": "postFeedbackImages",
+				"consumes": [ "multipart/form-data" ],
+
+				"parameters": [
+					{
+						"$ref": "#/parameters/AcceptLanguageParam"
+					},
+					{
+						"$ref": "#/parameters/ConnectionKeepAliveParam"
+					},
+					{
+						"$ref": "#/parameters/AcceptEncodingGzipParam"
+					},
+					{
+						"$ref": "#/parameters/AuthorizationParam"
+					},
+					{
+						"name": "feedback_id",
+						"in": "path",
+						"description": "Required existing feedback ID param",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "img",
+						"in": "formData",
+						"description": "Feedbak image",
+						"required": true,
+						"type": "file"
+					}
+				],
+
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"502": {
+						"description": "Bad Gateway"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					},
+					"504": {
+						"description": "Gateway Timeout"
+					}
+				}
+			}
+		}
+	},
+
+	"definitions": {
+
+		"AccessTokenResponse": {
+			"description": "Access token data",
+			"type": "object",
+			"properties": {
+				"access_token": {
+					"type": "string",
+					"description": "Auth token, must be included on every API request"
+				},
+				"token_type": {
+					"type": "string",
+					"description": "Token type",
+					"enum": [
+						"bearer"
+					]
+				},
+				"refresh_token": {
+					"type": "string",
+					"description": "Allows to issue new access tokens without resending client credentials"
+				},
+				"expires_in": {
+					"type": "integer",
+					"description": "Expiration time (in seconds)."
+				},
+				"scope": {
+					"type": "string",
+					"description": "Granted auth scope",
+					"enum": [
+						"device",
+						"user"
+					]
+				}
+			}
+		},
+
+		"RegistrationDataRequest": {
+			"description": "User registration data request",
+			"type": "object",
+			"properties": {
+				"email": {
+					"description": "User email, required on email registration",
+					"type": "string",
+					"format": "email"
+				},
+				"password": {
+					"description": "User password in MD5 format, required on email registration",
+					"type": "string",
+					"format": "password"
+				},
+				"token": {
+					"description": "Facebook / Google user account token, required for Facebook and Google registration types",
+					"type": "string"
+				},
+				"device_id": {
+					"description": "Unique device identifier, required on device registration",
+					"type": "string"
+				},
+				"type": {
+					"description": "Device OS",
+					"type": "string",
+					"enum": [ "ios", "android", "tizentv", "netcasttv" ]
+				},
+				"device": {
+					"description": "Device type",
+					"type": "string",
+					"enum": [ "mobile", "tablet", "tv" ]
+				},
+				"version": {
+					"description": "App version",
+					"type": "string"
+				}
+			},
+			"required": [ "type", "device", "version" ]
+		},
+		
+		"PasswordUpdateRequest": {
+			"description": "Password update request",
+			"type": "object",
+			"properties": {
+				"old_password": {
+					"description": "User old password MD5 (only for updates)",
+					"type": "string",
+					"format": "password"
+				},
+				"new_password": {
+					"description": "User new password MD5",
+					"type": "string",
+					"format": "password"
+				}
+			},
+			"required": [ "new_password" ]
+		},
+
+		"PasswordResetRequest": {
+			"description": "Password reset request",
+			"type": "object",
+			"properties": {
+				"email": {
+					"description": "User email address",
+					"type": "string",
+					"format": "email"
+				}
+			},
+			"required": [ "email" ]
+		},
+
+		"CognitoCredentialsResponse": {
+			"description": "Cognito credentials response",
+			"type": "object",
+			"properties": {
+				"identity_id": {
+					"type": "string",
+					"description": "AWS Cognito Identity ID"
+				},
+				"token": {
+					"type": "string",
+					"description": "AWS Cognito Token"
+				}
+			},
+			"required": [ "identity_id", "token" ]
+		},
+
+		"DeviceInfoRequest": {
+			"description": "Application version data request",
+			"type": "object",
+			"properties": {
+				"dive_brand": {
+					"description": "Application brand identifier",
+					"type": "string",
+					"enum": [ "dive", "emdt" ]
+				},
+				"type": {
+					"description": "Device OS",
+					"type": "string",
+					"enum": [ "ios", "android", "tizentv", "netcasttv" ]
+				},
+				"device": {
+					"description": "Device type",
+					"type": "string",
+					"enum": [ "mobile", "tablet", "tv" ]
+				},
+				"version": {
+					"description": "App version",
+					"type": "string"
+				},
+				"token": {
+					"description": "Push notifications token. Only required for ios and android devices",
+					"type": "string"
+				},
+				"environment": {
+					"description": "Push notifications environment. Only required for ios and android devices",
+					"type": "string"
+				}
+			},
+			"required": [ "type", "device", "version" ]
+		},
+
+		"UserProfileResponse": {
+			"description": "User profile data",
+			"type": "object",
+			"properties": {
+				"user_id": {
+					"type": "string",
+					"description": "Dive user ID"
+				},
+				"device_id": {
+					"type": "string",
+					"description": "Dive device ID (for anonymous device users)"
+				},
+				"email": {
+					"type": "string",
+					"description": "User email (for email users)"
+				},
+				"is_password_set": {
+					"type": "boolean",
+					"description": "Defines if the user has stablished a password"
+				},
+				"is_device_account": {
+					"type": "boolean",
+					"description": "Defines if the user is created from an anonymous device (with no email)"
+				},
+				"tv_region": {
+					"type": "string",
+					"description": "User TV region"
+				},
+				"tv_region_name": {
+					"type": "string",
+					"description": "User TV region name in user locale language"
+				},
+				"notification_config": {
+					"type": "object",
+					"description": "User notifications configuration",
+					"properties": {
+						"email": {
+							"type": "boolean",
+							"description": "Defines if the user has email notifications enabled"
+						},
+						"dive": {
+							"type": "boolean",
+							"description": "Defines if the user has push notifications enabled"
+						}
+					}
+				}
+			},
+			"required": [ "user_id" ]
+		},
+
+		"NewEmailRequest": {
+			"description": "Email update request",
+			"type": "object",
+			"properties": {
+				"email": {
+					"description": "New user email",
+					"type": "string",
+					"format": "email"
+				}
+			},
+			"required": [ "email" ]
+		},
+		
+		"NotificationsConfigRequest": {
+			"description": "User notifications configuration request",
+			"type": "object",
+			"properties": {
+				"email": {
+					"description": "Enable or disable email notifications",
+					"type": "boolean"
+				},
+				"dive": {
+					"description": "Enable or disable push notifications",
+					"type": "boolean"
+				}
+			},
+			"required": [ "email", "dive" ]
+		},
+
+		"TvChannelResponse": {
+			"description": "TV channel information",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "TV channel ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "TV channel name"
+				},
+				"image": {
+					"type": "string",
+					"description": "TV channel logo URL"
+				},
+				"is_active": {
+					"type": "boolean",
+					"description": "Defines if the TV channel is enabled"
+				}
+			},
+			"required": [ "id", "name", "image", "is_active" ]
+		},
+
+		"TvRegionResponse": {
+			"description": "TV region information",
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "TV region ID"
+				},
+				"name": {
+					"type": "string",
+					"description": "TV region name"
+				},
+				"is_active": {
+					"type": "boolean",
+					"description": "Defines if the TV region is the current user TV region"
+				}
+			},
+			"required": [ "id", "name", "is_active" ]
+		},
+
+		"TvRegionRequest": {
+			"description": "TV region information",
+			"type": "object",
+			"properties": {
+				"tv_region": {
+					"description": "TV region ID. Required if updating TV region manually",
+					"type": "string"
+				},
+				"latitude": {
+					"description": "User current latitude. Required when using user geo position to establish the appropriate TV region",
+					"type": "number",
+					"format": "double"
+				},
+				"longitude": {
+					"description": "User current longitude. Required when using user geo position to establish the appropriate TV region",
+					"type": "number",
+					"format": "double"
+				}
+			}
+		},
+
+		"TvGridResponse": {
+			"description": "TV grid information",
+			"type": "object",
+			"properties": {
+				"broadcast": {
+					"type": "array",
+					"description": "List of TV events being broadcasted",
+					"items": {
+						"$ref": "#/definitions/TvEventResponse"
+					}
+				},
+				"upcoming": {
+					"type": "array",
+					"description": "List of upcoming TV events",
+					"items": {
+						"$ref": "#/definitions/TvEventResponse"
+					}
+				}
+			},
+			"required": [ "broadcast", "upcoming" ]
+		},
+
+		"TvEventResponse": {
+			"description": "TV event information",
+			"type": "object",
+			"properties": {
+				"tv_event_id": {
+					"type": "string",
+					"description": "TV event ID"
+				},
+				"channel_id": {
+					"type": "string",
+					"description": "TV channel ID where the TV is schedulled"
+				},
+				"channel_name": {
+					"type": "string",
+					"description": "TV channel name"
+				},
+				"start_date": {
+					"type": "integer",
+					"format": "int64",
+					"description": "TV event start date in milliseconds since EPOCH"
+				},
+				"end_date": {
+					"type": "integer",
+					"format": "int64",
+					"description": "TV event end date in milliseconds since EPOCH"
+				},
+				"alarm_minutes_before": {
+					"type": "integer",
+					"format": "int32",
+					"description": "If not null, defines if the TV event has an alarm and the number of minutes before the event start"
+				},
+				"card": {
+					"$ref": "#/definitions/CardDetailResponse"
+				}
+			},
+			"required": [ "tv_event_id", "channel_id", "channel_name", "start_date", "end_date", "card" ]
+		},
+
+		"SearchResultResponse": {
+			"description": "Search result information",
+			"type": "object",
+			"properties": {
+				"card": {
+					"$ref": "#/definitions/CardDetailResponse"
+				},
+				"is_synchronizable": {
+					"type": "boolean",
+					"description": "Idenfies synchronizable content"
+				},
+				"year": {
+					"type": "integer",
+					"description": "Year"
+				},
+				"directors": {
+					"type": "string",
+					"description": "Directors name"
+				},
+				"paginate_key": {
+					"type": "string",
+					"description": "Paginate key"
+				},
+				"events": {
+					"type": "array",
+					"description": "Card TV events",
+					"items": {
+						"$ref": "#/definitions/TvEventResponse"
+					}
+				},
+				"highlights": {
+					"description": "Search results highlights",
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Card title highlights"
+						},
+						"subtitle": {
+							"type": "string",
+							"description": "Card subtitle highlights"
+						}
+					},
+					"required": [ "title", "subtitle" ]
+				}
+			},
+			"required": [ "card", "is_synchronizable", "year", "directors", "paginate_key", "events" ]
+		},
+
+		"SearchResultsSummaryResponse": {
+			"description": "Search results summary",
+			"type": "object",
+			"properties": {
+				"results_nr": {
+					"type": "number",
+					"format": "int64",
+					"description": "Number of matching results"
+				},
+				"results": {
+					"type": "array",
+					"description": "Search results",
+					"items": {
+						"$ref": "#/definitions/SearchResultResponse"
+					}
+				},
+				"related": {
+					"type": "array",
+					"description": "Related search results",
+					"items": {
+						"$ref": "#/definitions/SearchResultResponse"
+					}
+				}
+			},
+			"required": [ "results_nr", "results" ]
+		},
+
+		"CardDetailResponse": {
+			"description": "Basic Dive data unit, represents an item of a given category",
+			"type": "object",
+			"properties": {
+				"card_id": {
+					"type": "string",
+					"description": "Card unique identifier"
+				},
+				"type": {
+					"type": "string",
+					"description": "Card type",
+					"enum":[
+						"movie", "serie", "person", "character", "vehicle", "fashion", "location",
+						"historic", "trivia", "quote", "ost", "home", "technology", "art", "song",
+						"look", "weapon", "leisure_sport", "health_beauty", "food_drink",
+						"fauna_flora", "business", "reference", "chapter"
+					]
+				},
+				"locale": {
+					"type": "string",
+					"description": "Card content locale"
+				},
+				"title": {
+					"type": "string",
+					"description": "Card title"
+				},
+				"subtitle": {
+					"type": "string",
+					"description": "Card subtitle (might be empty)"
+				},
+				"image": {
+					"$ref": "#/definitions/ImageData"
+				},
+				"has_content": {
+					"type": "boolean",
+					"description": "Flag used to define if the card has content"
+				},
+				"products": {
+					"type": "array",
+					"description": "Card products",
+					"items": {
+						"$ref": "#/definitions/ProductResponse"
+					}
+				},
+				"info": {
+					"type": "array",
+					"description": "Card information",
+					"items": {
+						"$ref": "#/definitions/CardContainer"
+					}
+				},
+				"relations": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/RelationModule"
+					}
+				},
+				"user": {
+					"description": "User related information",
+					"type": "object",
+					"properties":{
+						"is_liked": {
+							"type": "boolean",
+							"description": "Flag that identifies if the user has liked the card"
+						},
+						"has_synchronized": {
+							"type": "boolean",
+							"description": "Flag that identifies if the user has synchronized with the card. Only usable on movie and chapter cards"
+						}
+					}
+				},
+				"paginate_key": {
+					"type": "string",
+					"description": "Paginate key"
+				}
+			},
+			"required": [ "card_id", "type", "locale", "title" ]
+		},
+
+		"ProductResponse": {
+			"description": "Commercial product data",
+			"type": "object",
+			"properties":{
+				"product_id": {
+					"type": "string",
+					"description": "Product identifier"
+				},
+				"category": {
+					"type": "string",
+					"description": "Merchant category"
+				},
+				"source": {
+					"$ref": "#/definitions/SourceData"
+				},
+				"title": {
+					"type": "string",
+					"description": "Product title"
+				},
+				"image": {
+					"type": "string",
+					"description": "Product image URL"
+				},
+				"url": {
+					"type": "string",
+					"description": "Merchant store URL"
+				},
+				"price": {
+					"type": "number",
+					"format": "double",
+					"description": "Product price"
+				},
+				"currency": {
+					"type": "string",
+					"description": "Product price currency"
+				},
+				"is_up_to_date": {
+					"type": "boolean",
+					"description": "Flag that defines if the product in up to date on Dive database"
+				},
+				"is_exact": {
+					"type": "boolean",
+					"description": "Flag that defines if the product is an exact match with the card"
+				},
+				"country": {
+					"type": "string",
+					"description": "Country information. Only used on travel products"
+				},
+				"region": {
+					"type": "string",
+					"description": "Region information. Only used on travel products"
+				},
+				"city": {
+					"type": "string",
+					"description": "City information. Only used on travel products"
+				},
+				"address": {
+					"type": "string",
+					"description": "Address information. Only used on travel products"
+				},
+				"postal_code": {
+					"type": "string",
+					"description": "Postal code information. Only used on travel products"
+				},
+				"rating": {
+					"type": "number",
+					"format": "double",
+					"description": "Rating information. Only used on travel products"
+				}
+			},
+			"required": [ "product_id", "category", "title", "image", "url" ]
+		},
+
+		"AudioSyncRequest": {
+			"description": "Commercial product data",
+			"type": "object",
+			"properties":{
+				"hash": {
+					"description": "Audio hashes array",
+					"type": "array",
+					"minItems": 10,
+					"maxItems": 500,
+					"items": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"offset": {
+					"description": "Audio offsets array",
+					"type": "array",
+					"minItems": 10,
+					"maxItems": 500,
+					"items": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"required": [ "hash", "offset" ]
+		},
+
+		"AudioSyncResponse": {
+			"properties": {
+				"is_synchronized": {
+					"description": "Flag that represents a successful synchronization (or not)",
+					"type": "boolean"
+				},
+				"offset": {
+					"description": "Synchronization offset. Only valid when 'is_synchronized' is true",
+					"type": "number",
+					"format": "double"
+				},
+				"time_ratio": {
+					"description": "Synchronization time ratio. Only valid when 'is_synchronized' is true",
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"required": [ "is_synchronized" ]
+		},
+
+		"TrailerResponse": {
+			"properties": {
+				"card_id": {
+					"description": "Card ID",
+					"type": "string"
+				},
+				"title": {
+					"description": "Trailer title",
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/SourceData"
+				}
+			},
+			"required": [ "card_id", "title", "source" ]
+		},
+
+		"ListResponse": {
+			"description": "List data",
+			"type": "object",
+			"discriminator": "type",
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "List type",
+					"enum": [ "card", "tv_event", "search_result", "current_event" ]
+				},
+				"title": {
+					"type": "string",
+					"description": "List title"
+				}
+			},
+			"required": [ "title", "type" ]
+		},
+
+		"card": {
+			"description": "List composed by a list of cards",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ListResponse"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"items": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						}
+					},
+					"required": [ "items" ]
+				}
+			]
+		},
+
+		"tv_event": {
+			"description": "List composed by a list of TV events",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ListResponse"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"items": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TvEventResponse"
+							}
+						}
+					},
+					"required": [ "items" ]
+				}
+			]
+		},
+
+		"search_result": {
+			"description": "List composed by a list of search results",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ListResponse"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"items": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/SearchResultResponse"
+							}
+						}
+					},
+					"required": [ "items" ]
+				}
+			]
+		},
+
+		"current_event": {
+			"description": "List composed with a unique card",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ListResponse"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"items": {
+							"type": "array",
+							"maxItems": 1,
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						}
+					},
+					"required": [ "items" ]
+				}
+			]
+		},
+
+		"FeedbackRequest": {
+			"description": "Commercial product data",
+			"type": "object",
+			"properties":{
+				"platform": {
+					"description": "Application platform ('ios', 'android', etc...)",
+					"type": "string"
+				},
+				"app_version": {
+					"description": "Application version",
+					"type": "string"
+				},
+				"type": {
+					"description": "Feedback type",
+					"type": "string",
+					"enum": [ "FEEDBACK", "COPYRIGHT", "ERROR", "SUGGESTION" ]
+				},
+				"subtype": {
+					"description": "Feedback subtype. Only used with 'SUGGESTION' type)",
+					"type": "string",
+					"enum": [ "PERSON_CHARACTER", "FASHION_BEAUTY", "LOCATION",
+						"SONG", "VEHICLE", "HOME", "TRIVIA", "TECHNOLOGY",
+						"HISTORIC", "ART", "WEAPON", "LEISURE_SPORT",
+						"FOOD_DRINK", "FAUNA_FLORA", "BUSINESS", "OTHER" ]
+				},
+				"title": {
+					"description": "Feedback title",
+					"type": "string"
+				},
+				"text": {
+					"description": "Feedback text",
+					"type": "string"
+				},
+				"urls": {
+					"description": "A set of URL's provided by the user",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "string"
+					}
+				},
+				"card_id": {
+					"description": "Feedback card ID",
+					"type": "string"
+				},
+				"synchronizable_card_id": {
+					"description": "Feedback synchonizable card ID",
+					"type": "string"
+				},
+				"timestamp": {
+					"description": "Timestamp of the synchonizable content",
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"required": [ "platform", "app_version", "type" ]
+		},
+
+		"FeedbackResponse": {
+			"properties": {
+				"feedback_id": {
+					"description": "Feedback ID",
+					"type": "string"
+				}
+			},
+			"required": [ "feedback_id" ]
+		},
+
+		"ImageData": {
+			"description": "Linked image URL and additional information",
+			"type": "object",
+			"properties":{
+				"thumb": {
+					"type": "string",
+					"description": "Image thumbnail URL"
+				},
+				"full": {
+					"type": "string",
+					"description": "Full size image URL"
+				},
+				"anchor_x": {
+					"type": "number",
+					"description": "Image anchor X axis (percent)",
+					"minimum": 0,
+					"maximum": 100
+				},
+				"anchor_y": {
+					"type": "number",
+					"description": "Image anchor Y axis (percent)",
+					"minimum": 0,
+					"maximum": 100
+				},
+				"source": {
+					"$ref": "#/definitions/SourceData"
+				}
+			},
+			"required": [ "thumb", "full", "anchor_x", "anchor_y", "source" ]
+		},
+
+		"SourceData": {
+			"description": "Information regarding the source of any API item",
+			"type": "object",
+			"properties":{
+				"name": {
+					"type": "string",
+					"description": "Name of the source"
+				},
+				"url": {
+					"type": "string",
+					"description": "URL of the source"
+				},
+				"disclaimer": {
+					"type": "string",
+					"description": "Disclaimer text of the source"
+				},
+				"image": {
+					"type": "string",
+					"description": "URL of the source icon"
+				}
+			},
+			"required": [ "name", "url" ]
+		},
+
+		"CardContainer": {
+			"description": "Card static data container. It's content depends on the 'type' parameter value and is represented by the schema of the same name",
+			"type": "object",
+			"discriminator": "type",
+			"properties":{
+				"type": {
+					"type": "string",
+					"description": "Card container format type, determines the format of the 'data' field",
+					"enum":[
+						"text", "listing", "rating", "map", "link",
+						"awards", "catalog", "seasons", "image"
+					]
+				}
+			},
+			"required": [ "type" ]
+		},
+
+		"text": {
+			"description": "CardContainer composed by a block of text with an optional source attribution",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Text container content type",
+							"enum": [
+								"overview", "curiosity", "description", "biography", "reference", "quote"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"maxLength": 1,
+							"items": {
+								"type": "object",
+								"properties": {
+									"text": {
+										"type": "string",
+										"description": "Informational text"
+									},
+									"source": {
+										"$ref": "#/definitions/SourceData"
+									}
+								},
+								"required":[ "text" ]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"listing": {
+			"description": "CardContainer composed by a list of pairs of label - value items",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Listing container content type",
+							"enum": [
+								"basic_data", "specs"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"text": {
+										"type": "string",
+										"description": "Item label"
+									},
+									"value": {
+										"type": "string",
+										"description": "Item value"
+									}
+								},
+								"required":[ "text", "value" ]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"rating": {
+			"description": "CardContainer composed by a list of external ratings with source attribution",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Rating container content type",
+							"enum": [
+								"rating"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"value": {
+										"type": "string",
+										"description": "Rating value"
+									},
+									"source": {
+										"$ref": "#/definitions/SourceData"
+									}
+								},
+								"required":[ "value" ]
+							}
+						}
+					},
+					"required": [ "data", "content_type" ]
+				}
+			]
+		},
+
+		"map": {
+			"description": "CardContainer composed by a map of a given location",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Map container content type",
+							"enum": [
+								"location"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"maxLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"latitude": {
+										"type": "number",
+										"format": "float",
+										"description": "Value of the location latitude, in decimal format degrees"
+									},
+									"longitude": {
+										"type": "number",
+										"format": "float",
+										"description": "Value of the location longitude, in decimal format degrees"
+									},
+									"zoom": {
+										"type": "integer",
+										"format": "int32",
+										"description": "Zoom value, defines the height coordinate over the given location"
+									}
+								},
+								"required": [ "latitude", "longitude", "zoom" ]
+							}
+						}
+					},
+					"required": [ "data", "content_type" ]
+				}
+			]
+		},
+
+		"link": {
+			"description": "CardContainer composed by a list of links to external media resources with source attribution",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Link container content type",
+							"enum": [
+								"trailer", "video", "music"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"url": {
+										"type": "string",
+										"description": "URL of the external resource"
+									},
+									"source": {
+										"$ref": "#/definitions/SourceData"
+									}
+								},
+								"required":[ "url", "source" ]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"image": {
+			"description": "CardContainer composed by a list of images with source attribution",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Image container content type",
+							"enum": [
+								"gallery"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"$ref": "#/definitions/ImageData"
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"awards": {
+			"description": "CardContainer composed by a list of awards with nominees and winners",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Awards container content type",
+							"enum": [
+								"awards"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"title": {
+										"type": "string",
+										"description": "Award name"
+									},
+									"nominee": {
+										"type": "array",
+										"minLength": 1,
+										"items": {
+										"$ref": "#/definitions/AwardData"
+										}
+									},
+									"winner": {
+										"type": "array",
+										"minLength": 1,
+										"items": {
+										"$ref": "#/definitions/AwardData"
+										}
+									}
+								},
+								"required":[ "title" ]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"AwardData": {
+			"type": "object",
+			"description": "Award nominee or winner info",
+			"properties":{
+				"title": {
+					"type": "string",
+					"description": "Name of the prize"
+				},
+				"value": {
+					"type": "string",
+					"description": "Name of the nominee / winner"
+				}
+			},
+			"required":[ "title", "value" ]
+		},
+
+		"catalog": {
+			"description": "CardContainer composed by additional information of a catalog item (movie, serie or chapter)",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Catalog container content type",
+							"enum": [
+								"movie", "chapter", "serie"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"maxLength": 1,
+							"items": {
+								"type": "object",
+								"properties": {
+									"background_image": {
+										"type": "string",
+										"description": "URL of an additional background image for this catalog element"
+									},
+									"director": {
+										"type": "string",
+										"description": "Name of the director"
+									},
+									"genres": {
+										"type": "array",
+										"description": "List of genres of this catalog entry",
+										"items": {
+											"type": "string"
+										}
+									},
+									"original_title": {
+										"type": "string",
+										"description": "Original language title"
+									},
+									"runtime": {
+										"type": "integer",
+										"description": "Length of the movie or chapter, or average length of serie chapters, in minutes"
+									},
+									"year": {
+										"type": "integer",
+										"description": "Year of production"
+									},
+									"chapter_index": {
+										"type": "integer",
+										"description": "Index of the chapter inside its season (only for content_type=chapter)"
+									},
+									"season_index": {
+										"type": "integer",
+										"description": "Index of the season where the chapter belongs (only for content_type=chapter)"
+									},
+									"sync": {
+										"type": "object",
+										"description": "Dive interactive capabilities of this catalog item",
+										"properties":{
+											"is_synchronizable": {
+												"type": "boolean",
+												"description": "Indicates if this catalog item can be synchronized"
+											},
+											"audio_langs": {
+												"type": "array",
+												"description": "List of available audio languages",
+												"items": {
+													"type": "string"
+												}
+											},
+											"tv_grid": {
+												"$ref": "#/definitions/TvGridResponse"
+											}
+										},
+										"required": [ "is_synchronizable" , "audio_langs"]
+									}
+								},
+								"required": [
+								"director", "genres", "original_title", "year"
+								]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"seasons": {
+			"description": "Serie seasons listing",
+			"type": "object",
+			"allOf": [
+				{
+				"$ref": "#/definitions/CardContainer"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+						"type": "string",
+						"description": "Seasons container content type",
+						"enum": [
+							"seasons"
+						]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"season_index": {
+										"type": "integer",
+										"description": "Index of the season"
+									},
+									"creators": {
+										"type": "string",
+										"description": "Comma separated list of season creators"
+									},
+									"image": {
+										"$ref": "#/definitions/ImageData"
+									},
+									"year": {
+										"type": "integer",
+										"description": "Year of production of this season"
+									},
+									"chapters": {
+										"type": "array",
+										"description": "List of season chapters",
+										"minLength": 1,
+										"items": {
+											"type": "object",
+											"properties":{
+												"chapter_index": {
+													"type": "integer",
+													"description": "Index of the chapter inside this season"
+												},
+												"card_id": {
+													"type": "string",
+													"description": "ID of the chapter card"
+												}
+											},
+											"required": [ "chapter_index", "card_id" ]
+										}
+									}
+								},
+								"required":[ "season_index", "creators", "image", "year", "chapters" ]
+							}
+						}
+					},
+					"required":[ "data", "content_type" ]
+				}
+			]
+		},
+
+		"RelationModule": {
+			"description": "Relation modules provide lists of cards related to the current one. It's contents depend on the module 'type' attribute",
+			"type": "object",
+			"discriminator": "type",
+			"properties":{
+				"type": {
+					"type": "string",
+					"description": "Relation module type, defines the contained data structure",
+					"enum":[
+						"single", "duple"
+					]
+				},
+				"size": {
+					"type": "number",
+					"format": "int64",
+					"description": "Number of items in the relation module"
+				}
+			},
+			"required": [ "type", "size" ]
+		},
+
+		"single": {
+			"description": "List of related single cards. The relation type is defined by the module content type",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/RelationModule"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Single module content type, defines what kind of relations are contained in the module",
+							"enum": [
+								"movie_vehicles",
+								"movie_songs",
+								"miscellaneous",
+								"highlighted",
+								"recommended",
+								"trivias",
+								"appears_in",
+								"tracklist",
+								"sounds_in",
+								"full_looks",
+								"look_fashion",
+								"fashion_set",
+								"other_looks",
+								"wears",
+								"home_deco",
+								"full_home",
+								"is_part_of",
+								"directors",
+								"is_chapter_of"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"$ref": "#/definitions/CardDetailResponse"
+							}
+						}
+					},
+					"required":[ "content_type" ]
+				}
+			]
+		},
+
+		"duple": {
+			"description": "List of related pairs of cards, each pair having a relationship type between both cards",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/RelationModule"
+				},
+				{
+					"type": "object",
+					"properties":{
+						"content_type": {
+							"type": "string",
+							"description": "Duple module content type, defines what kind of relations are contained in the module",
+							"enum": [
+								"movie_locations",
+								"worn_by",
+								"casting",
+								"casting_fashion",
+								"filmography",
+								"played_by",
+								"featured_in"
+							]
+						},
+						"data": {
+							"type": "array",
+							"minLength": 1,
+							"items": {
+								"type": "object",
+								"properties":{
+									"rel_type": {
+										"type": "string",
+										"description": "Indicates the relationship between the pair of cards (from > rel_type > to)"
+									},
+									"from": {
+										"$ref": "#/definitions/CardDetailResponse"
+									},
+									"to": {
+										"$ref": "#/definitions/CardDetailResponse"
+									}
+								},
+								"required":[ "rel_type", "from" ]
+							}
+						}
+					},
+					"required":[ "content_type" ]
+				}
+			]
+		}
+	},
+
+	"parameters": {
+		"AuthorizationParam": {
+			"name": "Authorization",
+			"in": "header",
+			"description": "Authorization token ('Bearer / Basic <token>')",
+			"required": true,
+			"type": "string"
+		},
+		"ConnectionKeepAliveParam": {
+			"name": "Connection",
+			"in": "header",
+			"default": "keep-alive",
+			"description": "Enables connection keep alive",
+			"required": true,
+			"type": "string"
+		},
+		"AcceptEncodingGzipParam": {
+			"name": "Accept-Encoding",
+			"in": "header",
+			"default": "gzip, deflate",
+			"description": "Enables connection keep alive",
+			"required": true,
+			"type": "string"
+		},
+		"AcceptLanguageParam": {
+			"name": "Accept-Language",
+			"in": "header",
+			"description": "Client locale, as <language>-<country>",
+			"required": false,
+			"type": "string"
+		},
+		"RelationsFlag": {
+			"name": "relations",
+			"in": "query",
+			"description": "Indicates if the received scene cards should contain the scene hierarchy (true) or be a flat list of the main scene items (false)",
+			"required": false,
+			"type": "boolean",
+			"default": false
+		},
+		"RelationsParam": {
+			"name": "relations",
+			"in": "query",
+			"description": "Type of relations to be included with the card",
+			"required": false,
+			"type": "string",
+			"default": "none",
+			"enum": [ "none", "offmovie", "all" ]
+		},
+		"ImageSizeParam": {
+			"name": "image_size",
+			"in": "query",
+			"description": "Size of the images returned in the response",
+			"required": false,
+			"type": "string",
+			"default": "m",
+			"enum": [ "s", "m", "l" ]
+		},
+		"AddProductsFlag": {
+			"name": "add_products",
+			"in": "query",
+			"description": "Indicates if it's needed to provide card products",
+			"required": false,
+			"type": "boolean",
+			"default": false
+		},
+		"AddUserDataFlag": {
+			"name": "add_user_data",
+			"in": "query",
+			"description": "Indicates if it's needed to provide user data",
+			"required": false,
+			"type": "boolean",
+			"default": false
+		},
+		"ContainersParam": {
+			"name": "containers",
+			"in": "query",
+			"description": "List of containers to be add to the mini-card. By default NO containers are retrieved",
+			"required": false,
+			"type": "array",
+			"collectionFormat": "csv",
+			"items": {
+				"type": "string"
+			}
+		},
+		"GenresParam": {
+			"name": "genres",
+			"in": "query",
+			"description": "Comma separated list of genres to be retrieved",
+			"required": false,
+			"type": "string"
+		},
+		"PaginateKeyParam": {
+			"name": "paginate_key",
+			"in": "query",
+			"description": "Paginate key",
+			"required": false,
+			"type": "string"
+		},
+		"ResultSizeParam": {
+			"name": "size",
+			"in": "query",
+			"description": "Number of desired results",
+			"required": false,
+			"default": "20",
+			"type": "string"
+		},
+		"DiveBrandParam": {
+			"name": "dive_brand",
+			"in": "query",
+			"description": "Dive brand",
+			"required": true,
+			"default": "dive",
+			"type": "string"
+		},
+		"CardIdPathParam": {
+			"name": "card_id",
+			"in": "path",
+			"description": "Requested card ID",
+			"required": true,
+			"type": "string"
+		},
+		"ContentTypeParam": {
+			"name": "content_type",
+			"in": "path",
+			"description": "Requested relations module content type",
+			"required": true,
+			"type": "string"
+		},
+		"VersionPathParam": {
+			"name": "version",
+			"in": "path",
+			"description": "Required version param",
+			"required": true,
+			"type": "string"
+		},
+		"SearchQueryParam": {
+			"name": "query",
+			"in": "query",
+			"description": "Search query",
+			"required": true,
+			"type": "string"
+		}
+	}
+}

@@ -1,0 +1,10 @@
+target
+slate/build
+**/Gemfile.lock
+.project
+.settings/org.eclipse.m2e.core.prefs
+build
+
+\.classpath
+
+\.settings/
