@@ -1,4 +1,4 @@
-sudo: true
+sudo: false
 
 language: java
 
@@ -16,7 +16,6 @@ env:
   - SWAGGER_CODEGEN_TMPL_DIR: "/tmp/swagger-codegen/modules/swagger-codegen/src/main/resources"
   - SWAGGER_CODEGEN_SOURCE_DIR: "/tmp/swagger-codegen/modules/swagger-codegen/src/main/java/io/swagger/codegen/"
   - SWAGGER_CODEGEN_CONF_DIR: "/tmp/swagger-codegen/bin/touchvie"
-  
   - SLATE_DIR: "/tmp/slate"
   - REPO_TEMPLATES_DIR: "/tmp/templates"
   - REPO_AR_LIBRARY_DIR: "/tmp/ar_library"
