@@ -154,12 +154,12 @@ if [[ -z ${TRAVIS} || "$TRAVIS_BRANCH" == "master" ]]; then
     ###########
 
     # publish all slate docs
-   # source scr/deploy-slate-doc.sh $DEPLOY_OPTS
-   # RET_VAL=$?
+    source scr/deploy-slate-doc.sh $DEPLOY_OPTS
+    RET_VAL=$?
 
     # Upload templates to CDN
-   # source scr/upload-templates.sh
-   # RET_VAL=$?
+    source scr/upload-templates.sh
+    RET_VAL=$?
 
     clean_slate
 
