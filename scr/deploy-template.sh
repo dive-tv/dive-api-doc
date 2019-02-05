@@ -9,17 +9,17 @@ echo "changed files: $CHANGED_FILES"
 
 #if [ $CHANGED_FILES == *"templates/ar-api.json"* ] || [ $CHANGED_FILES == *"templates/ea-api.json"* ]; then
 if [[ "a" == "a" ]]; then
-    openssl aes-256-cbc -K $encrypted_23f1716b8245_key -iv $encrypted_23f1716b8245_iv -in sdk_templates.enc -out sdk_templates -d
+    openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_templates.enc -out sdk_templates -d
     chmod 600 sdk_templates
     eval `ssh-agent -s`
     ssh-add -D
     ssh-add sdk_templates
     git clone $repo_templates
-    
+
     if [[ $CHANGED_FILES == *"templates/ar-api.json"* ]]; then
         echo "ar_api json modified"
         #git clone $repo_sdk_ar_lib
-        openssl aes-256-cbc -K $encrypted_23f1716b8249_key -iv $encrypted_23f1716b8249_iv -in sdk_ar_typescript.enc -out sdk_ar_typescript -d
+        openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_ar_typescript.enc -out sdk_ar_typescript -d
         chmod 600 sdk_ar_typescript
         ssh-add -D
         ssh-add sdk_ar_typescript
@@ -27,7 +27,7 @@ if [[ "a" == "a" ]]; then
         #generate new library
         mkdir -p $deploy_directory/api_output/ar
         java -jar $SWAGGER_CODEGEN_CLI generate -l typescript-fetch -i $deploy_directory/templates/ar-api.json -t $deploy_directory/sdk-templates/typescript/v2.2.3-mod -o $deploy_directory/api_output/ar/ --additional-properties supportsES6=true
-    
+
         cd sdk-ar-typescript-library
         git checkout master
         rm -rf $deploy_directory/sdk-ar-typescript-library/codegen
@@ -45,7 +45,7 @@ if [[ "a" == "a" ]]; then
         echo "ea_api json modified"
 
         #update sdk-client-java
-        openssl aes-256-cbc -K $encrypted_sdk_client_java_key -iv $encrypted_sdk_client_java_iv -in sdk_client_java.enc -out sdk_client_java -d
+        openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_client_java.enc -out sdk_client_java -d
         chmod 600 sdk_client_java
         ssh-add -D
         ssh-add sdk_client_java
@@ -68,7 +68,7 @@ if [[ "a" == "a" ]]; then
         cd $deploy_directory
         source $deploy_directory/scr/git-version.sh
 
-        openssl aes-256-cbc -K $encrypted_23f1716b8250_key -iv $encrypted_23f1716b8250_iv -in sdk_ea_typescript.enc -out sdk_ea_typescript -d
+        openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_ea_typescript.enc -out sdk_ea_typescript -d
         chmod 600 sdk_ea_typescript
         ssh-add -D
         ssh-add sdk_ea_typescript
@@ -90,7 +90,7 @@ if [[ "a" == "a" ]]; then
 
 
     #update sdk-client-java
-    openssl aes-256-cbc -K $encrypted_sdk_client_java_key -iv $encrypted_sdk_client_java_iv -in sdk_client_java.enc -out sdk_client_java -d
+    openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_client_java.enc -out sdk_client_java -d
     chmod 600 sdk_client_java
     ssh-add -D
     ssh-add sdk_client_java
@@ -113,5 +113,5 @@ if [[ "a" == "a" ]]; then
     git push -u origin master
     echo "call git-version.sh"
     source $deploy_directory/scr/git-version.sh
-    
+
 fi

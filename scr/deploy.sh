@@ -20,10 +20,6 @@ if [[ -z ${TRAVIS} ]]; then
 
     # Install swagger-codegen repo in '/tmp' directory
     #source scr/install-swagger-codegen.sh
-    # Install api-dive-ios repo in '/tmp' directory
-    #source scr/install-api-dive-ios.sh
-    # Install data-model-ios repo in '/tmp' directory
-    #source scr/install-data-model-ios.sh
     # Install slate repo in '/tmp' directory
     source scr/install-slate.sh
 fi
