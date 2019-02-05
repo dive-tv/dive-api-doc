@@ -14,10 +14,6 @@ Dive Experience Amplifier and Dive Ad Resonance APIs are a thorough set of servi
 
 To easily implement the full Dive capabilities on a third party device, application or system, Dive provides a set of SDKs for several client platforms. These SDKs leverage different levels of integration depending on the client needs.
 
-# Dive Experience Amplifier (EA)
-
-Dive Experience Amplifier provides a stream of real time content associated to the audiovisual content being watched. It works for both linear TV broadcasts (on supported countries) and video on demand (for available content).
-
 ## EA API documentation
 
 Dive EA REST and Streaming API services documentation can be found in the following link:
@@ -43,26 +39,6 @@ It is available in the following client languages:
 
 - [Source code](https://github.com/dive-tv/sdk-client-java)
 - [Documentation](./sdk-client-java.html)
-
-## EA Frontend SDKs
-
-Dive EA Frontend SDK implements a graphical representation of the data provided by the EA API services:
-
-- Content stream representation (flow of real time content)
-- Card detail representation (all card categories)
-
-It is built on top of EA Client SDK, and it is available in the following client languages:
-
-### Javascript
-
-- [Source code](https://github.com/dive-tv/sdk-ea-front-javascript-library)
-- [Documentation](./sdk-ea-front-javascript-library.html)
-- [NPM library](https://www.npmjs.com/package/@dive-tv/sdk-ea-typescript-library)
-
-### Android
-
-- [Source code](https://github.com/dive-tv/ea-front-sdk-android)
-- [Documentation](./ea-front-sdk-android.html)
 
 # Dive Ad Resonance (AR)
 
