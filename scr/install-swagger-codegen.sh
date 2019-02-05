@@ -2,7 +2,7 @@
 
 pushd $TMP_DIR
 
-git clone --chmod=+x https://github.com/dive-tv/swagger-codegen
+git clone https://github.com/dive-tv/swagger-codegen
 
 pushd $SWAGGER_CODEGEN_DIR
 # Swagger version 2.2.3
