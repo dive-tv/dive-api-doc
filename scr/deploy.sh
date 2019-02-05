@@ -14,8 +14,8 @@ if [[ -z ${TRAVIS} ]]; then
     export SWAGGER_CODEGEN_CLI=${SWAGGER_CODEGEN_DIR}/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar
     export SWAGGER_CODEGEN_TMPL_DIR=${SWAGGER_CODEGEN_DIR}/modules/swagger-codegen/src/main/resources
     export SWAGGER_CODEGEN_CONF_DIR=${SWAGGER_CODEGEN_DIR}/bin/touchvie
-    export SWIFT_DIVE_DIR=${TMP_DIR}/api-dive-ios
-    export SWIFT_MODEL_DIR=${TMP_DIR}/data-model-ios
+    # export SWIFT_DIVE_DIR=${TMP_DIR}/api-dive-ios
+    # export SWIFT_MODEL_DIR=${TMP_DIR}/data-model-ios
     export SLATE_DIR=${TMP_DIR}/slate
 
     # Install swagger-codegen repo in '/tmp' directory
