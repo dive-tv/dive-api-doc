@@ -13,7 +13,7 @@ SLATE_SRC_DIR=${SLATE_DIR}/source
 SLATE_INC_DIR=${SLATE_SRC_DIR}/includes
 
 DOCS_TO_TRANSFORM=('paths' 'definitions')
-REPOSITORIES=("https://github.com/dive-tv/sdk-client-java.git" "https://github.com/dive-tv/ea-client-sdk-android.git")
+REPOSITORIES=("https://github.com/dive-tv/sdk-client-java.git" "https://github.com/dive-tv/ea-client-sdk-android.git" "https://github.com/dive-tv/sdk-ea-front-javascript-library.git" "https://github.com/dive-tv/ea-front-sdk-android.git")
 
 RET_VAL=0
 
@@ -78,7 +78,7 @@ if [[ -z ${TRAVIS} || "$TRAVIS_BRANCH" == "master" ]]; then
 
     # transform ea-api files to slate format
     for DOC in "${DOCS_TO_TRANSFORM[@]}"; do
-        python3 scr/transform.py ${TARGET_DIR}/ea-api/markdown/_ea.api.${DOC}.mhon3 scr/transform.py ${TARGET_DIR}/ea-api/markdown/_ea.api.${DOC}.md
+        python3 scr/transform.py ${TARGET_DIR}/ea-api/markdown/_ea.api.${DOC}.md
         if [ $? -ne 0 ]; then
             echo "Error transforming ea-api $DOC document from markdown to slate format"
             exit 1

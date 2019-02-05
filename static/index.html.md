@@ -6,9 +6,9 @@ toc_footers:
 
 search: false
 ---
-# Dive 3rd party APIs documentation
+# Dive 3rd party APIs & SDKs documentation
 
-Welcome to Dive's 3rd party APIs documentation home.
+Welcome to Dive's 3rd party APIs and SDKs documentation home.
 
 Dive Experience Amplifier and Dive Ad Resonance APIs are a thorough set of services and SDKs which aim to enable Dive’s real-time experience and contextual metadata on third parties’ systems.
 
@@ -26,7 +26,7 @@ Dive EA REST and Streaming API services documentation can be found in the follow
 
 ## EA Client SDKs
 
-Dive EA Client SDK implements EA API business logic, providing programatic access to the API features: 
+Dive EA Client SDK implements EA API business logic, providing programatic access to the API features:
 
 - Authentication and token renewal
 - Real time content reception through socket.io (streaming API)
@@ -43,6 +43,26 @@ It is available in the following client languages:
 
 - [Source code](https://github.com/dive-tv/sdk-client-java)
 - [Documentation](./sdk-client-java.html)
+
+## EA Frontend SDKs
+
+Dive EA Frontend SDK implements a graphical representation of the data provided by the EA API services:
+
+- Content stream representation (flow of real time content)
+- Card detail representation (all card categories)
+
+It is built on top of EA Client SDK, and it is available in the following client languages:
+
+### Javascript
+
+- [Source code](https://github.com/dive-tv/sdk-ea-front-javascript-library)
+- [Documentation](./sdk-ea-front-javascript-library.html)
+- [NPM library](https://www.npmjs.com/package/@dive-tv/sdk-ea-typescript-library)
+
+### Android
+
+- [Source code](https://github.com/dive-tv/ea-front-sdk-android)
+- [Documentation](./ea-front-sdk-android.html)
 
 # Dive Ad Resonance (AR)
 
