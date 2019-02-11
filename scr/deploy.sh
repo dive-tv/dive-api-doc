@@ -2,7 +2,7 @@
 
 if [[ -z ${TRAVIS} ]]; then
 
-    # fake Travis env
+    # fake Travis env 
     echo "This is a local build"
 
     export TRAVIS_BUILD_DIR=$(pwd)
