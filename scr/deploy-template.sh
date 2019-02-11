@@ -9,7 +9,7 @@ echo "changed files: $CHANGED_FILES"
 
 #if [ $CHANGED_FILES == *"templates/ar-api.json"* ] || [ $CHANGED_FILES == *"templates/ea-api.json"* ]; then
 if [[ "a" == "a" ]]; then
-    openssl aes-256-cbc -K $encrypted_23f1716b8245_key -iv $encrypted_23f1716b8245_iv -in sdk_templates.enc -out sdk_templates -d
+    openssl aes-256-cbc -K $encrypted_sdk_templates_key -iv $encrypted_sdk_templates_iv -in sdk_templates.enc -out sdk_templates -d
     chmod 600 sdk_templates
     eval `ssh-agent -s`
     ssh-add -D
@@ -19,7 +19,7 @@ if [[ "a" == "a" ]]; then
     if [[ $CHANGED_FILES == *"templates/ar-api.json"* ]]; then
         echo "ar_api json modified"
         #git clone $repo_sdk_ar_lib
-        openssl aes-256-cbc -K $encrypted_23f1716b8249_key -iv $encrypted_23f1716b8249_iv -in sdk_ar_typescript.enc -out sdk_ar_typescript -d
+        openssl aes-256-cbc -K $encrypted_sdk_ar_typescript_library_key -iv $encrypted_sdk_ar_typescript_library_iv -in sdk_ar_typescript.enc -out sdk_ar_typescript -d
         chmod 600 sdk_ar_typescript
         ssh-add -D
         ssh-add sdk_ar_typescript
@@ -68,7 +68,7 @@ if [[ "a" == "a" ]]; then
         cd $deploy_directory
         source $deploy_directory/scr/git-version.sh
 
-        openssl aes-256-cbc -K $encrypted_23f1716b8250_key -iv $encrypted_23f1716b8250_iv -in sdk_ea_typescript.enc -out sdk_ea_typescript -d
+        openssl aes-256-cbc -K $encrypted_sdk_ea_typescript_key -iv $encrypted_sdk_ea_typescript_iv -in sdk_ea_typescript.enc -out sdk_ea_typescript -d
         chmod 600 sdk_ea_typescript
         ssh-add -D
         ssh-add sdk_ea_typescript
