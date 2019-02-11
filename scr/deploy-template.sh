@@ -10,7 +10,7 @@ echo "changed files: $CHANGED_FILES"
 #if [ $CHANGED_FILES == *"templates/ar-api.json"* ] || [ $CHANGED_FILES == *"templates/ea-api.json"* ]; then
 if [[ "a" == "a" ]]; then
     #openssl aes-256-cbc -d -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_templates.enc -out sdk_templates
-    openssl aes-256-cbc -d -K "$encrypted_0f4123442544_key_new" -iv "$encrypted_0f4123442544_iv_new" -in test_sdk_templates.enc -out sdk_templates
+    openssl aes-256-cbc -d -K $encrypted_f456d91f26a4_key_new -iv $encrypted_f456d91f26a4_iv_new -in test_sdk_templates.enc -out sdk_templates -d
     chmod 600 sdk_templates
     eval `ssh-agent -s`
     ssh-add -D
