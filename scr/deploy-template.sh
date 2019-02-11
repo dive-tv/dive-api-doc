@@ -45,7 +45,7 @@ if [[ "a" == "a" ]]; then
         echo "ea_api json modified"
 
         #update sdk-client-java
-        openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_client_java.enc -out sdk_client_java -d
+        openssl aes-256-cbc -K $encrypted_sdk_client_java_key -iv $encrypted_sdk_client_java_iv -in sdk_client_java.enc -out sdk_client_java -d
         chmod 600 sdk_client_java
         ssh-add -D
         ssh-add sdk_client_java
@@ -90,7 +90,7 @@ if [[ "a" == "a" ]]; then
 
 
     #update sdk-client-java
-    openssl aes-256-cbc -K $encrypted_0f4123442544_key -iv $encrypted_0f4123442544_iv -in sdk_client_java.enc -out sdk_client_java -d
+    openssl aes-256-cbc -K $encrypted_sdk_client_java_key -iv $encrypted_sdk_client_java_iv -in sdk_client_java.enc -out sdk_client_java -d
     chmod 600 sdk_client_java
     ssh-add -D
     ssh-add sdk_client_java
