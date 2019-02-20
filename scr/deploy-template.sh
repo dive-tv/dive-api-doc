@@ -110,7 +110,6 @@ if [[ "a" == "a" ]]; then
     git add .
     git commit -m "Auto generated"
     git add .
-    echo -e “machine github.com\n  login developmentDive password $GITHUB_TOKEN” > .netrc
     git push -u origin master
     echo "call git-version.sh"
     source $deploy_directory/scr/git-version.sh
