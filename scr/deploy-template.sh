@@ -109,7 +109,7 @@ if [[ "a" == "a" ]]; then
     echo "call git commands"
     git add .
     git commit -m "Auto generated"
-    # git add .
+    git add .
     git push -u origin master
     echo "call git-version.sh"
     source $deploy_directory/scr/git-version.sh
