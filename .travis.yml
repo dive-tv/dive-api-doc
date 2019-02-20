@@ -7,7 +7,7 @@ jdk:
 
 env:
   global:
-  - ENCRYPTION_LABEL: f456d91f26a4
+  - ENCRYPTION_LABEL: 0f4123442544
   - COMMIT_AUTHOR_USERNAME: TravisCI
   - COMMIT_AUTHOR_EMAIL: development@dive.tv
   - TMP_DIR: "/tmp"
