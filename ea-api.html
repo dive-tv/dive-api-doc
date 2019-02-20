@@ -1,0 +1,3996 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Dive Experience Amplifier API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="ea-api" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <a href='./index.html'><img src="images/logo.png" alt="Logo" /></a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://dive.tv/'>2018 Dive all rights reserved</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="overview">Overview</h1>
+
+<p>Welcome to the Dive Experience Amplifier API documentation. This is the official API used by third party applications.</p>
+
+<h2 id="swagger-ui">Swagger UI</h2>
+
+<p>You can test this API spec with Swagger UI.
+In order to do so, access this <a href="http://petstore.swagger.io/">link</a> and paste this url (https://cdn.dive.tv/swagger/ea-api.json) into the input box at the top of the page.</p>
+
+          <h1 id="authentication">Authentication</h1>
+
+<p>All requests to this API must include a valid token in order to be processed.<br>
+The <em>/v1/token</em> endpoint allows to create and refresh authorization tokens by means of the client API key.</p>
+
+<h2 id="obtain-a-new-token">Obtain a new token</h2>
+
+<p>In order to obtain a newly issued token, the following request should be made:</p>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>POST <a href="https://rest.dive.tv/v1/token?grant_type=device_credentials">https://rest.dive.tv/v1/token?grant_type=device_credentials</a></p>
+
+<h3 id="form-data">Form data</h3>
+
+<ul>
+<li>device_id: {device_id}
+
+<ul>
+<li>Unique identifier for the device making the request</li>
+</ul></li>
+</ul>
+
+<h3 id="headers">Headers</h3>
+
+<ul>
+<li>Content-Type: application/json</li>
+<li>Authorization: Basic {client_key}
+
+<ul>
+<li>{client_key} is the client API k1ey</li>
+</ul></li>
+</ul>
+
+<h3 id="response">Response</h3>
+
+<p>If client key is correct, the token endpoint will answer with a new token:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVwJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImV4cCI6MTQ4NzcwNzQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQsJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJPTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIjoiZTRjMzJlYmItYjI2NC00Yzg0LTk1YjktY2UwNjNiYjI5YTU4In0.uRhnAvVvkVU_qMcjwIFI9Oo3s8kRasGolEn18HSTqHgw"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IfpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImF0aSI6ImU0YzMyZWJiLWIyNjQtNGM4NC05NWI5LWNlMDYzYmIyOWE1OCIsImV4cCI6MTUwMzdg1MDQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQVJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJPTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIjoiOGViYzEzZTAtZmVmZS00NjYzLWI0ZDAtMmE2MGZiMmIyNTU1In0.AEaXnE3PRsJEpdLQJ9acivdffJPueqHfv4AsWI-hJCGAss"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">8999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"device"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e4c32ebb-b264-4c84-95b9-ce063bb29a58"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Issued tokens have a validity of 9000 seconds (value of <em>expires_in</em> field), and refresh tokens have a validity of 180 days.</p>
+
+<p>API clients should store the refresh token in a persistent location, so it can be used to issue additional tokens without needed to send the device ID again.</p>
+
+<h2 id="refresh-a-existing-token">Refresh a existing token</h2>
+
+<p>In order to obtain a newly issued token, the following request should be made:</p>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>POST <a href="https://rest.dive.tv/v1/token?grant_type=refresh_token">https://rest.dive.tv/v1/token?grant_type=refresh_token</a></p>
+
+<h3 id="form-data">Form data</h3>
+
+<ul>
+<li>refresh_token: {refresh_token}
+
+<ul>
+<li>The stored refresh token from a previous call</li>
+</ul></li>
+</ul>
+
+<h3 id="headers">Headers</h3>
+
+<ul>
+<li>Content-Type:application/json</li>
+<li>Authorization:Basic {client_key}
+
+<ul>
+<li>{client_key} is the client API key</li>
+</ul></li>
+</ul>
+
+<h3 id="response">Response</h3>
+
+<p>Same as a new token request.</p>
+
+<h2 id="authenticate-a-request">Authenticate a request</h2>
+
+<p>Every request to the REST and Streaming APIs must be authenticated with a valid token.</p>
+
+<h3 id="rest-api">REST API</h3>
+
+<p>The <em>Authorization</em> header must be present on every request to the REST API services.<br>
+The value of this header should be formed by the word <em>Bearer</em> and the value of the obtained token:</p>
+<pre class="highlight javascript"><code><span class="nx">Authorization</span><span class="err">:</span> <span class="nx">Bearer</span> <span class="nx">eyJhbGciOiJIUzI1NiIsInR5dgCI6IkpXVCJ9</span><span class="p">.</span><span class="nx">eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImV4cCI6MTQ4NzcwNzQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQVJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJfbvTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIfgoiZTRjMzJlYmItYjI2NC00Yzg0LTk1YjktY2UwNjNiYjI5YTU4In0</span><span class="p">.</span><span class="nx">uRhnAvVvkVU_qMcjwIFI9Oo3J8kRtGofgdEn18HSTqHgw</span>
+</code></pre>
+
+<h3 id="streaming-api">Streaming API</h3>
+
+<p>In order to connect to the secure socket.io stream, a handshake process must be performed:</p>
+
+<ol>
+<li>Connect to the socket</li>
+<li>On connect: send &lsquo;authenticate&rsquo; message with the token value</li>
+<li>On &#39;authenticated&rsquo;: ready to receive data</li>
+<li>On &#39;unauthorized&rsquo;: authentication failure (token expired or invalid)</li>
+</ol>
+
+<p>Sample client code:</p>
+<pre class="highlight javascript"><code><span class="kd">let</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">'https://stream.dive.tv/movies'</span><span class="p">);</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connect'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">socket</span>
+    <span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'authenticate'</span><span class="p">,</span> <span class="p">{</span><span class="na">token</span><span class="p">:</span> <span class="nx">jwt</span><span class="p">})</span> <span class="c1">//send the jwt</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'authenticated'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// configure message listeners</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'unauthorized'</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"unauthorized: "</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">data</span><span class="p">))</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre>
+
+          <h1 id="dive-ea-rest-api">Dive EA REST API</h1>
+
+<p><a name="overview"></a></p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Dive Experience Amplifier REST API provides a set of services which leverage obtaining catalog and TV grid info, contextual items (cards) information and saving and a static (scene by scene) version of the card carousel for linear TV and video on demand</p>
+
+<h3 id="version-information">Version information</h3>
+
+<p><em>Version</em> : 1.0.0</p>
+
+<h3 id="uri-scheme">URI scheme</h3>
+
+<p><em>Host</em> : rest.dive.tv<br>
+<em>BasePath</em> : /v1<br>
+<em>Schemes</em> : HTTPS</p>
+
+          <p><a name="getcard"></a></p>
+
+<h2 id="full-card-detail">Full card detail</h2>
+
+<p><code class="prettyprint">GET /cards/{card_id}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves a full card detail, with no relations or context</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&lsquo;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>Unique identifier for this card</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>products</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain commercial products when available (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>user_data</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain user data when available (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#card">Card</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Card ID Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1f3c65b4-78fa-11e5-b7c2-0684985cbbe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Oyster Bay"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39 Chestnut Hill Drive, Oyster Bay, Nueva York, Estados Unidos"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3_0_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3_0_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"activerain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://activerain.com/image_store/uploads/7/5/1/6/7/ar127500677076157.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Oyster Bay es un pueblo ubicado en el condado de Nassau en el estado estadounidense de Nueva York. En el año 2000 tenía una población de 293.925 habitantes y una densidad poblacional de 1,087.3 personas por km². Oyster Bay es uno de los tres pueblos del condado, junto con North Hempstead y Hempstead."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wikipedia"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://es.wikipedia.org/wiki/Oyster_Bay_(Nueva_York)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_wikipedia.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"map"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"zoom"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.84906</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-73.56316</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"relations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"is_liked"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="getcardversion"></a></p>
+
+<h2 id="full-card-detail-with-version">Full card detail with version</h2>
+
+<p><code class="prettyprint">GET /cards/{card_id}/versions/{version}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves a full card detail, and its relations to other cards in a given context (card version)</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>Unique identifier for this card</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>version</strong>  <br><em>required</em></td>
+<td>Version identifier, indicates the context where the card is being requested</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>products</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain commercial products when available (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>user_data</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain user data when available (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>relations</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#card">Card</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Card ID or card version Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1f3c65b4-78fa-11e5-b7c2-0684985cbbe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Oyster Bay"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39 Chestnut Hill Drive, Oyster Bay, Nueva York, Estados Unidos"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3_0_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3/1f3c65b4-78fa-11e5-b7c2-0684985cbbe3_0_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"activerain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://activerain.com/image_store/uploads/7/5/1/6/7/ar127500677076157.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Oyster Bay es un pueblo ubicado en el condado de Nassau en el estado estadounidense de Nueva York. En el año 2000 tenía una población de 293.925 habitantes y una densidad poblacional de 1,087.3 personas por km². Oyster Bay es uno de los tres pueblos del condado, junto con North Hempstead y Hempstead."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wikipedia"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://es.wikipedia.org/wiki/Oyster_Bay_(Nueva_York)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_wikipedia.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"map"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"location"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"zoom"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">40.84906</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">-73.56316</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"relations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"is_liked"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="getreadychannels"></a></p>
+
+<h2 id="channel-sync-availability">Channel sync availability</h2>
+
+<p><code class="prettyprint">GET /channels/{channel_id_list}/ready</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Checks if a list of client channel identifiers are currently broadcasting synchronizable content</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>channel_id_list</strong>  <br><em>required</em></td>
+<td>List of client channel IDs as a comma separated list</td>
+<td>&lt; string &gt; array(csv)</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#channelstatus">ChannelStatus</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ready"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ready"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getchannelmovie"></a></p>
+
+<h2 id="channel-movie-catalog-info">Channel movie catalog info</h2>
+
+<p><code class="prettyprint">GET /channels/{channel_id}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves full card detail, including catalog and cast information, for the content currently being broadcasted on the channel</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>channel_id</strong>  <br><em>required</em></td>
+<td>Client channel ID</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#card">Card</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Channel Not Found or no content currently available</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61169a94-c847-3e14-8351-7c2236959668"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_the_movie_db.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"products"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"overview"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonard volunteers to sign for a package in an attempt to make a good impression on Penny, but when he enlists Sheldon for help, his attempt at chivalry goes terribly awry."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_the_movie_db.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"listing"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"basic_data"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Release"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10-01-2007"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Runtime"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States of America"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Production company"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Chuck Lorre Productions and Warner Bros. Television"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Writer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Chuck Lorre, Bill Prady, Robert Cohen and David Goetsch"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rating"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TV-14"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Genre"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Comedy and Romance"</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"catalog"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"background_image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_1_background_m.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"director"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mark Cendrowski"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"genres"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"COMEDY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ROMANCE"</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"original_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"runtime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sync"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"is_synchronizable"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"audio_langs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"de_DE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="w"> </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"666bcaa4-1063-384f-885d-c22a4fcf3b73"</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"awards"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"awards"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="getchannelgrid"></a></p>
+
+<h2 id="channel-events-grid">Channel events grid</h2>
+
+<p><code class="prettyprint">GET /channels/{channel_id}/grid</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the current and upcoming grid of TV events for the given channel</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>channel_id</strong>  <br><em>required</em></td>
+<td>Client channel ID</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#tvgrid">TvGrid</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Channel Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"broadcast"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ch01"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"channel_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Channel 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1492668000000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1492669500000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"card"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61169a94-c847-3e14-8351-7c2236959668"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_full_m.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_the_movie_db.png"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"upcoming"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"channel_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ch01"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"channel_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Channel 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1492668000000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1492669500000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"card"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"c4041135-6bf8-3337-a58c-1c5678613de1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dumpling Paradox"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Dumpling Paradox"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_full_m.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/7"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_the_movie_db.png"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="getstaticchannelscene"></a></p>
+
+<h2 id="static-channel-scene">Static channel scene</h2>
+
+<p><code class="prettyprint">GET /channels/{channel_id}/static</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves the list of cards related to the content currently being broadcasted in the given channel</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>channel_id</strong>  <br><em>required</em></td>
+<td>Client channel ID</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>relations</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Channel Not Found or no content currently available</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"character"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucienne's friend"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_thumb.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_full.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_tmdb.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"relations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trivia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trivia"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Did you know..?"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"duple"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"played_by"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rel_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"played_by"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"from"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"26faf509-7422-318e-b9b7-f787474b2a90"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"movie"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vicky Cristina Barcelona"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-img.dive.tv/26faf509-7422-318e-b9b7-f787474b2a90/26faf509-7422-318e-b9b7-f787474b2a90_0_es_ES_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-img.dive.tv/26faf509-7422-318e-b9b7-f787474b2a90/26faf509-7422-318e-b9b7-f787474b2a90_0_es_ES_full_m.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"to"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert DeNiro"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_thumb.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_full.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_tmdb.png"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getlikes"></a></p>
+
+<h2 id="get-card-likes">Get card likes</h2>
+
+<p><code class="prettyprint">GET /likes</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns a paginated list of cards liked by current user</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>paginate_key</strong>  <br><em>optional</em></td>
+<td>Paginate key</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>size</strong>  <br><em>optional</em></td>
+<td>Number of desired results</td>
+<td>string</td>
+<td><code class="prettyprint">&quot;20&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>206</strong></td>
+<td>Partial Content</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Forbidden</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>502</strong></td>
+<td>Bad Gateway</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>504</strong></td>
+<td>Gateway Timeout</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Card title"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Card subtitle"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"movie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dive"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dive.tv"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Disclaimer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_dive.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response 206</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Card title"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Card subtitle"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"movie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/00000000-0000-0000-0000-000000000000_7_es_ES_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dive"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dive.tv"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Disclaimer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_dive.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="postlikes"></a></p>
+
+<h2 id="add-card-like">Add card like</h2>
+
+<p><code class="prettyprint">POST /likes/{card_id}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Stores a card under current user&rsquo;s likes list</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>Requested card ID</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Forbidden</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>502</strong></td>
+<td>Bad Gateway</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>504</strong></td>
+<td>Gateway Timeout</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<p><a name="deletelikes"></a></p>
+
+<h2 id="delete-card-like">Delete card like</h2>
+
+<p><code class="prettyprint">DELETE /likes/{card_id}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Removes a card from current user&rsquo;s likes list</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>Requested card ID</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Forbidden</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>502</strong></td>
+<td>Bad Gateway</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>504</strong></td>
+<td>Gateway Timeout</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<p><a name="getreadymovies"></a></p>
+
+<h2 id="movie-sync-availability">Movie sync availability</h2>
+
+<p><code class="prettyprint">GET /movies/{client_movie_id_list}/ready</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Checks whether a list of client movie identifiers (Video On Demand) are available to be synchronized using the Dive API</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>client_movie_id_list</strong>  <br><em>required</em></td>
+<td>List of client movie IDs, provided as a comma separated list</td>
+<td>&lt; string &gt; array(csv)</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#moviestatus">MovieStatus</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"57393675"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ready"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"80443833"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ready"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getcatalogmovie"></a></p>
+
+<h2 id="movie-catalog-info">Movie catalog info</h2>
+
+<p><code class="prettyprint">GET /movies/{client_movie_id}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves a movie&rsquo;s full card by its client ID, including catalog and cast information</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>client_movie_id</strong>  <br><em>required</em></td>
+<td>Client movie ID being played</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#card">Card</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Movie Not Found on catalog</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"61169a94-c847-3e14-8351-7c2236959668"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_season_1_en_US_full_m.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_the_movie_db.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"has_content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"products"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"product_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13#ad3184cbe6cc522840f49c2f022141a4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"electro"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dive"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dive.tv"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Disclaimer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_dive.png"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Product title"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201404/23/00125940954149____1__1000x1000.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.elcorteingles.es/cine/A16749003/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">10.39</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_exact"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_up_to_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"overview"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonard volunteers to sign for a package in an attempt to make a good impression on Penny, but when he enlists Sheldon for help, his attempt at chivalry goes terribly awry."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.themoviedb.org/tv/1418/season/1/episode/2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"This product uses the TMDb API but is not endorsed or certified by TMDb."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.touchvie.com/img/sources/ico_the_movie_db.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"listing"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"basic_data"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Release"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10-01-2007"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Runtime"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States of America"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Production company"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Chuck Lorre Productions and Warner Bros. Television"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Writer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Chuck Lorre, Bill Prady, Robert Cohen and David Goetsch"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rating"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TV-14"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Genre"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Comedy and Romance"</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"catalog"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"chapter"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"background_image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/666bcaa4-1063-384f-885d-c22a4fcf3b73/666bcaa4-1063-384f-885d-c22a4fcf3b73_1_background_m.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"director"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mark Cendrowski"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"genres"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"COMEDY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ROMANCE"</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"original_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The Big Bran Hypothesis"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"runtime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sync"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"is_synchronizable"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"audio_langs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"de_DE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="w"> </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"666bcaa4-1063-384f-885d-c22a4fcf3b73"</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"awards"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"awards"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="getstaticmoviescene"></a></p>
+
+<h2 id="static-vod-scene">Static VOD scene</h2>
+
+<p><code class="prettyprint">GET /movies/{client_movie_id}/static/{timestamp}</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Retrieves the current list of cards related to the given movie scene</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>client_movie_id</strong>  <br><em>required</em></td>
+<td>Client movie ID being played</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>timestamp</strong>  <br><em>required</em></td>
+<td>Current movie timestamp in seconds</td>
+<td>number(float)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>relations</strong>  <br><em>optional</em></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>boolean</td>
+<td><code class="prettyprint">&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>image_size</strong>  <br><em>optional</em></td>
+<td>Size of the images returned in the response</td>
+<td>enum (s, m, l)</td>
+<td><code class="prettyprint">&quot;m&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Movie or scene Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"character"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucienne's friend"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_thumb.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_full.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_tmdb.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"relations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trivia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trivia"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Did you know..?"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"duple"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"played_by"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rel_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"played_by"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"from"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"26faf509-7422-318e-b9b7-f787474b2a90"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"movie"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Vicky Cristina Barcelona"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-img.dive.tv/26faf509-7422-318e-b9b7-f787474b2a90/26faf509-7422-318e-b9b7-f787474b2a90_0_es_ES_thumb_m.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-img.dive.tv/26faf509-7422-318e-b9b7-f787474b2a90/26faf509-7422-318e-b9b7-f787474b2a90_0_es_ES_full_m.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"to"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"card_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"09s6kqDVvt5Qj-307YB1n+Emi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"locale"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert DeNiro"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtitle"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"thumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_thumb.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.dive.tv/39f8b960-2eea-11e6-97ac-0684985cbbe/39f8b960-2eea-11e6-97ac-0684985cbbe_full.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_x"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"anchor_y"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"source"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"disclaimer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/img/sources/ico_tmdb.png"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="posttoken"></a></p>
+
+<h2 id="token-endpoint">Token endpoint</h2>
+
+<p><code class="prettyprint">POST /token</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>The token endpoint is used to obtain access tokens which allow clients to make API requests</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Basic authorization token (&#39;Basic <client_key>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>grant_type</strong>  <br><em>required</em></td>
+<td>Grant type used to obtain the token.</td>
+<td>enum (device_credentials, refresh_token)</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>device_id</strong>  <br><em>optional</em></td>
+<td>Device identifier, must uniquely identify the user or device accessing the API. Required only for &ldquo;device_credentials&rdquo; grant type</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>refresh_token</strong>  <br><em>optional</em></td>
+<td>Refresh token, used to issue a new token without resending client credentials. Required only for &ldquo;refresh_token&rdquo; grant type</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#accesstoken">AccessToken</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td><a href="#autherror">AuthError</a></td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td><a href="#autherror">AuthError</a></td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="consumes">Consumes</h3>
+
+<ul>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+</ul>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"device"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response 400</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unsupported_grant_type"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported grant type"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response 401</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_client"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad client credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+          <h1 id="dive-ea-streaming-api">Dive EA Streaming API</h1>
+
+<p><a name="overview"></a></p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Dive Experience Amplifier Streaming API provides a set of services which enable a real-time card carousel and contextual information for linear TV and video on demand</p>
+
+<h3 id="version-information">Version information</h3>
+
+<p><em>Version</em> : 1.0.0</p>
+
+<h3 id="uri-scheme">URI scheme</h3>
+
+<p><em>Host</em> : stream.dive.tv<br>
+<em>Base Path</em> : /<br>
+<em>Socket.io Path</em> : /v1/stream<br>
+<em>Schemes</em> : HTTPS, WSS</p>
+
+<p><a name="getvodstream"></a></p>
+
+<h2 id="dynamic-vod-card-stream">Dynamic VOD card stream</h2>
+
+<p><code class="prettyprint">GET /movies</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Socket.io endpoint for the card stream of the requested VOD contextual information, starting from the indicated timestamp</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_id</strong>  <br><em>required</em></td>
+<td>Client ID for the requested VOD</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>timestamp</strong>  <br><em>required</em></td>
+<td>Current playback timestamp in seconds</td>
+<td>number(float)</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<p>After a successful connection, the socket will start to receive events with the real-time sequence of contextual information related to the requested VOD, as detailed in <a href="#streammessages">Stream messages</a></p>
+
+<p>On any error, an &lsquo;error&rsquo; event will be sent through the socket, followed by a client disconnection.<br>
+The error message format is specified in the <a href="#streammessages">Stream messages</a> section.</p>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<p><a name="getchannelstream"></a></p>
+
+<h2 id="dynamic-channel-card-stream">Dynamic channel card stream</h2>
+
+<p><code class="prettyprint">GET /channels</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Socket.io endpoint for the card stream of the requested channel contextual information.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>channel_id</strong>  <br><em>required</em></td>
+<td>Client ID for the requested linear TV channel</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<p>After a successful connection, the socket will start to receive events with the real-time sequence of contextual information related to the requested linear TV channel, as detailed in <a href="#streammessages">Stream messages</a></p>
+
+<p>On any error, an &#39;error&rsquo; event will be sent through the socket, followed by a client disconnection.<br>
+The error message format is specified in the <a href="#streammessages">Stream messages</a> section.</p>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<p><a name="streammessages"></a></p>
+
+<h2 id="stream-messages">Stream messages</h2>
+
+<p>This section details the server and client messages sent and received through the socket.io connections.  </p>
+
+<p>Server messages:</p>
+
+<ul>
+<li>authenticated</li>
+<li>unauthorized</li>
+<li>error</li>
+<li>movie_start</li>
+<li>movie_end</li>
+<li>scene_start</li>
+<li>scene_update</li>
+<li>scene_end</li>
+<li>pause_start</li>
+<li>pause_end</li>
+</ul>
+
+<p>Client messages:</p>
+
+<ul>
+<li>authenticate</li>
+<li>vod_set</li>
+<li>vod_pause</li>
+<li>vod_continue</li>
+<li>vod_end</li>
+</ul>
+
+<h3 id="authenticated">Authenticated</h3>
+
+<p>Server message, indicates that user has been correctly authenticated after handshake.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>authenticated</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="unauthorized">Unauthorized</h3>
+
+<p>Server message, indicates that user couldn&rsquo;t be authenticated during handshake.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>unauthorized</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>message</strong>  <br><em>required</em></td>
+<td>Error message</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>code</strong>  <br><em>required</em></td>
+<td>Error code</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Error type</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>unauthorized</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Authorization header was found"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credentials_required"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnauthorizedError"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="error">Error</h3>
+
+<p>Server message, indicates a client or server error during stream connection or processing.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>error</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>For error codes and descriptions, see <a href="#errors">Errors</a>  </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>status</strong>  <br><em>required</em></td>
+<td>Error status code</td>
+<td>number(int)</td>
+</tr>
+<tr>
+<td><strong>description</strong>  <br><em>required</em></td>
+<td>Error description</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>error</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="movie-start">Movie start</h3>
+
+<p>Server message, signals the start of a VOD movie or linear TV broadcast. Includes the ID of the related catalog card.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>movie_start</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movie_id</strong>  <br><em>required</em></td>
+<td>Internal catalog card ID</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>movie_start</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"movie_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="movie-end">Movie end</h3>
+
+<p>Server message, signals the end of a VOD movie or linear TV broadcast.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>movie_end</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="scene-start">Scene start</h3>
+
+<p>Server message, signals the beginning of movie scene. Includes an optional list of context cards present from the beginning of the scene.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>scene_start</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>cards</strong>  <br><em>optional</em></td>
+<td>List of cards which appear from the beginning of the scene</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>scene_start</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SRhfxJLqkJx3J0vT9yw1+__MK"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"character"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucienne's friend #2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card subtitle"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> 
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://card.dive.tv/....jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://card.dive.tv/....jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"anchor_x"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"anchor_y"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"source"</span><span class="p">:</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"disclaimer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/....png"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"has_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"relations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home_deco"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecca8672-1e76-11e6-...."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jOeUIeLCaOcSI4FSebNj4+ERkk"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antonio Gaudí Complete Works (2009)"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurora Cuito, Cristina Montes"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leisure_sport"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"has_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}]</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="scene-update">Scene update</h3>
+
+<p>Server message, indicates an update on current scene. Includes the list of new context cards which appear in the scene.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>scene_update</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>cards</strong>  <br><em>optional</em></td>
+<td>List of cards which appear at this point of the scene</td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>scene_update</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39f8b960-2eea-11e6-97ac-0684985cbbe3"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SRhfxJLqkJx3J0vT9yw1+__MK"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"character"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucienne's friend #2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card subtitle"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> 
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://card.dive.tv/....jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://card.dive.tv/....jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"anchor_x"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"anchor_y"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"source"</span><span class="p">:</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tmdb.com/actor/245354534"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"disclaimer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TMDB All rights reserved"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.dive.tv/....png"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"has_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"relations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home_deco"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecca8672-1e76-11e6-...."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jOeUIeLCaOcSI4FSebNj4+ERkk"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es_ES"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antonio Gaudí Complete Works (2009)"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aurora Cuito, Cristina Montes"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leisure_sport"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"has_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}]</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="scene-end">Scene end</h3>
+
+<p>Server message, signals the end of the current movie scene and marks every card of this scene as out of context.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>scene_end</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="pause-start">Pause start</h3>
+
+<p>Server message, signals a pause in the contextual streaming. This pause can be a generated by the user during VOD playback or a commercial block in a linear TV broadcast.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>pause_start</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="pause-end">Pause end</h3>
+
+<p>Server message, signals the end of current pause state.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>pause_end</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="authenticate">Authenticate</h3>
+
+<p>Client message, sends authentication token during connection handshake.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>authenticate</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>token</strong>  <br><em>required</em></td>
+<td>JWT token value</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>authenticate</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5dgCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImV4cCI6MTQ4NzcwNzQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQVJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJfbvTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIfgoiZTRjMzJlYmItYjI2NC00Yzg0LTk1YjktY2UwNjNiYjI5YTU4In0.uRhnAvVvkVU_qMcjwIFI9Oo3J8kRtGofgdEn18HSTqHgw"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="vod-set">VOD set</h3>
+
+<p>Client message, sets a new playback timestamp for the current VOD contextual stream.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>vod_set</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>timestamp</strong>  <br><em>required</em></td>
+<td>New playback timestamp, in seconds</td>
+<td>number(float)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>vod_set</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1240.35</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="vod-pause">VOD pause</h3>
+
+<p>Client message, signals a pause in current VOD playback.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>vod_pause</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="vod-continue">VOD continue</h3>
+
+<p>Client message, signals a VOD playback resume after a pause.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>vod_continue</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+<h3 id="vod-end">VOD end</h3>
+
+<p>Client message, indicates the end of current VOD playback and closes the contextual stream.</p>
+
+<h4 id="event-type">Event type</h4>
+
+<p><em>vod_end</em></p>
+
+<h4 id="message-body">Message body</h4>
+
+<p>Empty body</p>
+
+          <p><a name="definitions"></a></p>
+
+<h1 id="definitions">Definitions</h1>
+
+<p><a name="accesstoken"></a></p>
+
+<h2 id="accesstoken">AccessToken</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong>  <br><em>optional</em></td>
+<td>Auth token, must be included on every API request</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>token_type</strong>  <br><em>optional</em></td>
+<td>Token type</td>
+<td>enum (bearer)</td>
+</tr>
+<tr>
+<td><strong>refresh_token</strong>  <br><em>optional</em></td>
+<td>Allows to issue new access tokens without resending client credentials</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>expires_in</strong>  <br><em>optional</em></td>
+<td>Expiration time (in seconds).</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>scope</strong>  <br><em>optional</em></td>
+<td>Granted auth scope</td>
+<td>enum (device)</td>
+</tr>
+</tbody></table>
+
+<p><a name="autherror"></a></p>
+
+<h2 id="autherror">AuthError</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>error</strong>  <br><em>optional</em></td>
+<td>Short error identifier</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>error_description</strong>  <br><em>optional</em></td>
+<td>Extended error description</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="moviestatus"></a></p>
+
+<h2 id="moviestatus">MovieStatus</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movie_id</strong>  <br><em>optional</em></td>
+<td>Provided client movie ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>ready</strong>  <br><em>optional</em></td>
+<td>True if movie can be synchronized via this API, False otherwise.</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a name="channelstatus"></a></p>
+
+<h2 id="channelstatus">ChannelStatus</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channel_id</strong>  <br><em>optional</em></td>
+<td>Provided channel ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>ready</strong>  <br><em>optional</em></td>
+<td>True if channel is broadcasting synchronizable content, False otherwise</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a name="tvgrid"></a></p>
+
+<h2 id="tvgrid">TvGrid</h2>
+
+<p>TV grid information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>broadcast</strong>  <br><em>required</em></td>
+<td>List of TV events currently being broadcasted</td>
+<td>&lt; <a href="#tvevent">TvEvent</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>upcoming</strong>  <br><em>required</em></td>
+<td>List of upcoming TV events</td>
+<td>&lt; <a href="#tvevent">TvEvent</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="tvevent"></a></p>
+
+<h2 id="tvevent">TvEvent</h2>
+
+<p>TV event information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channel_id</strong>  <br><em>required</em></td>
+<td>TV channel ID where the the event is schedulled</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>channel_name</strong>  <br><em>required</em></td>
+<td>TV channel name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>start_date</strong>  <br><em>required</em></td>
+<td>TV event start date in milliseconds since EPOCH</td>
+<td>integer(int64)</td>
+</tr>
+<tr>
+<td><strong>end_date</strong>  <br><em>required</em></td>
+<td>TV event end date in milliseconds since EPOCH</td>
+<td>integer(int64)</td>
+</tr>
+<tr>
+<td><strong>card</strong>  <br><em>required</em></td>
+<td>Associated content (movie or chapter) card</td>
+<td><a href="#card">Card</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="card"></a></p>
+
+<h2 id="card">Card</h2>
+
+<p>Basic Dive data unit, represents an item of a given category</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>Card unique identifier</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>version</strong>  <br><em>optional</em></td>
+<td>Card version for a given movie and scene</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card type</td>
+<td>enum (movie, serie, person, character, vehicle, fashion, location, historic, trivia, quote, ost, home, technology, art, song, look, weapon, leisure_sport, health_beauty, food_drink, fauna_flora, business, reference, chapter)</td>
+</tr>
+<tr>
+<td><strong>locale</strong>  <br><em>required</em></td>
+<td>Card content locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Card title</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>subtitle</strong>  <br><em>optional</em></td>
+<td>Card subtitle (might be empty)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>image</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#imagedata">ImageData</a></td>
+</tr>
+<tr>
+<td><strong>has_content</strong>  <br><em>optional</em></td>
+<td>Indicates if the card has additional browsable content</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>info</strong>  <br><em>optional</em></td>
+<td></td>
+<td>&lt; <a href="#cardcontainer">CardContainer</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>products</strong>  <br><em>optional</em></td>
+<td>Commercial products associated to the card</td>
+<td>&lt; <a href="#product">Product</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>relations</strong>  <br><em>optional</em></td>
+<td></td>
+<td>&lt; <a href="#relationmodule">RelationModule</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>user</strong>  <br><em>optional</em></td>
+<td>Contains user interaction attributes relative to this card</td>
+<td><a href="#card-user">user</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="card-user"></a>
+<strong>user</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is_liked</strong>  <br><em>required</em></td>
+<td>Indicates if user has liked the card or not</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a name="imagedata"></a></p>
+
+<h2 id="imagedata">ImageData</h2>
+
+<p>Linked image URL and additional information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>thumb</strong>  <br><em>required</em></td>
+<td>Image thumbnail URL</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>full</strong>  <br><em>required</em></td>
+<td>Full size image URL</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>anchor_x</strong>  <br><em>required</em></td>
+<td>Image anchor X axis (percent)  <br><strong>Minimum value</strong> : <code class="prettyprint">0.0</code>  <br><strong>Maximum value</strong> : <code class="prettyprint">100.0</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><strong>anchor_y</strong>  <br><em>required</em></td>
+<td>Image anchor Y axis (percent)  <br><strong>Minimum value</strong> : <code class="prettyprint">0.0</code>  <br><strong>Maximum value</strong> : <code class="prettyprint">100.0</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><strong>source</strong>  <br><em>required</em></td>
+<td></td>
+<td><a href="#sourcedata">SourceData</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="sourcedata"></a></p>
+
+<h2 id="sourcedata">SourceData</h2>
+
+<p>Information regarding the source of any API item</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Name of the source</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>url</strong>  <br><em>required</em></td>
+<td>URL of the source</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>disclaimer</strong>  <br><em>optional</em></td>
+<td>Disclaimer text of the source</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>image</strong>  <br><em>optional</em></td>
+<td>URL of the source icon</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="cardcontainer"></a></p>
+
+<h2 id="cardcontainer">CardContainer</h2>
+
+<p>Card static data container. It&rsquo;s content depends on the &lsquo;type&rsquo; parameter value and is represented by the schema of the same name</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+</tbody></table>
+
+<p><a name="text"></a></p>
+
+<h2 id="text">text</h2>
+
+<p>CardContainer composed by a block of text with an optional source attribution</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Text container content type</td>
+<td>enum (overview, curiosity, description, biography, reference, quote)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#text-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="text-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong>  <br><em>required</em></td>
+<td>Informational text</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>source</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#sourcedata">SourceData</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="listing"></a></p>
+
+<h2 id="listing">listing</h2>
+
+<p>CardContainer composed by a list of pairs of label - value items</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Listing container content type</td>
+<td>enum (basic_data, specs)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#listing-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="listing-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong>  <br><em>required</em></td>
+<td>Item label</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>value</strong>  <br><em>required</em></td>
+<td>Item value</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="rating"></a></p>
+
+<h2 id="rating">rating</h2>
+
+<p>CardContainer composed by a list of external ratings with source attribution</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Rating container content type</td>
+<td>enum (rating)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#rating-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="rating-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>value</strong>  <br><em>required</em></td>
+<td>Rating value</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>source</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#sourcedata">SourceData</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="map"></a></p>
+
+<h2 id="map">map</h2>
+
+<p>CardContainer composed by a map of a given location</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Map container content type</td>
+<td>enum (location)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#map-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="map-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>latitude</strong>  <br><em>required</em></td>
+<td>Value of the location latitude, in decimal format degrees</td>
+<td>number(float)</td>
+</tr>
+<tr>
+<td><strong>longitude</strong>  <br><em>required</em></td>
+<td>Value of the location longitude, in decimal format degrees</td>
+<td>number(float)</td>
+</tr>
+<tr>
+<td><strong>zoom</strong>  <br><em>required</em></td>
+<td>Zoom value, defines the height coordinate over the given location</td>
+<td>integer(int32)</td>
+</tr>
+</tbody></table>
+
+<p><a name="link"></a></p>
+
+<h2 id="link">link</h2>
+
+<p>CardContainer composed by a list of links to external media resources with source attribution</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Link container content type</td>
+<td>enum (trailer, video, music)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#link-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="link-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>url</strong>  <br><em>required</em></td>
+<td>URL of the external resource</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>source</strong>  <br><em>required</em></td>
+<td></td>
+<td><a href="#sourcedata">SourceData</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="image"></a></p>
+
+<h2 id="image">image</h2>
+
+<p>CardContainer composed by a list of images with source attribution</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Image container content type</td>
+<td>enum (gallery)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#imagedata">ImageData</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="awards"></a></p>
+
+<h2 id="awards">awards</h2>
+
+<p>CardContainer composed by a list of awards with nominees and winners</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Awards container content type</td>
+<td>enum (awards)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#awards-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="awards-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Award name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>nominee</strong>  <br><em>optional</em></td>
+<td></td>
+<td>&lt; <a href="#awarddata">AwardData</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>winner</strong>  <br><em>optional</em></td>
+<td></td>
+<td>&lt; <a href="#awarddata">AwardData</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="awarddata"></a></p>
+
+<h2 id="awarddata">AwardData</h2>
+
+<p>Award nominee or winner info</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Name of the prize</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>value</strong>  <br><em>required</em></td>
+<td>Name of the nominee / winner</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="catalog"></a></p>
+
+<h2 id="catalog">catalog</h2>
+
+<p>CardContainer composed by additional information of a catalog item (movie, serie or chapter)</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Catalog container content type</td>
+<td>enum (movie, chapter, serie)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#catalog-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="catalog-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>background_image</strong>  <br><em>optional</em></td>
+<td>URL of an additional background image for this catalog element</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>director</strong>  <br><em>required</em></td>
+<td>Name of the director</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>genres</strong>  <br><em>required</em></td>
+<td>List of genres of this catalog entry</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>original_title</strong>  <br><em>required</em></td>
+<td>Original language title</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>runtime</strong>  <br><em>required</em></td>
+<td>Length of the movie or chapter, or average length of serie chapters, in minutes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>chapter_index</strong>  <br><em>optional</em></td>
+<td>Index of the chapter inside its season (only for content_type=chapter)</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>season_index</strong>  <br><em>optional</em></td>
+<td>Index of the season where the chapter belongs (only for content_type=chapter)</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>sync</strong>  <br><em>optional</em></td>
+<td>Dive interactive capabilities of this catalog item</td>
+<td><a href="#catalog-sync">sync</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="catalog-sync"></a>
+<strong>sync</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>is_synchronizable</strong>  <br><em>required</em></td>
+<td>Indicates if this catalog item can be synchronized</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><a name="seasons"></a></p>
+
+<h2 id="seasons">seasons</h2>
+
+<p>Serie seasons listing</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Card container format type, determines the format of the &#39;data&rsquo; field</td>
+<td>enum (text, listing, rating, map, link, awards, catalog, seasons, image)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Seasons container content type</td>
+<td>enum (seasons)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#seasons-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="seasons-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>season_index</strong>  <br><em>required</em></td>
+<td>Index of the season</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>creators</strong>  <br><em>required</em></td>
+<td>Comma separated list of season creators</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>image</strong>  <br><em>required</em></td>
+<td></td>
+<td><a href="#imagedata">ImageData</a></td>
+</tr>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production of this season</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>chapters</strong>  <br><em>required</em></td>
+<td>List of season chapters</td>
+<td>&lt; <a href="#seasons-chapters">chapters</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="seasons-chapters"></a>
+<strong>chapters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>chapter_index</strong>  <br><em>required</em></td>
+<td>Index of the chapter inside this season</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>card_id</strong>  <br><em>required</em></td>
+<td>ID of the chapter card</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="product"></a></p>
+
+<h2 id="product">Product</h2>
+
+<p>Commercial product data</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>product_id</strong>  <br><em>required</em></td>
+<td>Product identifier</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>category</strong>  <br><em>required</em></td>
+<td>Merchant category</td>
+<td>enum (fashion, electro, merch, travel)</td>
+</tr>
+<tr>
+<td><strong>source</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#sourcedata">SourceData</a></td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Product title</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>image</strong>  <br><em>required</em></td>
+<td>Product image URL</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>url</strong>  <br><em>required</em></td>
+<td>Merchant store URL</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>price</strong>  <br><em>optional</em></td>
+<td>Product price</td>
+<td>number(double)</td>
+</tr>
+<tr>
+<td><strong>currency</strong>  <br><em>optional</em></td>
+<td>Product price currency</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>is_up_to_date</strong>  <br><em>optional</em></td>
+<td>Indicates if product in up to date on Dive database</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>is_exact</strong>  <br><em>optional</em></td>
+<td>Indicates if product is an exact match</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>country</strong>  <br><em>optional</em></td>
+<td>Country information. Only for travel products</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>region</strong>  <br><em>optional</em></td>
+<td>Region information. Only for travel products</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>city</strong>  <br><em>optional</em></td>
+<td>City information. Only for travel products</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>address</strong>  <br><em>optional</em></td>
+<td>Address information. Only for travel products</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>postal_code</strong>  <br><em>optional</em></td>
+<td>Postal code information. Only for travel products</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>rating</strong>  <br><em>optional</em></td>
+<td>Rating information. Only for travel products</td>
+<td>number(double)</td>
+</tr>
+</tbody></table>
+
+<p><a name="relationmodule"></a></p>
+
+<h2 id="relationmodule">RelationModule</h2>
+
+<p>Relation modules provide lists of cards related to the current one. It&rsquo;s contents depend on the module &#39;type&rsquo; attribute</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Relation module type, defines the contained data structure</td>
+<td>enum (single, duple)</td>
+</tr>
+</tbody></table>
+
+<p><a name="single"></a></p>
+
+<h2 id="single">single</h2>
+
+<p>List of related single cards. The relation type is defined by the module content type</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Relation module type, defines the contained data structure</td>
+<td>enum (single, duple)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Single module content type, defines what kind of relations are contained in the module</td>
+<td>enum (movie_vehicles, movie_songs, miscellaneous, highlighted, recommended, trivias, appears_in, tracklist, sounds_in, full_looks, look_fashion, fashion_set, other_looks, wears, home_deco, full_home, is_part_of, directors, is_chapter_of, composed_of, owns, belongs_to, filmed_in, represents, worn_by, plays, played_by)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#card">Card</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="duple"></a></p>
+
+<h2 id="duple">duple</h2>
+
+<p>List of related pairs of cards, each pair having a relationship type between both cards</p>
+
+<p><em>Polymorphism</em> : Inheritance
+<em>Discriminator</em> : type</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong>  <br><em>required</em></td>
+<td>Relation module type, defines the contained data structure</td>
+<td>enum (single, duple)</td>
+</tr>
+<tr>
+<td><strong>content_type</strong>  <br><em>required</em></td>
+<td>Duple module content type, defines what kind of relations are contained in the module</td>
+<td>enum (movie_locations, worn_by, casting, casting_fashion, filmography, played_by, featured_in)</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td></td>
+<td>&lt; <a href="#duple-data">data</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="duple-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>rel_type</strong>  <br><em>required</em></td>
+<td>Indicates the relationship between the pair of cards (from &gt; rel_type &gt; to)</td>
+<td>enum (plays, starred_by, represents, features_location, directs, acts_in, played_by, worn_by, filmed_in, location_on_movie)</td>
+</tr>
+<tr>
+<td><strong>from</strong>  <br><em>required</em></td>
+<td></td>
+<td><a href="#card">Card</a></td>
+</tr>
+<tr>
+<td><strong>to</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#card">Card</a></td>
+</tr>
+</tbody></table>
+
+          <p><a name="errors"></a></p>
+
+<h1 id="errors">Errors</h1>
+
+<p>The Dive Experience Amplifier API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Description</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Client sent a malformed request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid or missing Authorization token</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Provided credentials don&rsquo;t have access to this feature</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The specified resource could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>Client tried to access a resource using an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Client requested a format other than application/json</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Request rate limit exceeded</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Internal server error. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>Requested method temporarily failed. Try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

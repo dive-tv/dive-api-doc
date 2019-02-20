@@ -1,0 +1,3300 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="ea-client-sdk-android" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <a href='./index.html'><img src="images/logo.png" alt="Logo" /></a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://dive.tv/'>2018 Dive all rights reserved</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="ea-client-sdk-android">ea-client-sdk-android<a name='ea-client-sdk-android'></a></h1>
+
+<p>Dive Experience Amplifier client SDK for Android</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Dive provides a series of SDK clients for the most common client programming languages which can be added as libraries on the client side.</p>
+
+<p>The client SDK library manages communications with the REST API services and handle authentication and serialization / deserialization of data into native objects.</p>
+
+<p>NOTE: this document is being updated on a regular base and contents are subject to change.</p>
+
+<h2 id="integration-methods">Integration Methods</h2>
+
+<p>The following sections describe the different functions that SDK contains to integrate a client SW using Dive Front SDK.</p>
+
+<ul>
+<li><p>Authentication details are provided in the library initialization</p></li>
+<li><p>API calls are performed calling library methods</p></li>
+<li><p>Response statuses and objects are mapped to native objects of the library implementation language.</p></li>
+</ul>
+
+<h3 id="delete-card-like">Delete card like</h3>
+<pre class="highlight java"><code>
+<span class="n">deleteLikes</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Removes a card from current user&rsquo;s likes list</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Method</th>
+<th>HTTP request</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>cardId</em></td>
+<td><em>String</em></td>
+<td><em>Requested card ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">newInstance</span><span class="o">().</span><span class="na">deleteLikes</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#deleteLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+
+
+</code></pre>
+
+<h3 id="full-card-detail">Full card detail</h3>
+<pre class="highlight java"><code>
+<span class="n">Card</span> <span class="nf">getCard</span><span class="p">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">accepLanguage</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Retrieves a full card detail, with no relations or context</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>cardId</em></td>
+<td><em>String</em></td>
+<td><em>Requested card ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p><a href="#Card">Card</a></p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Unique identifier for this card</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getCard</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getCard"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="full-card-detail-with-versions">Full card detail with versions</h3>
+<pre class="highlight java"><code>
+<span class="n">Card</span> <span class="nf">getCardVersion</span><span class="p">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">version</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Retrieves a full card detail, and its relations to other cards in a given context (card version)</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>cardId</em></td>
+<td><em>String</em></td>
+<td><em>Requested card ID</em></td>
+</tr>
+<tr>
+<td><em>version</em></td>
+<td><em>String</em></td>
+<td><em>Version identifier, indicates the context where the card is being requested</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p><a href="#Card">Card</a></p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Unique identifier for this card</span>
+<span class="n">String</span> <span class="n">version</span> <span class="o">=</span> <span class="s">"version_example"</span><span class="o">;</span> <span class="c1">// String | Version identifier, indicates the context where the card is being requested</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getCardVersion</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">version</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getCardVersion"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="movie-catalog-info">Movie catalog info</h3>
+<pre class="highlight java"><code>
+<span class="n">Card</span> <span class="nf">getCatalogMovie</span><span class="p">(</span><span class="n">clientMovieId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Retrieves a movie&rsquo;s full card by its client ID, including catalog and cast information</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>clientMovieId</em></td>
+<td><em>String</em></td>
+<td><em>Client movie ID being played</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p><a href="#Card">Card</a></p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">clientMovieId</span> <span class="o">=</span> <span class="s">"clientMovieId_example"</span><span class="o">;</span> <span class="c1">// String | Client movie ID being played</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">ListCard</span><span class="o">&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getCatalogMovie</span><span class="o">(</span><span class="n">clientMovieId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getCatalogMovie"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="channel-events-grid">Channel events grid</h3>
+<pre class="highlight java"><code>
+<span class="n">TvGrid</span> <span class="nf">getChannelGrid</span><span class="p">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Returns the current and upcoming grid of TV events for the given channel</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>channelId</em></td>
+<td><em>String</em></td>
+<td><em>Client channel ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p><a href="#TvGrid">TvGrid</a></p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">Float</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="mf">3.4</span><span class="n">F</span><span class="o">;</span> <span class="c1">// Float | Current movie timestamp in seconds</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">TvGrid</span><span class="o">&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">TvGrid</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getChannelGrid</span><span class="o">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaulSdkClienttApi#getChannelGrid"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="channel-movie-catalog-info">Channel movie catalog info</h3>
+<pre class="highlight java"><code>
+<span class="n">Card</span> <span class="nf">getChannelMovie</span><span class="p">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Retrieves full card detail, including catalog and cast information, for the content currently being broadcasted on the channel</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>channelId</em></td>
+<td><em>String</em></td>
+<td><em>Client channel ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p><a href="#Card">Card</a></p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getChannelMovie</span><span class="o">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getChannelMovie"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="get-card-likes">Get card likes</h3>
+<pre class="highlight java"><code>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">getLikes</span><span class="o">(</span><span class="n">imageSize</span><span class="o">,</span> <span class="n">paginateKey</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Returns a paginated list of cards liked by current user</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>imageSize</em></td>
+<td><em>String</em></td>
+<td><em>Size of the images returned in the response</em></td>
+</tr>
+<tr>
+<td><em>paginateKey</em></td>
+<td><em>String</em></td>
+<td><em>Paginate key</em></td>
+</tr>
+<tr>
+<td><em>size</em></td>
+<td><em>String</em></td>
+<td><em>Number of desired results</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>Liat&lt;<a href="#Card">Card</a>&gt;</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="n">String</span> <span class="n">paginateKey</span> <span class="o">=</span> <span class="s">"paginateKey_example"</span><span class="o">;</span> <span class="c1">// String | Paginate key</span>
+<span class="n">String</span> <span class="n">size</span> <span class="o">=</span> <span class="s">"20"</span><span class="o">;</span> <span class="c1">// String | Number of desired results</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getLikes</span><span class="o">(</span><span class="n">imageSize</span><span class="o">,</span> <span class="n">paginateKey</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="channel-sync-availability">Channel sync availability</h3>
+<pre class="highlight java"><code>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">ChannelStatus</span><span class="o">&gt;</span> <span class="n">getReadyChannels</span><span class="o">(</span><span class="n">channelIdList</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Checks if a list of client channel identifiers are currently broadcasting synchronizable content</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>channelIdList</em></td>
+<td><em>List<String></em></td>
+<td><em>List of client channel IDs as a comma separated list</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>List&lt;<a href="#ChannelStatus">ChannelStatus</a>&gt;</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">channelIdList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"channelIdList_example"</span><span class="o">);</span> <span class="c1">// List&lt;String&gt; | List of client channel IDs as a comma separated list</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChannelStatus</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ChannelStatus</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getReadyChannels</span><span class="o">(</span><span class="n">channelIdList</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getReadyChannels"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="movie-sync-availability">Movie sync availability</h3>
+<pre class="highlight java"><code>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">MovieStatus</span><span class="o">&gt;</span> <span class="n">getReadyMovies</span><span class="o">(</span><span class="n">clientMovieIdList</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Checks whether a list of client movie identifiers (Video On Demand) are available to be synchronized using the Dive API</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>clientMovieIdList</em></td>
+<td><em>List<String></em></td>
+<td><em>List of client movie IDs, provided as a comma separated list</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>List&lt;<a href="#MovieStatus">MovieStatus</a>&gt;</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">clientMovieIdList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"clientMovieIdList_example"</span><span class="o">);</span> <span class="c1">// List&lt;String&gt; | List of client movie IDs, provided as a comma separated list</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MovieStatus</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">MovieStatus</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getReadyMovies</span><span class="o">(</span><span class="n">clientMovieIdList</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getReadyMovies"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="static-channel-scene">Static channel scene</h3>
+<pre class="highlight java"><code>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">getStaticChannelScene</span><span class="o">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Retrieves the list of cards related to the content currently being broadcasted in the provided channel</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>channelId</em></td>
+<td><em>String</em></td>
+<td><em>Client channel ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>List&lt;<a href="#Card">Card</a>&gt;</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getStaticChannelScene</span><span class="o">(</span><span class="n">channelId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#getStaticChannelScene"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="stream-connect">Stream Connect</h3>
+<pre class="highlight java"><code>
+<span class="n">vodStreamConnect</span><span class="o">(</span> <span class="n">clientMovieId</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">listener</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Connect a Socket for receive carousel</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>clientMovieId</em></td>
+<td><em>String</em></td>
+<td><em>Requested movie ID</em></td>
+</tr>
+<tr>
+<td><em>timestamp</em></td>
+<td><em>Float</em></td>
+<td><em>Current movie timestamp in seconds</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">movieId</span> <span class="o">=</span> <span class="s">"movieId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+<span class="kt">int</span> <span class="n">movieTime</span> <span class="o">=</span> <span class="n">movieTime</span><span class="o">;</span>
+
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">vodStreamConnect</span><span class="o">(</span><span class="n">movieId</span><span class="o">,</span> <span class="n">movieTime</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#vodStreamConnect"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="stream-play">Stream Play</h3>
+<pre class="highlight java"><code>
+<span class="n">vodStreamSetMessage</span><span class="o">(</span> <span class="n">timestamp</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Send play event to VOD Socket</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>timestamp</em></td>
+<td><em>Float</em></td>
+<td><em>time of movie start</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="kt">int</span> <span class="n">movieTime</span> <span class="o">=</span> <span class="n">movieTime</span><span class="o">;</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">vodStreamSetMessage</span><span class="o">(</span><span class="n">movieTime</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#vodStreamSetMessage"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="stream-pause">Stream Pause</h3>
+<pre class="highlight java"><code>
+<span class="n">vodStreamPauseMessage</span><span class="o">(</span> <span class="n">timestamp</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Send pause event to VOD Socket</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>timestamp</em></td>
+<td><em>Float</em></td>
+<td><em>time of movie Pause</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="kt">int</span> <span class="n">movieTime</span> <span class="o">=</span> <span class="n">movieTime</span><span class="o">;</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">vodStreamPauseMessage</span><span class="o">(</span><span class="n">movieTime</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#vodStreamPauseMessage"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="stream-continue">Stream Continue</h3>
+<pre class="highlight java"><code>
+<span class="n">vodStreamContinueMessage</span><span class="o">(</span> <span class="n">timestamp</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Send continue event to VOD Socket</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>timestamp</em></td>
+<td><em>Float</em></td>
+<td><em>time of movie Continue</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="kt">int</span> <span class="n">movieTime</span> <span class="o">=</span> <span class="n">movieTime</span><span class="o">;</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">vodStreamContinueMessage</span><span class="o">(</span><span class="n">movieTime</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#vodStreamContinueMessage"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="stream-end">Stream End</h3>
+<pre class="highlight java"><code>
+<span class="n">vodStreamEndMessage</span><span class="o">(</span> <span class="n">timestamp</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Send end event to VOD Socket</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<p>N/A</p>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">vodStreamEndMessage</span><span class="o">();</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#vodStreamEndMessage"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="add-card-like">Add card like</h3>
+<pre class="highlight java"><code>
+<span class="n">postLikes</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">callback</span><span class="o">)</span>
+
+</code></pre>
+
+<p>Stores a card under current user&rsquo;s likes list</p>
+
+<h4 id="parameters">Parameters:</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>cardId</em></td>
+<td><em>String</em></td>
+<td><em>Requested card ID</em></td>
+</tr>
+<tr>
+<td><em>callback</em></td>
+<td><em>ClientCallBack</em></td>
+<td><em>Callback for receive response</em></td>
+</tr>
+</tbody></table>
+
+<h4 id="return">Return:</h4>
+
+<p>N/A</p>
+
+<h4 id="example">Example:</h4>
+<pre class="highlight java"><code>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">apiKey</span> <span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+<span class="n">ClientCallback</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;&gt;</span> <span class="n">callback</span> <span class="o">=</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientCallback</span><span class="o">()</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onFailure</span><span class="o">(</span><span class="n">ApiError</span> <span class="n">apiError</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+   <span class="o">}</span>
+
+
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+
+              <span class="o">}</span>
+
+   <span class="o">}</span>
+
+<span class="o">};</span>
+
+
+
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">SdkClient</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">postLikes</span><span class="o">(</span><span class="n">cardId</span><span class="o">,</span> <span class="n">callback</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling SdkClient#postLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h2 id="documentation-for-models">Documentation for Models</h2>
+
+<ul>
+<li><a href="#AuthError">AuthError</a></li>
+<li><a href="#AwardData">AwardData</a></li>
+<li><a href="#AwardsData">AwardsData</a></li>
+<li><a href="#Card">Card</a></li>
+<li><a href="#CardContainer">CardContainer</a></li>
+<li><a href="#CardUser">CardUser</a></li>
+<li><a href="#CatalogData">CatalogData</a></li>
+<li><a href="#CatalogSync">CatalogSync</a></li>
+<li><a href="#ChannelStatus">ChannelStatus</a></li>
+<li><a href="#DupleData">DupleData</a></li>
+<li><a href="#ImageData">ImageData</a></li>
+<li><a href="#LinkData">LinkData</a></li>
+<li><a href="#ListingData">ListingData</a></li>
+<li><a href="#MapData">MapData</a></li>
+<li><a href="#MovieStatus">MovieStatus</a></li>
+<li><a href="#Product">Product</a></li>
+<li><a href="#RatingData">RatingData</a></li>
+<li><a href="#RelationModule">RelationModule</a></li>
+<li><a href="#SeasonsChapters">SeasonsChapters</a></li>
+<li><a href="#SeasonsData">SeasonsData</a></li>
+<li><a href="#SourceData">SourceData</a></li>
+<li><a href="#TextData">TextData</a></li>
+<li><a href="#TvEvent">TvEvent</a></li>
+<li><a href="#TvGrid">TvGrid</a></li>
+<li><a href="#Awards">Awards</a></li>
+<li><a href="#Catalog">Catalog</a></li>
+<li><a href="#Duple">Duple</a></li>
+<li><a href="#Image">Image</a></li>
+<li><a href="#Link">Link</a></li>
+<li><a href="#Listing">Listing</a></li>
+<li><a href="#Map">Map</a></li>
+<li><a href="#Rating">Rating</a></li>
+<li><a href="#Seasons">Seasons</a></li>
+<li><a href="#Single">Single</a></li>
+<li><a href="#Text">Text</a></li>
+</ul>
+
+<h2 id="how-to-use">How to use</h2>
+
+<ul>
+<li><p>Include SDK Client  and SDK Front to a project</p>
+
+<ul>
+<li><p>Add dependency into your app build.gradle file</p>
+<pre class="highlight java"><code>
+<span class="n">dependencies</span> <span class="o">{</span>
+
+    <span class="o">...</span>
+
+   <span class="n">compile</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">dive</span><span class="o">-</span><span class="nl">tv:</span><span class="n">ea</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">sdk</span><span class="o">-</span><span class="nl">android:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span><span class="err">'</span>
+
+   <span class="n">compile</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">dive</span><span class="o">-</span><span class="nl">tv:</span><span class="n">sdk</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="nl">java:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span><span class="err">'</span>
+
+<span class="o">}</span>
+
+</code></pre></li>
+<li><p>Add repository into your app build.gradle file</p>
+<pre class="highlight java"><code>
+<span class="n">repositories</span> <span class="o">{</span>
+
+    <span class="o">...</span>
+
+    <span class="n">jcenter</span><span class="o">()</span>
+
+    <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s">"https://jitpack.io"</span> <span class="o">}</span> 
+
+<span class="o">}</span>
+
+</code></pre></li>
+<li><p>Add repository into your root build.gradle file</p>
+<pre class="highlight java"><code>
+<span class="n">dependencies</span> <span class="o">{</span>
+
+    <span class="n">classpath</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">dcendents</span><span class="o">:</span><span class="n">android</span><span class="o">-</span><span class="n">maven</span><span class="o">-</span><span class="n">gradle</span><span class="o">-</span><span class="nl">plugin:</span><span class="mf">2.0</span><span class="err">'</span> 
+
+<span class="o">}</span>
+
+</code></pre></li>
+</ul></li>
+<li><p>Code example:</p></li>
+</ul>
+<pre class="highlight java"><code>
+<span class="kn">import</span> <span class="nn">sdk.client.dive.tv.SdkClient</span><span class="o">;</span>
+
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+
+      <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+      <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+      <span class="o">...</span>
+
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">XXXX</span><span class="o">;</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">().</span><span class="na">getContentResolver</span><span class="o">(),</span> <span class="n">Settings</span><span class="o">.</span><span class="na">Secure</span><span class="o">.</span><span class="na">ANDROID_ID</span><span class="o">);</span>
+
+<span class="n">SdkClient</span><span class="o">.</span><span class="na">getOrCreateInstance</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">YOUR_API_KEY</span><span class="o">,</span><span class="n">deviceId</span><span class="o">);</span>
+
+   <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+
+</code></pre>
+
+<ul>
+<li><p>Modify YOUR_API_KEY by provided value</p></li>
+<li><p>deviceId value should be your unique client identifier</p></li>
+</ul>
+
+<h2 id="author">Author</h2>
+
+          <h1 id="autherror">AuthError<a name='AuthError'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>error</strong></td>
+<td><strong>String</strong></td>
+<td>Short error identifier</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>errorDescription</strong></td>
+<td><strong>String</strong></td>
+<td>Extended error description</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="awarddata">AwardData<a name='AwardData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the prize</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the nominee / winner</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="awardsdata">AwardsData<a name='AwardsData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Award name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>nominee</strong></td>
+<td><a href="#AwardData"><strong>List&lt;AwardData&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>winner</strong></td>
+<td><a href="#AwardData"><strong>List&lt;AwardData&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="card">Card<a name='Card'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Card unique identifier</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>String</strong></td>
+<td>Card version for a given movie and scene</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Card type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>locale</strong></td>
+<td><strong>String</strong></td>
+<td>Card content locale</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Card title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>subtitle</strong></td>
+<td><strong>String</strong></td>
+<td>Card subtitle (might be empty)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><a href="#ImageData"><strong>ImageData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>hasContent</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if the card has additional browsable content</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>info</strong></td>
+<td><a href="#CardContainer"><strong>List&lt;CardContainer&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>products</strong></td>
+<td><a href="#Product"><strong>List&lt;Product&gt;</strong></a></td>
+<td>Commercial products associated to the card</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>relations</strong></td>
+<td><a href="#RelationModule"><strong>List&lt;RelationModule&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td><a href="#CardUser"><strong>CardUser</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE</td>
+<td>&ldquo;movie&rdquo;</td>
+</tr>
+<tr>
+<td>SERIE</td>
+<td>&ldquo;serie&rdquo;</td>
+</tr>
+<tr>
+<td>PERSON</td>
+<td>&ldquo;person&rdquo;</td>
+</tr>
+<tr>
+<td>CHARACTER</td>
+<td>&ldquo;character&rdquo;</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>&ldquo;vehicle&rdquo;</td>
+</tr>
+<tr>
+<td>FASHION</td>
+<td>&ldquo;fashion&rdquo;</td>
+</tr>
+<tr>
+<td>LOCATION</td>
+<td>&ldquo;location&rdquo;</td>
+</tr>
+<tr>
+<td>HISTORIC</td>
+<td>&ldquo;historic&rdquo;</td>
+</tr>
+<tr>
+<td>TRIVIA</td>
+<td>&ldquo;trivia&rdquo;</td>
+</tr>
+<tr>
+<td>QUOTE</td>
+<td>&ldquo;quote&rdquo;</td>
+</tr>
+<tr>
+<td>OST</td>
+<td>&ldquo;ost&rdquo;</td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>&ldquo;home&rdquo;</td>
+</tr>
+<tr>
+<td>TECHNOLOGY</td>
+<td>&ldquo;technology&rdquo;</td>
+</tr>
+<tr>
+<td>ART</td>
+<td>&ldquo;art&rdquo;</td>
+</tr>
+<tr>
+<td>SONG</td>
+<td>&ldquo;song&rdquo;</td>
+</tr>
+<tr>
+<td>LOOK</td>
+<td>&ldquo;look&rdquo;</td>
+</tr>
+<tr>
+<td>WEAPON</td>
+<td>&ldquo;weapon&rdquo;</td>
+</tr>
+<tr>
+<td>LEISURE_SPORT</td>
+<td>&ldquo;leisure_sport&rdquo;</td>
+</tr>
+<tr>
+<td>HEALTH_BEAUTY</td>
+<td>&ldquo;health_beauty&rdquo;</td>
+</tr>
+<tr>
+<td>FOOD_DRINK</td>
+<td>&ldquo;food_drink&rdquo;</td>
+</tr>
+<tr>
+<td>FAUNA_FLORA</td>
+<td>&ldquo;fauna_flora&rdquo;</td>
+</tr>
+<tr>
+<td>BUSINESS</td>
+<td>&ldquo;business&rdquo;</td>
+</tr>
+<tr>
+<td>REFERENCE</td>
+<td>&ldquo;reference&rdquo;</td>
+</tr>
+<tr>
+<td>CHAPTER</td>
+<td>&ldquo;chapter&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="cardcontainer">CardContainer<a name='CardContainer'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Card container format type, determines the format of the &lsquo;data&rsquo; field</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEXT</td>
+<td>&ldquo;text&rdquo;</td>
+</tr>
+<tr>
+<td>LISTING</td>
+<td>&ldquo;listing&rdquo;</td>
+</tr>
+<tr>
+<td>RATING</td>
+<td>&ldquo;rating&rdquo;</td>
+</tr>
+<tr>
+<td>MAP</td>
+<td>&ldquo;map&rdquo;</td>
+</tr>
+<tr>
+<td>LINK</td>
+<td>&ldquo;link&rdquo;</td>
+</tr>
+<tr>
+<td>AWARDS</td>
+<td>&ldquo;awards&rdquo;</td>
+</tr>
+<tr>
+<td>CATALOG</td>
+<td>&ldquo;catalog&rdquo;</td>
+</tr>
+<tr>
+<td>SEASONS</td>
+<td>&ldquo;seasons&rdquo;</td>
+</tr>
+<tr>
+<td>IMAGE</td>
+<td>&ldquo;image&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="carduser">CardUser<a name='CardUser'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isLiked</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if user has liked the card or not</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalogdata">CatalogData<a name='CatalogData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>backgroundImage</strong></td>
+<td><strong>String</strong></td>
+<td>URL of an additional background image for this catalog element</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>director</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the director</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>genres</strong></td>
+<td><strong>List&lt;String&gt;</strong></td>
+<td>List of genres of this catalog entry</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>originalTitle</strong></td>
+<td><strong>String</strong></td>
+<td>Original language title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>runtime</strong></td>
+<td><strong>Integer</strong></td>
+<td>Length of the movie or chapter, or average length of serie chapters, in minutes</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>year</strong></td>
+<td><strong>Integer</strong></td>
+<td>Year of production</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chapterIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the chapter inside its season (only for content_type&#x3D;chapter)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>seasonIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the season where the chapter belongs (only for content_type&#x3D;chapter)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>sync</strong></td>
+<td><a href="#CatalogSync"><strong>CatalogSync</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalogsync">CatalogSync<a name='CatalogSync'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isSynchronizable</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if this catalog item can be synchronized</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="channelstatus">ChannelStatus<a name='ChannelStatus'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>Provided channel ID</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>ready</strong></td>
+<td><strong>Boolean</strong></td>
+<td>True if channel is broadcasting synchronizable content, False otherwise</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="dupledata">DupleData<a name='DupleData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>relType</strong></td>
+<td><a href="#RelTypeEnum"><strong>RelTypeEnum</strong></a></td>
+<td>Indicates the relationship between the pair of cards (from &gt; rel_type &gt; to)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>from</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>to</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="RelTypeEnum"></a></p>
+
+<h2 id="enum-reltypeenum">Enum: RelTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PLAYS</td>
+<td>&ldquo;plays&rdquo;</td>
+</tr>
+<tr>
+<td>STARRED_BY</td>
+<td>&ldquo;starred_by&rdquo;</td>
+</tr>
+<tr>
+<td>REPRESENTS</td>
+<td>&ldquo;represents&rdquo;</td>
+</tr>
+<tr>
+<td>FEATURES_LOCATION</td>
+<td>&ldquo;features_location&rdquo;</td>
+</tr>
+<tr>
+<td>DIRECTS</td>
+<td>&ldquo;directs&rdquo;</td>
+</tr>
+<tr>
+<td>ACTS_IN</td>
+<td>&ldquo;acts_in&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>FILMED_IN</td>
+<td>&ldquo;filmed_in&rdquo;</td>
+</tr>
+<tr>
+<td>LOCATION_ON_MOVIE</td>
+<td>&ldquo;location_on_movie&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="imagedata">ImageData<a name='ImageData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>thumb</strong></td>
+<td><strong>String</strong></td>
+<td>Image thumbnail URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>full</strong></td>
+<td><strong>String</strong></td>
+<td>Full size image URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>anchorX</strong></td>
+<td><a href="#BigDecimal"><strong>BigDecimal</strong></a></td>
+<td>Image anchor X axis (percent)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>anchorY</strong></td>
+<td><a href="#BigDecimal"><strong>BigDecimal</strong></a></td>
+<td>Image anchor Y axis (percent)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="linkdata">LinkData<a name='LinkData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the external resource</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="listingdata">ListingData<a name='ListingData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong></td>
+<td><strong>String</strong></td>
+<td>Item label</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Item value</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="mapdata">MapData<a name='MapData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>latitude</strong></td>
+<td><strong>Float</strong></td>
+<td>Value of the location latitude, in decimal format degrees</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>longitude</strong></td>
+<td><strong>Float</strong></td>
+<td>Value of the location longitude, in decimal format degrees</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>zoom</strong></td>
+<td><strong>Integer</strong></td>
+<td>Zoom value, defines the height coordinate over the given location</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="moviestatus">MovieStatus<a name='MovieStatus'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movieId</strong></td>
+<td><strong>String</strong></td>
+<td>Provided client movie ID</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>ready</strong></td>
+<td><strong>Boolean</strong></td>
+<td>True if movie can be synchronized via this API, False otherwise.</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="product">Product<a name='Product'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>productId</strong></td>
+<td><strong>String</strong></td>
+<td>Product identifier</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>category</strong></td>
+<td><a href="#CategoryEnum"><strong>CategoryEnum</strong></a></td>
+<td>Merchant category</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Product title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><strong>String</strong></td>
+<td>Product image URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>Merchant store URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>price</strong></td>
+<td><strong>Double</strong></td>
+<td>Product price</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td><strong>String</strong></td>
+<td>Product price currency</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>isUpToDate</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if product in up to date on Dive database</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>isExact</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if product is an exact match</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td><strong>String</strong></td>
+<td>Country information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>region</strong></td>
+<td><strong>String</strong></td>
+<td>Region information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td><strong>String</strong></td>
+<td>City information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td><strong>String</strong></td>
+<td>Address information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>postalCode</strong></td>
+<td><strong>String</strong></td>
+<td>Postal code information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>rating</strong></td>
+<td><strong>Double</strong></td>
+<td>Rating information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="CategoryEnum"></a></p>
+
+<h2 id="enum-categoryenum">Enum: CategoryEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FASHION</td>
+<td>&ldquo;fashion&rdquo;</td>
+</tr>
+<tr>
+<td>ELECTRO</td>
+<td>&ldquo;electro&rdquo;</td>
+</tr>
+<tr>
+<td>MERCH</td>
+<td>&ldquo;merch&rdquo;</td>
+</tr>
+<tr>
+<td>TRAVEL</td>
+<td>&ldquo;travel&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="ratingdata">RatingData<a name='RatingData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Rating value</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="relationmodule">RelationModule<a name='RelationModule'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Relation module type, defines the contained data structure</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SINGLE</td>
+<td>&ldquo;single&rdquo;</td>
+</tr>
+<tr>
+<td>DUPLE</td>
+<td>&ldquo;duple&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasonschapters">SeasonsChapters<a name='SeasonsChapters'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>chapterIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the chapter inside this season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>ID of the chapter card</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasonsdata">SeasonsData<a name='SeasonsData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>seasonIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>creators</strong></td>
+<td><strong>String</strong></td>
+<td>Comma separated list of season creators</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><a href="#ImageData"><strong>ImageData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>year</strong></td>
+<td><strong>Integer</strong></td>
+<td>Year of production of this season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chapters</strong></td>
+<td><a href="#SeasonsChapters"><strong>List&lt;SeasonsChapters&gt;</strong></a></td>
+<td>List of season chapters</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="sourcedata">SourceData<a name='SourceData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the source</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the source</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>disclaimer</strong></td>
+<td><strong>String</strong></td>
+<td>Disclaimer text of the source</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the source icon</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="textdata">TextData<a name='TextData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong></td>
+<td><strong>String</strong></td>
+<td>Informational text</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="tvevent">TvEvent<a name='TvEvent'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>TV channel ID where the the event is schedulled</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelName</strong></td>
+<td><strong>String</strong></td>
+<td>TV channel name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>startDate</strong></td>
+<td><strong>Long</strong></td>
+<td>TV event start date in milliseconds since EPOCH</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>endDate</strong></td>
+<td><strong>Long</strong></td>
+<td>TV event end date in milliseconds since EPOCH</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>card</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td>Associated content (movie or chapter) card</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="tvgrid">TvGrid<a name='TvGrid'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>broadcast</strong></td>
+<td><a href="#TvEvent"><strong>List&lt;TvEvent&gt;</strong></a></td>
+<td>List of TV events currently being broadcasted</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>upcoming</strong></td>
+<td><a href="#TvEvent"><strong>List&lt;TvEvent&gt;</strong></a></td>
+<td>List of upcoming TV events</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="awards">Awards<a name='Awards'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Awards container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#AwardsData"><strong>List&lt;AwardsData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AWARDS</td>
+<td>&ldquo;awards&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalog">Catalog<a name='Catalog'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Catalog container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#CatalogData"><strong>List&lt;CatalogData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE</td>
+<td>&ldquo;movie&rdquo;</td>
+</tr>
+<tr>
+<td>CHAPTER</td>
+<td>&ldquo;chapter&rdquo;</td>
+</tr>
+<tr>
+<td>SERIE</td>
+<td>&ldquo;serie&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="duple">Duple<a name='Duple'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Duple module content type, defines what kind of relations are contained in the module</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#DupleData"><strong>List&lt;DupleData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE_LOCATIONS</td>
+<td>&ldquo;movie_locations&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>CASTING</td>
+<td>&ldquo;casting&rdquo;</td>
+</tr>
+<tr>
+<td>CASTING_FASHION</td>
+<td>&ldquo;casting_fashion&rdquo;</td>
+</tr>
+<tr>
+<td>FILMOGRAPHY</td>
+<td>&ldquo;filmography&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+<tr>
+<td>FEATURED_IN</td>
+<td>&ldquo;featured_in&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="image">Image<a name='Image'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Image container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#ImageData"><strong>List&lt;ImageData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GALLERY</td>
+<td>&ldquo;gallery&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="link">Link<a name='Link'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Link container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#LinkData"><strong>List&lt;LinkData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TRAILER</td>
+<td>&ldquo;trailer&rdquo;</td>
+</tr>
+<tr>
+<td>VIDEO</td>
+<td>&ldquo;video&rdquo;</td>
+</tr>
+<tr>
+<td>MUSIC</td>
+<td>&ldquo;music&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="listing">Listing<a name='Listing'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Listing container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#ListingData"><strong>List&lt;ListingData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BASIC_DATA</td>
+<td>&ldquo;basic_data&rdquo;</td>
+</tr>
+<tr>
+<td>SPECS</td>
+<td>&ldquo;specs&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="map">Map<a name='Map'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Map container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#MapData"><strong>List&lt;MapData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LOCATION</td>
+<td>&ldquo;location&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="rating">Rating<a name='Rating'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Rating container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#RatingData"><strong>List&lt;RatingData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>RATING</td>
+<td>&ldquo;rating&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasons">Seasons<a name='Seasons'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Seasons container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#SeasonsData"><strong>List&lt;SeasonsData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SEASONS</td>
+<td>&ldquo;seasons&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="single">Single<a name='Single'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Single module content type, defines what kind of relations are contained in the module</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#Card"><strong>List&lt;Card&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE_VEHICLES</td>
+<td>&ldquo;movie_vehicles&rdquo;</td>
+</tr>
+<tr>
+<td>MOVIE_SONGS</td>
+<td>&ldquo;movie_songs&rdquo;</td>
+</tr>
+<tr>
+<td>MISCELLANEOUS</td>
+<td>&ldquo;miscellaneous&rdquo;</td>
+</tr>
+<tr>
+<td>HIGHLIGHTED</td>
+<td>&ldquo;highlighted&rdquo;</td>
+</tr>
+<tr>
+<td>RECOMMENDED</td>
+<td>&ldquo;recommended&rdquo;</td>
+</tr>
+<tr>
+<td>TRIVIAS</td>
+<td>&ldquo;trivias&rdquo;</td>
+</tr>
+<tr>
+<td>APPEARS_IN</td>
+<td>&ldquo;appears_in&rdquo;</td>
+</tr>
+<tr>
+<td>TRACKLIST</td>
+<td>&ldquo;tracklist&rdquo;</td>
+</tr>
+<tr>
+<td>SOUNDS_IN</td>
+<td>&ldquo;sounds_in&rdquo;</td>
+</tr>
+<tr>
+<td>FULL_LOOKS</td>
+<td>&ldquo;full_looks&rdquo;</td>
+</tr>
+<tr>
+<td>LOOK_FASHION</td>
+<td>&ldquo;look_fashion&rdquo;</td>
+</tr>
+<tr>
+<td>FASHION_SET</td>
+<td>&ldquo;fashion_set&rdquo;</td>
+</tr>
+<tr>
+<td>OTHER_LOOKS</td>
+<td>&ldquo;other_looks&rdquo;</td>
+</tr>
+<tr>
+<td>WEARS</td>
+<td>&ldquo;wears&rdquo;</td>
+</tr>
+<tr>
+<td>HOME_DECO</td>
+<td>&ldquo;home_deco&rdquo;</td>
+</tr>
+<tr>
+<td>FULL_HOME</td>
+<td>&ldquo;full_home&rdquo;</td>
+</tr>
+<tr>
+<td>IS_PART_OF</td>
+<td>&ldquo;is_part_of&rdquo;</td>
+</tr>
+<tr>
+<td>DIRECTORS</td>
+<td>&ldquo;directors&rdquo;</td>
+</tr>
+<tr>
+<td>IS_CHAPTER_OF</td>
+<td>&ldquo;is_chapter_of&rdquo;</td>
+</tr>
+<tr>
+<td>COMPOSED_OF</td>
+<td>&ldquo;composed_of&rdquo;</td>
+</tr>
+<tr>
+<td>OWNS</td>
+<td>&ldquo;owns&rdquo;</td>
+</tr>
+<tr>
+<td>BELONGS_TO</td>
+<td>&ldquo;belongs_to&rdquo;</td>
+</tr>
+<tr>
+<td>FILMED_IN</td>
+<td>&ldquo;filmed_in&rdquo;</td>
+</tr>
+<tr>
+<td>REPRESENTS</td>
+<td>&ldquo;represents&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYS</td>
+<td>&ldquo;plays&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="text">Text<a name='Text'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Text container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#TextData"><strong>List&lt;TextData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OVERVIEW</td>
+<td>&ldquo;overview&rdquo;</td>
+</tr>
+<tr>
+<td>CURIOSITY</td>
+<td>&ldquo;curiosity&rdquo;</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>&ldquo;description&rdquo;</td>
+</tr>
+<tr>
+<td>BIOGRAPHY</td>
+<td>&ldquo;biography&rdquo;</td>
+</tr>
+<tr>
+<td>REFERENCE</td>
+<td>&ldquo;reference&rdquo;</td>
+</tr>
+<tr>
+<td>QUOTE</td>
+<td>&ldquo;quote&rdquo;</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

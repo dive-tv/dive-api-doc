@@ -1,0 +1,3353 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Dive Ad Resonance API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="ar-api" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <a href='./index.html'><img src="images/logo.png" alt="Logo" /></a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://dive.tv/'>2018 Dive all rights reserved</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="overview">Overview</h1>
+
+<p>Welcome to the Dive Ad Resonance API documentation. This is the official API used by third party applications.</p>
+
+<h2 id="swagger-ui">Swagger UI</h2>
+
+<p>You can test this API spec with Swagger UI.<br>
+In order to do so, access this <a href="http://petstore.swagger.io">link</a> and paste this url (https://cdn.dive.tv/swagger/ar-api.json) into the input box at the top of the page.</p>
+
+          <h1 id="authentication">Authentication</h1>
+
+<p>All requests to this API must include a valid token in order to be processed.<br>
+The <em>/v1/token</em> endpoint allows to create and refresh authorization tokens by means of the client API key.</p>
+
+<h2 id="obtain-a-new-token">Obtain a new token</h2>
+
+<p>In order to obtain a newly issued token, the following request should be made:</p>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>POST <a href="https://rest.dive.tv/v1/token?grant_type=device_credentials">https://rest.dive.tv/v1/token?grant_type=device_credentials</a></p>
+
+<h3 id="form-data">Form data</h3>
+
+<ul>
+<li>username: {username}</li>
+<li>password: {password}
+
+<ul>
+<li>MD5 encoded password<br></li>
+</ul></li>
+</ul>
+
+<h3 id="headers">Headers</h3>
+
+<ul>
+<li>Content-Type: application/json</li>
+<li>Authorization: Basic {client_key}
+
+<ul>
+<li>{client_key} is the client API key</li>
+</ul></li>
+</ul>
+
+<h3 id="response">Response</h3>
+
+<p>If client key is correct, the token endpoint will answer with a new token:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVwJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImV4cCI6MTQ4NzcwNzQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQsJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJPTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIjoiZTRjMzJlYmItYjI2NC00Yzg0LTk1YjktY2UwNjNiYjI5YTU4In0.uRhnAvVvkVU_qMcjwIFI9Oo3s8kRasGolEn18HSTqHgw"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IfpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImF0aSI6ImU0YzMyZWJiLWIyNjQtNGM4NC05NWI5LWNlMDYzYmIyOWE1OCIsImV4cCI6MTUwMzdg1MDQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQVJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJPTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIjoiOGViYzEzZTAtZmVmZS00NjYzLWI0ZDAtMmE2MGZiMmIyNTU1In0.AEaXnE3PRsJEpdLQJ9acivdffJPueqHfv4AsWI-hJCGAss"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">8999</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"device"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e4c32ebb-b264-4c84-95b9-ce063bb29a58"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Issued tokens have a validity of 9000 seconds (value of <em>expires_in</em> field), and refresh tokens have a validity of 180 days.</p>
+
+<p>API clients should store the refresh token in a persistent location, so it can be used to issue additional tokens without needed to send the device ID again.</p>
+
+<h2 id="refresh-a-existing-token">Refresh a existing token</h2>
+
+<p>In order to obtain a newly issued token, the following request should be made:</p>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>POST <a href="https://rest.dive.tv/v1/token?grant_type=refresh_token">https://rest.dive.tv/v1/token?grant_type=refresh_token</a></p>
+
+<h3 id="form-data">Form data</h3>
+
+<ul>
+<li>refresh_token: {refresh_token}
+
+<ul>
+<li>The stored refresh token from a previous call</li>
+</ul></li>
+</ul>
+
+<h3 id="headers">Headers</h3>
+
+<ul>
+<li>Content-Type:application/json</li>
+<li>Authorization:Basic {client_key}
+
+<ul>
+<li>{client_key} is the client API key</li>
+</ul></li>
+</ul>
+
+<h3 id="response">Response</h3>
+
+<p>Same as a new token request.</p>
+
+<h2 id="authenticate-a-request">Authenticate a request</h2>
+
+<p>The <em>Authorization</em> header must be present on every request to the REST API services.
+The value of this header should be formed by the word <em>Bearer</em> and the value of the obtained token:</p>
+<pre class="highlight javascript"><code><span class="nx">Authorization</span><span class="err">:</span> <span class="nx">Bearer</span> <span class="nx">eyJhbGciOiJIUzI1NiIsInR5dgCI6IkpXVCJ9</span><span class="p">.</span><span class="nx">eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiIxMjM0NTYiLCJncmFudF90eXBlIjoiZGV2aWNlX2NyZWRlbnRpYWxzIiwic2NvcGUiOlsiZGV2aWNlIl0sImV4cCI6MTQ4NzcwNzQxMywiYXV0aG9yaXRpZXMiOlsiUk9MRV9DQVJEX0RFVEFJTCIsIlJPTEVfVFZfR1JJRCIsIlJfbvTEVfQ0FUQUxPRyIsIlJPTEVfT05FX1NIT1QiXSwiY2xpZW50X2lkIjoicnR2ZV90ZXN0IiwianRpIfgoiZTRjMzJlYmItYjI2NC00Yzg0LTk1YjktY2UwNjNiYjI5YTU4In0</span><span class="p">.</span><span class="nx">uRhnAvVvkVU_qMcjwIFI9Oo3J8kRtGofgdEn18HSTqHgw</span>
+</code></pre>
+
+          <h1 id="dive-ar-rest-api">Dive AR REST API</h1>
+
+<p><a name="overview"></a></p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Dive Ad Resonance REST API provides a set of services which leverage obtaining client catalog info and its related contexts and situations data</p>
+
+<h3 id="version-information">Version information</h3>
+
+<p><em>Version</em> : 1.0.0</p>
+
+<h3 id="uri-scheme">URI scheme</h3>
+
+<p><em>Host</em> : rest.dive.tv<br>
+<em>BasePath</em> : /v1<br>
+<em>Schemes</em> : HTTPS</p>
+
+          <p><a name="getaractors"></a></p>
+
+<h2 id="list-ar-available-actors">List AR-available actors</h2>
+
+<p><code class="prettyprint">GET /ar/actors</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of actors which are ready for AR analysis on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&lsquo;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogperson">ARCatalogPerson</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"person_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ee6b1959-dbd5-32b9-8070-c1b81e006d50"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bradley Stryker"</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarattributes"></a></p>
+
+<h2 id="list-ar-available-context-attributes">List AR-available context attributes</h2>
+
+<p><code class="prettyprint">GET /ar/attributes</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of attributes and values on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogattribute">ARCatalogAttribute</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"values"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"China"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Mexico"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Monaco"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Russia"</span><span class="p">,</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w"> </span><span class="s2">"United States"</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarcharacters"></a></p>
+
+<h2 id="list-ar-available-characters">List AR-available characters</h2>
+
+<p><code class="prettyprint">GET /ar/characters</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of characters which are ready for AR analysis on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogperson">ARCatalogPerson</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"person_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"702090"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice Dominguez"</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfilteractors"></a></p>
+
+<h2 id="list-ar-available-filter-actors">List AR-available filter actors</h2>
+
+<p><code class="prettyprint">GET /ar/filters/actors</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of actors which are ready for AR analysis on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arfilterperson">ARFilterPerson</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ee6b1959-dbd5-32b9-8070-c1b81e006d50"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bradley Stryker"</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfilterattributes"></a></p>
+
+<h2 id="list-ar-available-context-attributes">List AR-available context attributes</h2>
+
+<p><code class="prettyprint">GET /ar/filters/attributes</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of attributes and values on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arfilterattribute">ARFilterAttribute</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"country=China"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"China"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"country=United States"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfiltercontexts"></a></p>
+
+<h2 id="list-ar-available-filter-contexts">List AR-available filter contexts</h2>
+
+<p><code class="prettyprint">GET /ar/filters/contexts</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of contexts on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogcategory">ARCatalogCategory</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-011"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Administrative"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Location &gt; Administrative"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfiltermovies"></a></p>
+
+<h2 id="list-ar-available-filter-movies">List AR-available filter movies</h2>
+
+<p><code class="prettyprint">GET /ar/filters/movies</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of movies which are ready for AR analysis</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arfiltermovie">ARFilterMovie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"m-002"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Iron Man"</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfilterobjects"></a></p>
+
+<h2 id="list-ar-available-filter-objects">List AR-available filter objects</h2>
+
+<p><code class="prettyprint">GET /ar/filters/objects</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of objects on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arfilterobject">ARFilterObject</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Men"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion &gt; Men"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarfilterseries"></a></p>
+
+<h2 id="list-ar-available-filter-series">List AR-available filter series</h2>
+
+<p><code class="prettyprint">GET /ar/filters/series</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of series which are ready for AR analysis</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arfilterserie">ARFilterSerie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"s-002"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CSI: Crime Scene Investigation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"season_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Assume Nothing"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ms-001"</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarmovies"></a></p>
+
+<h2 id="list-ar-available-movies">List AR-available movies</h2>
+
+<p><code class="prettyprint">GET /ar/movies</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of movies which are ready for AR analysis</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogmovie">ARCatalogMovie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"client_movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"m0001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Blade Runner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1982</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="postregisteruser"></a></p>
+
+<h2 id="register-user-account">Register user account</h2>
+
+<p><code class="prettyprint">POST /ar/register/user</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Registers a new user into Add Resonance application using the user name and provided password</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Basic authorization token (&#39;Basic <client_key>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>RegistrationDataRequest</strong>  <br><em>required</em></td>
+<td>User registration data</td>
+<td><a href="#registrationdatarequest">RegistrationDataRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>409</strong></td>
+<td>Conflict</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>422</strong></td>
+<td>Unprocessable Entity</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td>Internal Server Error</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>502</strong></td>
+<td>Bad Gateway</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>504</strong></td>
+<td>Gateway Timeout</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="consumes">Consumes</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<p><a name="postcontextsearch"></a></p>
+
+<h2 id="search-specific-context-at-movie-level">Search specific context at movie level</h2>
+
+<p><code class="prettyprint">POST /ar/search/context</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the specific context which in some or all client&rsquo;s movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>search_request</strong>  <br><em>optional</em></td>
+<td>Search terms</td>
+<td><a href="#arsearchbyidsrequest">ARSearchByIdsRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arsearchresultmovie">ARSearchResultMovie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"client_movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"40460fc0-8d6d-3ff7-8f8a-15f7e92ee345"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Blade Runner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_chapter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"serie_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"video_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://video.tagvie.com/movies/m00001/movie.avi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contexts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"cx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CTX-4172"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1756.64</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1785.56</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kfts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"brand"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dell"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Laptops"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="postsearch"></a></p>
+
+<h2 id="search-contexts-at-movie-level">Search contexts at movie level</h2>
+
+<p><code class="prettyprint">POST /ar/search/contexts</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of contexts which fulfill the search terms, filtered at movie level and grouped by taxonomy branch</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>search_request</strong>  <br><em>optional</em></td>
+<td>Search terms</td>
+<td><a href="#arsearchrequest">ARSearchRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arsearchresultcategory">ARSearchResultCategory</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Objects"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"taxonomies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX#2461"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Laptops"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Technology"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Electronics"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Laptops"</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"movies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"client_movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"40460fc0-8d6d-3ff7-8f8a-15f7e92ee345"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Blade Runner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_chapter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serie_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"video_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://video.tagvie.com/movies/m00001/movie.avi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"contexts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"start_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1756.64</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"end_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1785.56</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"kfts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"</span><span class="w"> </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"brand"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dell"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Laptops"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="postcontextcountsearch"></a></p>
+
+<h2 id="count-taxonomies-at-movie-level">Count taxonomies at movie level</h2>
+
+<p><code class="prettyprint">POST /ar/search/count</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of taxonomies which fulfill the search terms, filtered at movie level and grouped by taxonomy branch</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>search_request</strong>  <br><em>optional</em></td>
+<td>Search terms</td>
+<td><a href="#arsearchbyidsrequest">ARSearchByIdsRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arsearchcountresultcategory">ARSearchCountResultCategory</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Actors"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"context_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"taxonomies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000-0000-0000-0000-0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew Leeds"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"context_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Actors"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="postsearchscenes"></a></p>
+
+<h2 id="search-contexts-at-scene-level">Search contexts at scene level</h2>
+
+<p><code class="prettyprint">POST /ar/search/scenes</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of scenes which fulfill the requested search filters, grouped by movie</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>search_request</strong>  <br><em>optional</em></td>
+<td>Search terms</td>
+<td><a href="#arsearchrequest">ARSearchRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arsearchresultmovie">ARSearchResultMovie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"client_movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"40460fc0-8d6d-3ff7-8f8a-15f7e92ee345"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Blade Runner"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_chapter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"serie_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"video_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://video.tagvie.com/movies/m00001/movie.avi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scenes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"sc_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SC-2733"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Chase at the market"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1756.64</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"end_ts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1785.56</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kfts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43916.jpg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://kft.tagvie.com/movies/m00001/kfts/43957.jpg"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarseries"></a></p>
+
+<h2 id="list-ar-available-series">List AR-available series</h2>
+
+<p><code class="prettyprint">GET /ar/series</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of series which are ready for AR analysis</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogserie">ARCatalogSerie</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"client_serie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"s0001"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Game of thrones"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"year"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2011</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"season_count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getarserieseasons"></a></p>
+
+<h2 id="list-serie-seasons-and-chapters">List serie seasons and chapters</h2>
+
+<p><code class="prettyprint">GET /ar/series/{client_serie_id}/seasons</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of seasons and chapters which are available for AR analysis for a given client serie</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>client_serie_id</strong>  <br><em>required</em></td>
+<td>Client serie identifier</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogserieseason">ARCatalogSerieSeason</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"season_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"chapters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"chapter_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client_movie_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"s0001s01e01"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Winter is coming"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="getartaxonomies"></a></p>
+
+<h2 id="list-ar-available-taxonomies">List AR-available taxonomies</h2>
+
+<p><code class="prettyprint">GET /ar/taxonomies</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Returns the list of taxonomies on an optional subset of movies</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Authorization token (&#39;Bearer <token>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional comma-separated list of movie IDs to filter returned taxonomies</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>&lt; <a href="#arcatalogcategory">ARCatalogCategory</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"category"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Objects"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"taxonomies"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"tx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-2461"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Technology"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Objects &gt; Technology"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"tx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TAX-2462"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Laptops"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"breadcrumb"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Objects &gt; Technology &gt; Laptops"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"children"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p><a name="posttoken"></a></p>
+
+<h2 id="token-endpoint">Token endpoint</h2>
+
+<p><code class="prettyprint">POST /token</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>The token endpoint is used to obtain access tokens which allow clients to make API requests</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>required</em></td>
+<td>Basic authorization token (&#39;Basic <client_key>&rsquo;)</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Accept-Language</strong>  <br><em>optional</em></td>
+<td>Client locale, as language-country</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>grant_type</strong>  <br><em>required</em></td>
+<td>Grant type used to obtain the token</td>
+<td>enum (user_credentials, refresh_token)</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>username</strong>  <br><em>optional</em></td>
+<td>User name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>password</strong>  <br><em>optional</em></td>
+<td>User password</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>refresh_token</strong>  <br><em>optional</em></td>
+<td>Refresh token, used to issue a new token without resending client credentials. Required only for &ldquo;refresh_token&rdquo; grant type</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#accesstoken">AccessToken</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td><a href="#autherror">AuthError</a></td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td><a href="#autherror">AuthError</a></td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="consumes">Consumes</h3>
+
+<ul>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+</ul>
+
+<h3 id="produces">Produces</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response 400</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"unsupported_grant_type"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported grant type"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response 401</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_client"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad client credentials"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><a name="posttokenclientuser"></a></p>
+
+<h2 id="token-endpoint">Token endpoint</h2>
+
+<p><code class="prettyprint">POST /token_client_user</code></p>
+
+<h3 id="description">Description</h3>
+
+<p>Registers a user into Dive apis using the client id user name and provided password</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Body</strong></td>
+<td><strong>TokenDataRequest</strong>  <br><em>required</em></td>
+<td>User registration data</td>
+<td><a href="#clientregistrationdatarequest">ClientRegistrationDataRequest</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td><a href="#accesstoken">AccessToken</a></td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Not Found</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>409</strong></td>
+<td>Conflict</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>422</strong></td>
+<td>Unprocessable Entity</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td>Internal Server Error</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>502</strong></td>
+<td>Bad Gateway</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><strong>504</strong></td>
+<td>Gateway Timeout</td>
+<td>No Content</td>
+</tr>
+</tbody></table>
+
+<h3 id="consumes">Consumes</h3>
+
+<ul>
+<li><code class="prettyprint">application/json</code></li>
+</ul>
+
+<blockquote>
+<p>Response 200</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"access_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJ0ZXN0Il0sImV4cCI6MTQ2OTE3OTgxNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9ERVZJQ0UiXSwianRpIjoiYjlkMzk2ZDYtOTQzNi00OTgzLWFlZGUtZTRkZjEwMzUzNjVlIiwiY2xpZW50X2lkIjoidGVzdF9jbGllbnQifQ.lLWJcrX1JxVRaTNnzz3GqbYYkxFLpZBNS-if47aHuiU"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refresh_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpLXNlcnZlciIsIm9hdXRoLXNlcnZlciJdLCJkZXZpY2VfaWQiOiJ0ZXN0X2RldmljZSIsImdyYW50X3R5cGUiOiJkZXZpY2VfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJjYXJkcyJdLCJhdGkiOiJiOWQzOTZkNi05NDM2LTQ5ODMtYWVkZS1lNGRmMTAzNTM2NWUiLCJleHAiOjE0NjkxODc5MDQsImF1dGhvcml0aWVzIjpbIlJPTEVfREVWSUNFIl0sImp0aSI6ImQzYmM4MjRkLWI4MmEtNDBkYi04MWRkLTM3YzIyZTY3YTkzNyIsImNsaWVudF9pZCI6InRlc3RfY2xpZW50In0.t-eb0HLD_xHx89sY_-k7hZ8xAT5Ewtwd2EsJDf9pkI0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expires_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scope"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+          <p><a name="definitions"></a></p>
+
+<h1 id="definitions">Definitions</h1>
+
+<p><a name="accesstoken"></a></p>
+
+<h2 id="accesstoken">AccessToken</h2>
+
+<p>API access token</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_token</strong>  <br><em>optional</em></td>
+<td>Auth token, must be included on every API request</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>token_type</strong>  <br><em>optional</em></td>
+<td>Token type</td>
+<td>enum (bearer)</td>
+</tr>
+<tr>
+<td><strong>refresh_token</strong>  <br><em>optional</em></td>
+<td>Allows to issue new access tokens without resending client credentials</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>expires_in</strong>  <br><em>optional</em></td>
+<td>Expiration time (in seconds).</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>scope</strong>  <br><em>optional</em></td>
+<td>Granted auth scope</td>
+<td>enum (device)</td>
+</tr>
+</tbody></table>
+
+<p><a name="autherror"></a></p>
+
+<h2 id="autherror">AuthError</h2>
+
+<p>Authentication error description</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>error</strong>  <br><em>optional</em></td>
+<td>Short error identifier</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>error_description</strong>  <br><em>optional</em></td>
+<td>Extended error description</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="registrationdatarequest"></a></p>
+
+<h2 id="registrationdatarequest">RegistrationDataRequest</h2>
+
+<p>User registration data request</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>username</strong>  <br><em>required</em></td>
+<td>User name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>password</strong>  <br><em>required</em></td>
+<td>User password in MD5 format</td>
+<td>string(password)</td>
+</tr>
+</tbody></table>
+
+<p><a name="clientregistrationdatarequest"></a></p>
+
+<h2 id="clientregistrationdatarequest">ClientRegistrationDataRequest</h2>
+
+<p>Client User registration data request</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>username</strong>  <br><em>optional</em></td>
+<td>user name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>password</strong>  <br><em>optional</em></td>
+<td>password in MD5 format</td>
+<td>string(password)</td>
+</tr>
+<tr>
+<td><strong>client_id</strong>  <br><em>optional</em></td>
+<td>client id</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogmovie"></a></p>
+
+<h2 id="arcatalogmovie">ARCatalogMovie</h2>
+
+<p>Catalog movie information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>client_movie_id</strong>  <br><em>required</em></td>
+<td>Movie identifier for the requester client</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Movie title in the request locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogserie"></a></p>
+
+<h2 id="arcatalogserie">ARCatalogSerie</h2>
+
+<p>Catalog serie information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>client_serie_id</strong>  <br><em>required</em></td>
+<td>Serie identifier for the requester client</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Serie title in the request locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production for first season</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>season_count</strong>  <br><em>required</em></td>
+<td>Number of available seasons</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogserieseason"></a></p>
+
+<h2 id="arcatalogserieseason">ARCatalogSerieSeason</h2>
+
+<p>Catalog serie seasons information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>season_index</strong>  <br><em>required</em></td>
+<td>Index of the season amongst serie seasons, starting from 1</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>chapters</strong>  <br><em>required</em></td>
+<td>List of chapters of the season</td>
+<td>&lt; <a href="#arcatalogseriechapter">ARCatalogSerieChapter</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogseriechapter"></a></p>
+
+<h2 id="arcatalogseriechapter">ARCatalogSerieChapter</h2>
+
+<p>Catalog serie chapter information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>chapter_index</strong>  <br><em>required</em></td>
+<td>Index of the chapter amongst season chapters, starting from 1</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>client_movie_id</strong>  <br><em>required</em></td>
+<td>Movie ID for this chapter</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Chapter title in the requested locale</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchrequest"></a></p>
+
+<h2 id="arsearchrequest">ARSearchRequest</h2>
+
+<p>Context search request</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched movie and chapter IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>taxonomy_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context taxonomy IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>person_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context actor and character IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>attributes</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context attributes and values</td>
+<td>&lt; <a href="#arcatalogattribute">ARCatalogAttribute</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchbyidsrequest"></a></p>
+
+<h2 id="arsearchbyidsrequest">ARSearchByIdsRequest</h2>
+
+<p>Context search request</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movie_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched movie and chapter IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>taxonomy_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context taxonomy IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>person_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context actor and character IDs</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>attribute_ids</strong>  <br><em>optional</em></td>
+<td>Optional list of searched context attributes and values</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresultcategory"></a></p>
+
+<h2 id="arsearchresultcategory">ARSearchResultCategory</h2>
+
+<p>Context search results category</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>category</strong>  <br><em>required</em></td>
+<td>Result category name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>context_count</strong>  <br><em>optional</em></td>
+<td>Number of detected contexts under this category</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>taxonomies</strong>  <br><em>required</em></td>
+<td>List of taxonomies detected for this category</td>
+<td>&lt; <a href="#arsearchresulttaxonomy">ARSearchResultTaxonomy</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresulttaxonomy"></a></p>
+
+<h2 id="arsearchresulttaxonomy">ARSearchResultTaxonomy</h2>
+
+<p>Context search results taxonomy item</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tx_id</strong>  <br><em>required</em></td>
+<td>Taxonomy ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Taxonomy friendly name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>breadcrumb</strong>  <br><em>required</em></td>
+<td>List of taxonomy nodes traversed from the root to this item</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>context_count</strong>  <br><em>optional</em></td>
+<td>Number of detected contexts under this taxonomy</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>movies</strong>  <br><em>required</em></td>
+<td>List of movies where this taxonomy has been detected</td>
+<td>&lt; <a href="#arsearchresultmovie">ARSearchResultMovie</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogcategory"></a></p>
+
+<h2 id="arcatalogcategory">ARCatalogCategory</h2>
+
+<p>Catalog category</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>category</strong>  <br><em>required</em></td>
+<td>Category name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>taxonomies</strong>  <br><em>required</em></td>
+<td>List of taxonomies included in this category</td>
+<td>&lt; <a href="#arcatalogtaxonomy">ARCatalogTaxonomy</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogtaxonomy"></a></p>
+
+<h2 id="arcatalogtaxonomy">ARCatalogTaxonomy</h2>
+
+<p>Catalog taxonomy item</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>tx_id</strong>  <br><em>required</em></td>
+<td>Taxonomy ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Taxonomy friendly name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>breadcrumb</strong>  <br><em>optional</em></td>
+<td>Taxonomy node breadcrumb from root</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>optional</em></td>
+<td>List of child nodes for this taxonomy node</td>
+<td>&lt; <a href="#arcatalogtaxonomy">ARCatalogTaxonomy</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogattribute"></a></p>
+
+<h2 id="arcatalogattribute">ARCatalogAttribute</h2>
+
+<p>Catalog attribute</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Attribute name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>description</strong>  <br><em>required</em></td>
+<td>Attribute displayable description</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>values</strong>  <br><em>required</em></td>
+<td>List of available values for this attribute</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arcatalogperson"></a></p>
+
+<h2 id="arcatalogperson">ARCatalogPerson</h2>
+
+<p>Catalog actor / character</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>person_id</strong>  <br><em>required</em></td>
+<td>Actor / character ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Name of the actor or character</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresultmovie"></a></p>
+
+<h2 id="arsearchresultmovie">ARSearchResultMovie</h2>
+
+<p>Context search results movie</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>client_movie_id</strong>  <br><em>required</em></td>
+<td>Movie identifier for the client</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Movie title in the request locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>video_url</strong>  <br><em>required</em></td>
+<td>Movie video location URL</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>framerate</strong>  <br><em>optional</em></td>
+<td>Video frame rate</td>
+<td>number</td>
+</tr>
+<tr>
+<td><strong>is_chapter</strong>  <br><em>optional</em></td>
+<td>Indicates if detected media is a movie or a chapter</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>season_index</strong>  <br><em>optional</em></td>
+<td>Index of the season where this chapter belongs, only if is_chapter = true</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>chapter_index</strong>  <br><em>optional</em></td>
+<td>Index of this chapter amongst season chapters, only if is_chapter = true</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>serie_title</strong>  <br><em>optional</em></td>
+<td>Title of the serie where this chapter belongs, only if is_chapter = true</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>contexts</strong>  <br><em>optional</em></td>
+<td>List of contexts detected on this movie related to the parent taxonomy (returned on context search)</td>
+<td>&lt; <a href="#arsearchresultcontext">ARSearchResultContext</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>scenes</strong>  <br><em>optional</em></td>
+<td>List of movie scenes which fulfill search terms (returned on scene search)</td>
+<td>&lt; <a href="#arsearchresultscene">ARSearchResultScene</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresultcontext"></a></p>
+
+<h2 id="arsearchresultcontext">ARSearchResultContext</h2>
+
+<p>Search results movie context</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>start_ts</strong>  <br><em>required</em></td>
+<td>Context start timestamp in seconds</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>end_ts</strong>  <br><em>required</em></td>
+<td>Context end timestamp in seconds</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>kfts</strong>  <br><em>required</em></td>
+<td>List of key frame image URLs for this context</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>attributes</strong>  <br><em>optional</em></td>
+<td></td>
+<td><a href="#arsearchresultcontextattributes">ARSearchResultContextAttributes</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresultscene"></a></p>
+
+<h2 id="arsearchresultscene">ARSearchResultScene</h2>
+
+<p>Search results movie scene</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>sc_id</strong>  <br><em>required</em></td>
+<td>Scene ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>title</strong>  <br><em>required</em></td>
+<td>Scene title</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>start_ts</strong>  <br><em>required</em></td>
+<td>Scene start timestamp in seconds</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>end_ts</strong>  <br><em>required</em></td>
+<td>Scene end timestamp in seconds</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>kfts</strong>  <br><em>required</em></td>
+<td>List of key frame image URLs for this scene</td>
+<td>&lt; string &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchresultcontextattributes"></a></p>
+
+<h2 id="arsearchresultcontextattributes">ARSearchResultContextAttributes</h2>
+
+<p>Additional attributes linked to a detected context</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong>  <br><em>optional</em></td>
+<td>Generic name for the context</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>brand</strong>  <br><em>optional</em></td>
+<td>Detected object brand</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>model</strong>  <br><em>optional</em></td>
+<td>Detected object model</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>year</strong>  <br><em>optional</em></td>
+<td>Year(s) of production of a detected object</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>author</strong>  <br><em>optional</em></td>
+<td>Name of the author of an artistic or cultural item</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>artist</strong>  <br><em>optional</em></td>
+<td>Name of the performing artist of a song</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>performer</strong>  <br><em>optional</em></td>
+<td>Name of the performer of a song</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>country</strong>  <br><em>optional</em></td>
+<td>Country where a location belongs</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>city</strong>  <br><em>optional</em></td>
+<td>City where a location belongs</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>region</strong>  <br><em>optional</em></td>
+<td>Region where a location belongs</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>street</strong>  <br><em>optional</em></td>
+<td>Street address of a location</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfiltermovie"></a></p>
+
+<h2 id="arfiltermovie">ARFilterMovie</h2>
+
+<p>Filter movie information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Movie identifier for the requester client</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Movie title in the request locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td>Movie specified data</td>
+<td><a href="#arfiltermovie-data">data</a></td>
+</tr>
+</tbody></table>
+
+<p><a name="arfiltermovie-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterserie"></a></p>
+
+<h2 id="arfilterserie">ARFilterSerie</h2>
+
+<p>Filter serie information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>optional</em></td>
+<td>Serie identifier for the requester client</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>optional</em></td>
+<td>Serie title in the request locale</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td>Serie specific data</td>
+<td><a href="#arfilterserie-data">data</a></td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>optional</em></td>
+<td>Available serie seasons</td>
+<td>&lt; <a href="#arfilterserieseason">ARFilterSerieSeason</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterserie-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>year</strong>  <br><em>required</em></td>
+<td>Year of production for first season</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>season_count</strong>  <br><em>required</em></td>
+<td>Number of available seasons</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterserieseason"></a></p>
+
+<h2 id="arfilterserieseason">ARFilterSerieSeason</h2>
+
+<p>Catalog serie seasons information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Index of the season amongst serie seasons, starting from 1</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>required</em></td>
+<td>List of chapters of the season</td>
+<td>&lt; <a href="#arfilterseriechapter">ARFilterSerieChapter</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterseriechapter"></a></p>
+
+<h2 id="arfilterseriechapter">ARFilterSerieChapter</h2>
+
+<p>Filter serie chapter information</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>data</strong>  <br><em>required</em></td>
+<td>Chapter specified info</td>
+<td><a href="#arfilterseriechapter-data">data</a></td>
+</tr>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Movie ID for this chapter</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Chapter title in the requested locale</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterseriechapter-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>chapter_index</strong>  <br><em>required</em></td>
+<td>Index of the chapter amongst season chapters, starting from 1</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterperson"></a></p>
+
+<h2 id="arfilterperson">ARFilterPerson</h2>
+
+<p>Filter actor / character</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Actor / character ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Name of the actor or character</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfiltercontext"></a></p>
+
+<h2 id="arfiltercontext">ARFilterContext</h2>
+
+<p>Catalog context item</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Context ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Context friendly name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>optional</em></td>
+<td>Context specified data</td>
+<td><a href="#arfiltercontext-data">data</a></td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>optional</em></td>
+<td>List of child nodes for this context node</td>
+<td>&lt; <a href="#arfiltercontext">ARFilterContext</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfiltercontext-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>breadcrumb</strong>  <br><em>required</em></td>
+<td>Context node breadcrumb from root</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterobject"></a></p>
+
+<h2 id="arfilterobject">ARFilterObject</h2>
+
+<p>Catalog object item</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Object ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Object friendly name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>optional</em></td>
+<td>Object specified data</td>
+<td><a href="#arfilterobject-data">data</a></td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>optional</em></td>
+<td>List of child nodes for this object node</td>
+<td>&lt; <a href="#arfilterobject">ARFilterObject</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterobject-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>breadcrumb</strong>  <br><em>required</em></td>
+<td>Object node breadcrumb from root</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterattribute"></a></p>
+
+<h2 id="arfilterattribute">ARFilterAttribute</h2>
+
+<p>Filter attribute</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Attribute id</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Attribute name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>data</strong>  <br><em>optional</em></td>
+<td>Attribute specified data</td>
+<td><a href="#arfilterattribute-data">data</a></td>
+</tr>
+<tr>
+<td><strong>children</strong>  <br><em>optional</em></td>
+<td>List of available values for this attribute</td>
+<td>&lt; <a href="#arfilterattribute">ARFilterAttribute</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arfilterattribute-data"></a>
+<strong>data</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>description</strong>  <br><em>required</em></td>
+<td>Attribute displayable description</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchcountresultcategory"></a></p>
+
+<h2 id="arsearchcountresultcategory">ARSearchCountResultCategory</h2>
+
+<p>Context count search results category</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>category</strong>  <br><em>required</em></td>
+<td>Result category name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>context_count</strong>  <br><em>required</em></td>
+<td>Number of detected contexts under this category</td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>taxonomies</strong>  <br><em>required</em></td>
+<td>List of taxonomies detected for this category</td>
+<td>&lt; <a href="#arsearchcountresulttaxonomy">ARSearchCountResultTaxonomy</a> &gt; array</td>
+</tr>
+</tbody></table>
+
+<p><a name="arsearchcountresulttaxonomy"></a></p>
+
+<h2 id="arsearchcountresulttaxonomy">ARSearchCountResultTaxonomy</h2>
+
+<p>Context count search results taxonomy</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td>Taxonomy ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>name</strong>  <br><em>required</em></td>
+<td>Taxonomy friendly name</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>breadcrumb</strong>  <br><em>required</em></td>
+<td>List of taxonomy nodes traversed from the root to this item</td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>context_count</strong>  <br><em>required</em></td>
+<td>Number of detected contexts under this taxonomy</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+          <p><a name="errors"></a></p>
+
+<h1 id="errors">Errors</h1>
+
+<p>The Dive Ad Resonance API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Description</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Client sent a malformed request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid or missing Authorization token</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Provided credentials don&rsquo;t have access to this feature</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The specified resource could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>Client tried to access a resource using an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Client requested a format other than application/json</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Request rate limit exceeded</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Internal server error. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>Requested method temporarily failed. Try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

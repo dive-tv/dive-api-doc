@@ -1,0 +1,3707 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="sdk-client-java" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <a href='./index.html'><img src="images/logo.png" alt="Logo" /></a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://dive.tv/'>2018 Dive all rights reserved</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="sdk-client-java">sdk-client-java<a name='sdk-client-java'></a></h1>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Building the API client library requires <a href="https://maven.apache.org/">Maven</a> to be installed.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>To install the API client library to your local Maven repository, simply execute:</p>
+<pre class="highlight shell"><code>
+mvn install
+
+</code></pre>
+
+<p>To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:</p>
+<pre class="highlight shell"><code>
+mvn deploy
+
+</code></pre>
+
+<p>Refer to the <a href="https://maven.apache.org/plugins/maven-deploy-plugin/usage.html">official documentation</a> for more information.</p>
+
+<h3 id="maven-users">Maven users</h3>
+
+<p>Add this dependency to your project&rsquo;s POM:</p>
+<pre class="highlight xml"><code>
+<span class="nt">&lt;dependency&gt;</span>
+
+    <span class="nt">&lt;groupId&gt;</span>com.touchvie<span class="nt">&lt;/groupId&gt;</span>
+
+    <span class="nt">&lt;artifactId&gt;</span>sdk-client-java<span class="nt">&lt;/artifactId&gt;</span>
+
+    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+
+<span class="nt">&lt;/dependency&gt;</span>
+
+</code></pre>
+
+<h3 id="gradle-users">Gradle users</h3>
+
+<p>Add this dependency to your project&rsquo;s build file:</p>
+<pre class="highlight groovy"><code>
+<span class="n">compile</span> <span class="s2">"com.touchvie:sdk-client-java:1.0.0"</span>
+
+</code></pre>
+
+<h3 id="others">Others</h3>
+
+<p>At first generate the JAR by executing:</p>
+
+<p>mvn package</p>
+
+<p>Then manually install the following JARs:</p>
+
+<ul>
+<li><p>target/sdk-client-java-1.0.0.jar</p></li>
+<li><p>target/lib/*.jar</p></li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Please follow the <a href="#installation">installation</a> instruction and execute the following Java code:</p>
+<pre class="highlight java"><code>
+
+
+<span class="kn">import</span> <span class="nn">com.touchvie.sdk.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.touchvie.sdk.auth.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.touchvie.sdk.model.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.touchvie.sdk.api.DefaultApi</span><span class="o">;</span>
+
+
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DefaultApiExample</span> <span class="o">{</span>
+
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+
+
+        <span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+        <span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+        <span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+        <span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+        <span class="k">try</span> <span class="o">{</span>
+
+            <span class="n">apiInstance</span><span class="o">.</span><span class="na">deleteLikes</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">cardId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">);</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#deleteLikes"</span><span class="o">);</span>
+
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+
+
+</code></pre>
+
+<h2 id="documentation-for-api-endpoints">Documentation for API Endpoints</h2>
+
+<p>All URIs are relative to <em>https://rest.dive.tv/v1</em></p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Method</th>
+<th>HTTP request</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#deleteLikes"><strong>deleteLikes</strong></a></td>
+<td><strong>DELETE</strong> /likes/{card_id}</td>
+<td>Delete card like</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getCard"><strong>getCard</strong></a></td>
+<td><strong>GET</strong> /cards/{card_id}</td>
+<td>Full card detail</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getCardVersion"><strong>getCardVersion</strong></a></td>
+<td><strong>GET</strong> /cards/{card_id}/versions/{version}</td>
+<td>Full card detail with version</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getCatalogMovie"><strong>getCatalogMovie</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id}</td>
+<td>Movie catalog info</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getChannelGrid"><strong>getChannelGrid</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}/grid</td>
+<td>Channel events grid</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getChannelMovie"><strong>getChannelMovie</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}</td>
+<td>Channel movie catalog info</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getLikes"><strong>getLikes</strong></a></td>
+<td><strong>GET</strong> /likes</td>
+<td>Get card likes</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getReadyChannels"><strong>getReadyChannels</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id_list}/ready</td>
+<td>Channel sync availability</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getReadyMovies"><strong>getReadyMovies</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id_list}/ready</td>
+<td>Movie sync availability</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getStaticChannelScene"><strong>getStaticChannelScene</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}/static</td>
+<td>Static channel scene</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#getStaticMovieScene"><strong>getStaticMovieScene</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id}/static/{timestamp}</td>
+<td>Static VOD scene</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#postLikes"><strong>postLikes</strong></a></td>
+<td><strong>POST</strong> /likes/{card_id}</td>
+<td>Add card like</td>
+</tr>
+<tr>
+<td><em>DefaultApi</em></td>
+<td><a href="#postToken"><strong>postToken</strong></a></td>
+<td><strong>POST</strong> /token</td>
+<td>Token endpoint</td>
+</tr>
+</tbody></table>
+
+<h2 id="documentation-for-models">Documentation for Models</h2>
+
+<ul>
+<li><a href="#AccessToken">AccessToken</a></li>
+<li><a href="#AuthError">AuthError</a></li>
+<li><a href="#AwardData">AwardData</a></li>
+<li><a href="#AwardsData">AwardsData</a></li>
+<li><a href="#Card">Card</a></li>
+<li><a href="#CardContainer">CardContainer</a></li>
+<li><a href="#CardUser">CardUser</a></li>
+<li><a href="#CatalogData">CatalogData</a></li>
+<li><a href="#CatalogSync">CatalogSync</a></li>
+<li><a href="#ChannelStatus">ChannelStatus</a></li>
+<li><a href="#DupleData">DupleData</a></li>
+<li><a href="#ImageData">ImageData</a></li>
+<li><a href="#LinkData">LinkData</a></li>
+<li><a href="#ListingData">ListingData</a></li>
+<li><a href="#MapData">MapData</a></li>
+<li><a href="#MovieStatus">MovieStatus</a></li>
+<li><a href="#Product">Product</a></li>
+<li><a href="#RatingData">RatingData</a></li>
+<li><a href="#RelationModule">RelationModule</a></li>
+<li><a href="#SeasonsChapters">SeasonsChapters</a></li>
+<li><a href="#SeasonsData">SeasonsData</a></li>
+<li><a href="#SourceData">SourceData</a></li>
+<li><a href="#TextData">TextData</a></li>
+<li><a href="#TvEvent">TvEvent</a></li>
+<li><a href="#TvGrid">TvGrid</a></li>
+<li><a href="#Awards">Awards</a></li>
+<li><a href="#Catalog">Catalog</a></li>
+<li><a href="#Duple">Duple</a></li>
+<li><a href="#Image">Image</a></li>
+<li><a href="#Link">Link</a></li>
+<li><a href="#Listing">Listing</a></li>
+<li><a href="#Map">Map</a></li>
+<li><a href="#Rating">Rating</a></li>
+<li><a href="#Seasons">Seasons</a></li>
+<li><a href="#Single">Single</a></li>
+<li><a href="#Text">Text</a></li>
+</ul>
+
+<h2 id="documentation-for-authorization">Documentation for Authorization</h2>
+
+<p>All endpoints do not require authorization.</p>
+
+<p>Authentication schemes defined for the API:</p>
+
+<h2 id="recommendation">Recommendation</h2>
+
+<p>It&rsquo;s recommended to create an instance of <code class="prettyprint">ApiClient</code> per thread in a multithreaded environment to avoid any potential issues.</p>
+
+<h2 id="author">Author</h2>
+
+          <h1 id="defaultapi">DefaultApi<a name='DefaultApi'></a></h1>
+
+<p>All URIs are relative to <em>https://rest.dive.tv/v1</em></p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>HTTP request</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#deleteLikes"><strong>deleteLikes</strong></a></td>
+<td><strong>DELETE</strong> /likes/{card_id}</td>
+<td>Delete card like</td>
+</tr>
+<tr>
+<td><a href="#getCard"><strong>getCard</strong></a></td>
+<td><strong>GET</strong> /cards/{card_id}</td>
+<td>Full card detail</td>
+</tr>
+<tr>
+<td><a href="#getCardVersion"><strong>getCardVersion</strong></a></td>
+<td><strong>GET</strong> /cards/{card_id}/versions/{version}</td>
+<td>Full card detail with version</td>
+</tr>
+<tr>
+<td><a href="#getCatalogMovie"><strong>getCatalogMovie</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id}</td>
+<td>Movie catalog info</td>
+</tr>
+<tr>
+<td><a href="#getChannelGrid"><strong>getChannelGrid</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}/grid</td>
+<td>Channel events grid</td>
+</tr>
+<tr>
+<td><a href="#getChannelMovie"><strong>getChannelMovie</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}</td>
+<td>Channel movie catalog info</td>
+</tr>
+<tr>
+<td><a href="#getLikes"><strong>getLikes</strong></a></td>
+<td><strong>GET</strong> /likes</td>
+<td>Get card likes</td>
+</tr>
+<tr>
+<td><a href="#getReadyChannels"><strong>getReadyChannels</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id_list}/ready</td>
+<td>Channel sync availability</td>
+</tr>
+<tr>
+<td><a href="#getReadyMovies"><strong>getReadyMovies</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id_list}/ready</td>
+<td>Movie sync availability</td>
+</tr>
+<tr>
+<td><a href="#getStaticChannelScene"><strong>getStaticChannelScene</strong></a></td>
+<td><strong>GET</strong> /channels/{channel_id}/static</td>
+<td>Static channel scene</td>
+</tr>
+<tr>
+<td><a href="#getStaticMovieScene"><strong>getStaticMovieScene</strong></a></td>
+<td><strong>GET</strong> /movies/{client_movie_id}/static/{timestamp}</td>
+<td>Static VOD scene</td>
+</tr>
+<tr>
+<td><a href="#postLikes"><strong>postLikes</strong></a></td>
+<td><strong>POST</strong> /likes/{card_id}</td>
+<td>Add card like</td>
+</tr>
+<tr>
+<td><a href="#postToken"><strong>postToken</strong></a></td>
+<td><strong>POST</strong> /token</td>
+<td>Token endpoint</td>
+</tr>
+</tbody></table>
+
+<p><a name="deleteLikes"></a></p>
+
+<h2 id="deletelikes"><strong>deleteLikes</strong><a name='**deleteLikes**'></a></h2>
+
+<blockquote>
+<p>deleteLikes(authorization, cardId, acceptLanguage)</p>
+</blockquote>
+
+<p>Delete card like</p>
+
+<p>Removes a card from current user&rsquo;s likes list</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">apiInstance</span><span class="o">.</span><span class="na">deleteLikes</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">cardId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#deleteLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&lsquo;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Requested card ID</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p>null (empty response body)</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: Not defined</p></li>
+</ul>
+
+<p><a name="getCard"></a></p>
+
+<h2 id="getcard"><strong>getCard</strong><a name='**getCard**'></a></h2>
+
+<blockquote>
+<p>Card getCard(authorization, cardId, acceptLanguage, products, userData, imageSize)</p>
+</blockquote>
+
+<p>Full card detail</p>
+
+<p>Retrieves a full card detail, with no relations or context</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Unique identifier for this card</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">Boolean</span> <span class="n">products</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain commercial products when available (true) or not (false)</span>
+<span class="n">Boolean</span> <span class="n">userData</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain user data when available (true) or not (false)</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getCard</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">cardId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">products</span><span class="o">,</span> <span class="n">userData</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getCard"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Unique identifier for this card</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>products</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain commercial products when available (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>userData</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain user data when available (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>Card</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getCardVersion"></a></p>
+
+<h2 id="getcardversion"><strong>getCardVersion</strong><a name='**getCardVersion**'></a></h2>
+
+<blockquote>
+<p>Card getCardVersion(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize)</p>
+</blockquote>
+
+<p>Full card detail with version</p>
+
+<p>Retrieves a full card detail, and its relations to other cards in a given context (card version)</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Unique identifier for this card</span>
+<span class="n">String</span> <span class="n">version</span> <span class="o">=</span> <span class="s">"version_example"</span><span class="o">;</span> <span class="c1">// String | Version identifier, indicates the context where the card is being requested</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">Boolean</span> <span class="n">products</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain commercial products when available (true) or not (false)</span>
+<span class="n">Boolean</span> <span class="n">userData</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain user data when available (true) or not (false)</span>
+<span class="n">Boolean</span> <span class="n">relations</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain the scene hierarchy (true) or not (false)</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getCardVersion</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">cardId</span><span class="o">,</span> <span class="n">version</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">products</span><span class="o">,</span> <span class="n">userData</span><span class="o">,</span> <span class="n">relations</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getCardVersion"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Unique identifier for this card</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>String</strong></td>
+<td>Version identifier, indicates the context where the card is being requested</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>products</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain commercial products when available (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>userData</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain user data when available (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>relations</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>Card</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getCatalogMovie"></a></p>
+
+<h2 id="getcatalogmovie"><strong>getCatalogMovie</strong><a name='**getCatalogMovie**'></a></h2>
+
+<blockquote>
+<p>Card getCatalogMovie(authorization, clientMovieId, acceptLanguage, imageSize)</p>
+</blockquote>
+
+<p>Movie catalog info</p>
+
+<p>Retrieves a movie&rsquo;s full card by its client ID, including catalog and cast information</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">clientMovieId</span> <span class="o">=</span> <span class="s">"clientMovieId_example"</span><span class="o">;</span> <span class="c1">// String | Client movie ID being played</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getCatalogMovie</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">clientMovieId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getCatalogMovie"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>clientMovieId</strong></td>
+<td><strong>String</strong></td>
+<td>Client movie ID being played</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>Card</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getChannelGrid"></a></p>
+
+<h2 id="getchannelgrid"><strong>getChannelGrid</strong><a name='**getChannelGrid**'></a></h2>
+
+<blockquote>
+<p>TvGrid getChannelGrid(authorization, channelId, acceptLanguage, imageSize)</p>
+</blockquote>
+
+<p>Channel events grid</p>
+
+<p>Returns the current and upcoming grid of TV events for the given channel</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">TvGrid</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getChannelGrid</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">channelId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getChannelGrid"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>Client channel ID</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#TvGrid"><strong>TvGrid</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getChannelMovie"></a></p>
+
+<h2 id="getchannelmovie"><strong>getChannelMovie</strong><a name='**getChannelMovie**'></a></h2>
+
+<blockquote>
+<p>Card getChannelMovie(authorization, channelId, acceptLanguage, imageSize)</p>
+</blockquote>
+
+<p>Channel movie catalog info</p>
+
+<p>Retrieves full card detail, including catalog and cast information, for the content currently being broadcasted on the channel</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">Card</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getChannelMovie</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">channelId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getChannelMovie"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>Client channel ID</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>Card</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getLikes"></a></p>
+
+<h2 id="getlikes"><strong>getLikes</strong><a name='**getLikes**'></a></h2>
+
+<blockquote>
+<p>List&lt;Card&gt; getLikes(authorization, acceptLanguage, imageSize, paginateKey, size)</p>
+</blockquote>
+
+<p>Get card likes</p>
+
+<p>Returns a paginated list of cards liked by current user</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="n">String</span> <span class="n">paginateKey</span> <span class="o">=</span> <span class="s">"paginateKey_example"</span><span class="o">;</span> <span class="c1">// String | Paginate key</span>
+<span class="n">String</span> <span class="n">size</span> <span class="o">=</span> <span class="s">"20"</span><span class="o">;</span> <span class="c1">// String | Number of desired results</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getLikes</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">,</span> <span class="n">paginateKey</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+<tr>
+<td><strong>paginateKey</strong></td>
+<td><strong>String</strong></td>
+<td>Paginate key</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td><strong>String</strong></td>
+<td>Number of desired results</td>
+<td>[optional] [default to 20]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>List&lt;Card&gt;</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getReadyChannels"></a></p>
+
+<h2 id="getreadychannels"><strong>getReadyChannels</strong><a name='**getReadyChannels**'></a></h2>
+
+<blockquote>
+<p>List&lt;ChannelStatus&gt; getReadyChannels(authorization, channelIdList, acceptLanguage)</p>
+</blockquote>
+
+<p>Channel sync availability</p>
+
+<p>Checks if a list of client channel identifiers are currently broadcasting synchronizable content</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">channelIdList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"channelIdList_example"</span><span class="o">);</span> <span class="c1">// List&lt;String&gt; | List of client channel IDs as a comma separated list</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ChannelStatus</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getReadyChannels</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">channelIdList</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getReadyChannels"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelIdList</strong></td>
+<td><a href="#String"><strong>List&lt;String&gt;</strong></a></td>
+<td>List of client channel IDs as a comma separated list</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#ChannelStatus"><strong>List&lt;ChannelStatus&gt;</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getReadyMovies"></a></p>
+
+<h2 id="getreadymovies"><strong>getReadyMovies</strong><a name='**getReadyMovies**'></a></h2>
+
+<blockquote>
+<p>List&lt;MovieStatus&gt; getReadyMovies(authorization, clientMovieIdList, acceptLanguage)</p>
+</blockquote>
+
+<p>Movie sync availability</p>
+
+<p>Checks whether a list of client movie identifiers (Video On Demand) are available to be synchronized using the Dive API</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">clientMovieIdList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"clientMovieIdList_example"</span><span class="o">);</span> <span class="c1">// List&lt;String&gt; | List of client movie IDs, provided as a comma separated list</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">MovieStatus</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getReadyMovies</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">clientMovieIdList</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getReadyMovies"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>clientMovieIdList</strong></td>
+<td><a href="#String"><strong>List&lt;String&gt;</strong></a></td>
+<td>List of client movie IDs, provided as a comma separated list</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#MovieStatus"><strong>List&lt;MovieStatus&gt;</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getStaticChannelScene"></a></p>
+
+<h2 id="getstaticchannelscene"><strong>getStaticChannelScene</strong><a name='**getStaticChannelScene**'></a></h2>
+
+<blockquote>
+<p>List&lt;Card&gt; getStaticChannelScene(authorization, channelId, acceptLanguage, relations, imageSize)</p>
+</blockquote>
+
+<p>Static channel scene</p>
+
+<p>Retrieves the list of cards related to the content currently being broadcasted in the provided channel</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">channelId</span> <span class="o">=</span> <span class="s">"channelId_example"</span><span class="o">;</span> <span class="c1">// String | Client channel ID</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">Boolean</span> <span class="n">relations</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain the scene hierarchy (true) or not (false)</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getStaticChannelScene</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">channelId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">relations</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getStaticChannelScene"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>Client channel ID</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>relations</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>List&lt;Card&gt;</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="getStaticMovieScene"></a></p>
+
+<h2 id="getstaticmoviescene"><strong>getStaticMovieScene</strong><a name='**getStaticMovieScene**'></a></h2>
+
+<blockquote>
+<p>List&lt;Card&gt; getStaticMovieScene(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize)</p>
+</blockquote>
+
+<p>Static VOD scene</p>
+
+<p>Retrieves the current list of cards related to the given movie scene</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">clientMovieId</span> <span class="o">=</span> <span class="s">"clientMovieId_example"</span><span class="o">;</span> <span class="c1">// String | Client movie ID being played</span>
+<span class="n">Float</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="mf">3.4</span><span class="n">F</span><span class="o">;</span> <span class="c1">// Float | Current movie timestamp in seconds</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">Boolean</span> <span class="n">relations</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Boolean | Indicates if cards should contain the scene hierarchy (true) or not (false)</span>
+<span class="n">String</span> <span class="n">imageSize</span> <span class="o">=</span> <span class="s">"m"</span><span class="o">;</span> <span class="c1">// String | Size of the images returned in the response</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Card</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">getStaticMovieScene</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">clientMovieId</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">relations</span><span class="o">,</span> <span class="n">imageSize</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#getStaticMovieScene"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>clientMovieId</strong></td>
+<td><strong>String</strong></td>
+<td>Client movie ID being played</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>timestamp</strong></td>
+<td><strong>Float</strong></td>
+<td>Current movie timestamp in seconds</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>relations</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if cards should contain the scene hierarchy (true) or not (false)</td>
+<td>[optional] [default to true]</td>
+</tr>
+<tr>
+<td><strong>imageSize</strong></td>
+<td><strong>String</strong></td>
+<td>Size of the images returned in the response</td>
+<td>[optional] [default to m] [enum: s, m, l]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#Card"><strong>List&lt;Card&gt;</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+<p><a name="postLikes"></a></p>
+
+<h2 id="postlikes"><strong>postLikes</strong><a name='**postLikes**'></a></h2>
+
+<blockquote>
+<p>postLikes(authorization, cardId, acceptLanguage)</p>
+</blockquote>
+
+<p>Add card like</p>
+
+<p>Stores a card under current user&rsquo;s likes list</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Authorization token ('Bearer &lt;token&gt;')</span>
+<span class="n">String</span> <span class="n">cardId</span> <span class="o">=</span> <span class="s">"cardId_example"</span><span class="o">;</span> <span class="c1">// String | Requested card ID</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">apiInstance</span><span class="o">.</span><span class="na">postLikes</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">cardId</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#postLikes"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Authorization token (&#39;Bearer &lt;token&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Requested card ID</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p>null (empty response body)</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: Not defined</p></li>
+<li><p><strong>Accept</strong>: Not defined</p></li>
+</ul>
+
+<p><a name="postToken"></a></p>
+
+<h2 id="posttoken"><strong>postToken</strong><a name='**postToken**'></a></h2>
+
+<blockquote>
+<p>AccessToken postToken(authorization, grantType, acceptLanguage, deviceId, refreshToken)</p>
+</blockquote>
+
+<p>Token endpoint</p>
+
+<p>The token endpoint is used to obtain access tokens which allow clients to make API requests</p>
+
+<h3 id="example">Example</h3>
+<pre class="highlight java"><code>
+<span class="c1">// Import classes:</span>
+
+<span class="c1">//import com.touchvie.sdk.ApiException;</span>
+
+<span class="c1">//import com.touchvie.sdk.api.DefaultApi;</span>
+
+
+
+
+
+<span class="n">DefaultApi</span> <span class="n">apiInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultApi</span><span class="o">();</span>
+
+<span class="n">String</span> <span class="n">authorization</span> <span class="o">=</span> <span class="s">"authorization_example"</span><span class="o">;</span> <span class="c1">// String | Basic authorization token ('Basic &lt;client_key&gt;')</span>
+<span class="n">String</span> <span class="n">grantType</span> <span class="o">=</span> <span class="s">"grantType_example"</span><span class="o">;</span> <span class="c1">// String | Grant type used to obtain the token.</span>
+<span class="n">String</span> <span class="n">acceptLanguage</span> <span class="o">=</span> <span class="s">"acceptLanguage_example"</span><span class="o">;</span> <span class="c1">// String | Client locale, as language-country</span>
+<span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="s">"deviceId_example"</span><span class="o">;</span> <span class="c1">// String | Device identifier, must uniquely identify the user or device accessing the API. Required only for \"device_credentials\" grant type</span>
+<span class="n">String</span> <span class="n">refreshToken</span> <span class="o">=</span> <span class="s">"refreshToken_example"</span><span class="o">;</span> <span class="c1">// String | Refresh token, used to issue a new token without resending client credentials. Required only for \"refresh_token\" grant type</span>
+<span class="k">try</span> <span class="o">{</span>
+
+    <span class="n">AccessToken</span> <span class="n">result</span> <span class="o">=</span> <span class="n">apiInstance</span><span class="o">.</span><span class="na">postToken</span><span class="o">(</span><span class="n">authorization</span><span class="o">,</span> <span class="n">grantType</span><span class="o">,</span> <span class="n">acceptLanguage</span><span class="o">,</span> <span class="n">deviceId</span><span class="o">,</span> <span class="n">refreshToken</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ApiException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception when calling DefaultApi#postToken"</span><span class="o">);</span>
+
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>authorization</strong></td>
+<td><strong>String</strong></td>
+<td>Basic authorization token (&#39;Basic &lt;client_key&gt;&rsquo;)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>grantType</strong></td>
+<td><strong>String</strong></td>
+<td>Grant type used to obtain the token.</td>
+<td>[enum: device_credentials, refresh_token]</td>
+</tr>
+<tr>
+<td><strong>acceptLanguage</strong></td>
+<td><strong>String</strong></td>
+<td>Client locale, as language-country</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>deviceId</strong></td>
+<td><strong>String</strong></td>
+<td>Device identifier, must uniquely identify the user or device accessing the API. Required only for &amp;quot;device_credentials&amp;quot; grant type</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>refreshToken</strong></td>
+<td><strong>String</strong></td>
+<td>Refresh token, used to issue a new token without resending client credentials. Required only for &amp;quot;refresh_token&amp;quot; grant type</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<h3 id="return-type">Return type</h3>
+
+<p><a href="#AccessToken"><strong>AccessToken</strong></a></p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p>No authorization required</p>
+
+<h3 id="http-request-headers">HTTP request headers</h3>
+
+<ul>
+<li><p><strong>Content-Type</strong>: application/x-www-form-urlencoded</p></li>
+<li><p><strong>Accept</strong>: application/json</p></li>
+</ul>
+
+          <h1 id="accesstoken">AccessToken<a name='AccessToken'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>accessToken</strong></td>
+<td><strong>String</strong></td>
+<td>Auth token, must be included on every API request</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>tokenType</strong></td>
+<td><a href="#TokenTypeEnum"><strong>TokenTypeEnum</strong></a></td>
+<td>Token type</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>refreshToken</strong></td>
+<td><strong>String</strong></td>
+<td>Allows to issue new access tokens without resending client credentials</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>expiresIn</strong></td>
+<td><strong>Integer</strong></td>
+<td>Expiration time (in seconds).</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>scope</strong></td>
+<td><a href="#ScopeEnum"><strong>ScopeEnum</strong></a></td>
+<td>Granted auth scope</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="TokenTypeEnum"></a></p>
+
+<h2 id="enum-tokentypeenum">Enum: TokenTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BEARER</td>
+<td>&ldquo;bearer&rdquo;</td>
+</tr>
+</tbody></table>
+
+<p><a name="ScopeEnum"></a></p>
+
+<h2 id="enum-scopeenum">Enum: ScopeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DEVICE</td>
+<td>&ldquo;device&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="autherror">AuthError<a name='AuthError'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>error</strong></td>
+<td><strong>String</strong></td>
+<td>Short error identifier</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>errorDescription</strong></td>
+<td><strong>String</strong></td>
+<td>Extended error description</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="awarddata">AwardData<a name='AwardData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the prize</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the nominee / winner</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="awardsdata">AwardsData<a name='AwardsData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Award name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>nominee</strong></td>
+<td><a href="#AwardData"><strong>List&lt;AwardData&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>winner</strong></td>
+<td><a href="#AwardData"><strong>List&lt;AwardData&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="card">Card<a name='Card'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>Card unique identifier</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>version</strong></td>
+<td><strong>String</strong></td>
+<td>Card version for a given movie and scene</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Card type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>locale</strong></td>
+<td><strong>String</strong></td>
+<td>Card content locale</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Card title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>subtitle</strong></td>
+<td><strong>String</strong></td>
+<td>Card subtitle (might be empty)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><a href="#ImageData"><strong>ImageData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>hasContent</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if the card has additional browsable content</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>info</strong></td>
+<td><a href="#CardContainer"><strong>List&lt;CardContainer&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>products</strong></td>
+<td><a href="#Product"><strong>List&lt;Product&gt;</strong></a></td>
+<td>Commercial products associated to the card</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>relations</strong></td>
+<td><a href="#RelationModule"><strong>List&lt;RelationModule&gt;</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td><a href="#CardUser"><strong>CardUser</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE</td>
+<td>&ldquo;movie&rdquo;</td>
+</tr>
+<tr>
+<td>SERIE</td>
+<td>&ldquo;serie&rdquo;</td>
+</tr>
+<tr>
+<td>PERSON</td>
+<td>&ldquo;person&rdquo;</td>
+</tr>
+<tr>
+<td>CHARACTER</td>
+<td>&ldquo;character&rdquo;</td>
+</tr>
+<tr>
+<td>VEHICLE</td>
+<td>&ldquo;vehicle&rdquo;</td>
+</tr>
+<tr>
+<td>FASHION</td>
+<td>&ldquo;fashion&rdquo;</td>
+</tr>
+<tr>
+<td>LOCATION</td>
+<td>&ldquo;location&rdquo;</td>
+</tr>
+<tr>
+<td>HISTORIC</td>
+<td>&ldquo;historic&rdquo;</td>
+</tr>
+<tr>
+<td>TRIVIA</td>
+<td>&ldquo;trivia&rdquo;</td>
+</tr>
+<tr>
+<td>QUOTE</td>
+<td>&ldquo;quote&rdquo;</td>
+</tr>
+<tr>
+<td>OST</td>
+<td>&ldquo;ost&rdquo;</td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>&ldquo;home&rdquo;</td>
+</tr>
+<tr>
+<td>TECHNOLOGY</td>
+<td>&ldquo;technology&rdquo;</td>
+</tr>
+<tr>
+<td>ART</td>
+<td>&ldquo;art&rdquo;</td>
+</tr>
+<tr>
+<td>SONG</td>
+<td>&ldquo;song&rdquo;</td>
+</tr>
+<tr>
+<td>LOOK</td>
+<td>&ldquo;look&rdquo;</td>
+</tr>
+<tr>
+<td>WEAPON</td>
+<td>&ldquo;weapon&rdquo;</td>
+</tr>
+<tr>
+<td>LEISURE_SPORT</td>
+<td>&ldquo;leisure_sport&rdquo;</td>
+</tr>
+<tr>
+<td>HEALTH_BEAUTY</td>
+<td>&ldquo;health_beauty&rdquo;</td>
+</tr>
+<tr>
+<td>FOOD_DRINK</td>
+<td>&ldquo;food_drink&rdquo;</td>
+</tr>
+<tr>
+<td>FAUNA_FLORA</td>
+<td>&ldquo;fauna_flora&rdquo;</td>
+</tr>
+<tr>
+<td>BUSINESS</td>
+<td>&ldquo;business&rdquo;</td>
+</tr>
+<tr>
+<td>REFERENCE</td>
+<td>&ldquo;reference&rdquo;</td>
+</tr>
+<tr>
+<td>CHAPTER</td>
+<td>&ldquo;chapter&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="cardcontainer">CardContainer<a name='CardContainer'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Card container format type, determines the format of the &lsquo;data&rsquo; field</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TEXT</td>
+<td>&ldquo;text&rdquo;</td>
+</tr>
+<tr>
+<td>LISTING</td>
+<td>&ldquo;listing&rdquo;</td>
+</tr>
+<tr>
+<td>RATING</td>
+<td>&ldquo;rating&rdquo;</td>
+</tr>
+<tr>
+<td>MAP</td>
+<td>&ldquo;map&rdquo;</td>
+</tr>
+<tr>
+<td>LINK</td>
+<td>&ldquo;link&rdquo;</td>
+</tr>
+<tr>
+<td>AWARDS</td>
+<td>&ldquo;awards&rdquo;</td>
+</tr>
+<tr>
+<td>CATALOG</td>
+<td>&ldquo;catalog&rdquo;</td>
+</tr>
+<tr>
+<td>SEASONS</td>
+<td>&ldquo;seasons&rdquo;</td>
+</tr>
+<tr>
+<td>IMAGE</td>
+<td>&ldquo;image&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="carduser">CardUser<a name='CardUser'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isLiked</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if user has liked the card or not</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalogdata">CatalogData<a name='CatalogData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>backgroundImage</strong></td>
+<td><strong>String</strong></td>
+<td>URL of an additional background image for this catalog element</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>director</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the director</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>genres</strong></td>
+<td><strong>List&lt;String&gt;</strong></td>
+<td>List of genres of this catalog entry</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>originalTitle</strong></td>
+<td><strong>String</strong></td>
+<td>Original language title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>runtime</strong></td>
+<td><strong>Integer</strong></td>
+<td>Length of the movie or chapter, or average length of serie chapters, in minutes</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>year</strong></td>
+<td><strong>Integer</strong></td>
+<td>Year of production</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chapterIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the chapter inside its season (only for content_type&#x3D;chapter)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>seasonIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the season where the chapter belongs (only for content_type&#x3D;chapter)</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>sync</strong></td>
+<td><a href="#CatalogSync"><strong>CatalogSync</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalogsync">CatalogSync<a name='CatalogSync'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>isSynchronizable</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if this catalog item can be synchronized</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="channelstatus">ChannelStatus<a name='ChannelStatus'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>Provided channel ID</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>ready</strong></td>
+<td><strong>Boolean</strong></td>
+<td>True if channel is broadcasting synchronizable content, False otherwise</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="dupledata">DupleData<a name='DupleData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>relType</strong></td>
+<td><a href="#RelTypeEnum"><strong>RelTypeEnum</strong></a></td>
+<td>Indicates the relationship between the pair of cards (from &gt; rel_type &gt; to)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>from</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>to</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="RelTypeEnum"></a></p>
+
+<h2 id="enum-reltypeenum">Enum: RelTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PLAYS</td>
+<td>&ldquo;plays&rdquo;</td>
+</tr>
+<tr>
+<td>STARRED_BY</td>
+<td>&ldquo;starred_by&rdquo;</td>
+</tr>
+<tr>
+<td>REPRESENTS</td>
+<td>&ldquo;represents&rdquo;</td>
+</tr>
+<tr>
+<td>FEATURES_LOCATION</td>
+<td>&ldquo;features_location&rdquo;</td>
+</tr>
+<tr>
+<td>DIRECTS</td>
+<td>&ldquo;directs&rdquo;</td>
+</tr>
+<tr>
+<td>ACTS_IN</td>
+<td>&ldquo;acts_in&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>FILMED_IN</td>
+<td>&ldquo;filmed_in&rdquo;</td>
+</tr>
+<tr>
+<td>LOCATION_ON_MOVIE</td>
+<td>&ldquo;location_on_movie&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="imagedata">ImageData<a name='ImageData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>thumb</strong></td>
+<td><strong>String</strong></td>
+<td>Image thumbnail URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>full</strong></td>
+<td><strong>String</strong></td>
+<td>Full size image URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>anchorX</strong></td>
+<td><a href="#BigDecimal"><strong>BigDecimal</strong></a></td>
+<td>Image anchor X axis (percent)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>anchorY</strong></td>
+<td><a href="#BigDecimal"><strong>BigDecimal</strong></a></td>
+<td>Image anchor Y axis (percent)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="linkdata">LinkData<a name='LinkData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the external resource</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="listingdata">ListingData<a name='ListingData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong></td>
+<td><strong>String</strong></td>
+<td>Item label</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Item value</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="mapdata">MapData<a name='MapData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>latitude</strong></td>
+<td><strong>Float</strong></td>
+<td>Value of the location latitude, in decimal format degrees</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>longitude</strong></td>
+<td><strong>Float</strong></td>
+<td>Value of the location longitude, in decimal format degrees</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>zoom</strong></td>
+<td><strong>Integer</strong></td>
+<td>Zoom value, defines the height coordinate over the given location</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="moviestatus">MovieStatus<a name='MovieStatus'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>movieId</strong></td>
+<td><strong>String</strong></td>
+<td>Provided client movie ID</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>ready</strong></td>
+<td><strong>Boolean</strong></td>
+<td>True if movie can be synchronized via this API, False otherwise.</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="product">Product<a name='Product'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>productId</strong></td>
+<td><strong>String</strong></td>
+<td>Product identifier</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>category</strong></td>
+<td><a href="#CategoryEnum"><strong>CategoryEnum</strong></a></td>
+<td>Merchant category</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>String</strong></td>
+<td>Product title</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><strong>String</strong></td>
+<td>Product image URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>Merchant store URL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>price</strong></td>
+<td><strong>Double</strong></td>
+<td>Product price</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>currency</strong></td>
+<td><strong>String</strong></td>
+<td>Product price currency</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>isUpToDate</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if product in up to date on Dive database</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>isExact</strong></td>
+<td><strong>Boolean</strong></td>
+<td>Indicates if product is an exact match</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>country</strong></td>
+<td><strong>String</strong></td>
+<td>Country information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>region</strong></td>
+<td><strong>String</strong></td>
+<td>Region information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>city</strong></td>
+<td><strong>String</strong></td>
+<td>City information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td><strong>String</strong></td>
+<td>Address information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>postalCode</strong></td>
+<td><strong>String</strong></td>
+<td>Postal code information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>rating</strong></td>
+<td><strong>Double</strong></td>
+<td>Rating information. Only for travel products</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+<p><a name="CategoryEnum"></a></p>
+
+<h2 id="enum-categoryenum">Enum: CategoryEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FASHION</td>
+<td>&ldquo;fashion&rdquo;</td>
+</tr>
+<tr>
+<td>ELECTRO</td>
+<td>&ldquo;electro&rdquo;</td>
+</tr>
+<tr>
+<td>MERCH</td>
+<td>&ldquo;merch&rdquo;</td>
+</tr>
+<tr>
+<td>TRAVEL</td>
+<td>&ldquo;travel&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="ratingdata">RatingData<a name='RatingData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>String</strong></td>
+<td>Rating value</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="relationmodule">RelationModule<a name='RelationModule'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>type</strong></td>
+<td><a href="#TypeEnum"><strong>TypeEnum</strong></a></td>
+<td>Relation module type, defines the contained data structure</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="TypeEnum"></a></p>
+
+<h2 id="enum-typeenum">Enum: TypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SINGLE</td>
+<td>&ldquo;single&rdquo;</td>
+</tr>
+<tr>
+<td>DUPLE</td>
+<td>&ldquo;duple&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasonschapters">SeasonsChapters<a name='SeasonsChapters'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>chapterIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the chapter inside this season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>cardId</strong></td>
+<td><strong>String</strong></td>
+<td>ID of the chapter card</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasonsdata">SeasonsData<a name='SeasonsData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>seasonIndex</strong></td>
+<td><strong>Integer</strong></td>
+<td>Index of the season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>creators</strong></td>
+<td><strong>String</strong></td>
+<td>Comma separated list of season creators</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><a href="#ImageData"><strong>ImageData</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>year</strong></td>
+<td><strong>Integer</strong></td>
+<td>Year of production of this season</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>chapters</strong></td>
+<td><a href="#SeasonsChapters"><strong>List&lt;SeasonsChapters&gt;</strong></a></td>
+<td>List of season chapters</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="sourcedata">SourceData<a name='SourceData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>String</strong></td>
+<td>Name of the source</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>url</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the source</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>disclaimer</strong></td>
+<td><strong>String</strong></td>
+<td>Disclaimer text of the source</td>
+<td>[optional]</td>
+</tr>
+<tr>
+<td><strong>image</strong></td>
+<td><strong>String</strong></td>
+<td>URL of the source icon</td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="textdata">TextData<a name='TextData'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>text</strong></td>
+<td><strong>String</strong></td>
+<td>Informational text</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td><a href="#SourceData"><strong>SourceData</strong></a></td>
+<td></td>
+<td>[optional]</td>
+</tr>
+</tbody></table>
+
+          <h1 id="tvevent">TvEvent<a name='TvEvent'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>channelId</strong></td>
+<td><strong>String</strong></td>
+<td>TV channel ID where the the event is schedulled</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>channelName</strong></td>
+<td><strong>String</strong></td>
+<td>TV channel name</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>startDate</strong></td>
+<td><strong>Long</strong></td>
+<td>TV event start date in milliseconds since EPOCH</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>endDate</strong></td>
+<td><strong>Long</strong></td>
+<td>TV event end date in milliseconds since EPOCH</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>card</strong></td>
+<td><a href="#Card"><strong>Card</strong></a></td>
+<td>Associated content (movie or chapter) card</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="tvgrid">TvGrid<a name='TvGrid'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>broadcast</strong></td>
+<td><a href="#TvEvent"><strong>List&lt;TvEvent&gt;</strong></a></td>
+<td>List of TV events currently being broadcasted</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>upcoming</strong></td>
+<td><a href="#TvEvent"><strong>List&lt;TvEvent&gt;</strong></a></td>
+<td>List of upcoming TV events</td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="awards">Awards<a name='Awards'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Awards container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#AwardsData"><strong>List&lt;AwardsData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AWARDS</td>
+<td>&ldquo;awards&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="catalog">Catalog<a name='Catalog'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Catalog container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#CatalogData"><strong>List&lt;CatalogData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE</td>
+<td>&ldquo;movie&rdquo;</td>
+</tr>
+<tr>
+<td>CHAPTER</td>
+<td>&ldquo;chapter&rdquo;</td>
+</tr>
+<tr>
+<td>SERIE</td>
+<td>&ldquo;serie&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="duple">Duple<a name='Duple'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Duple module content type, defines what kind of relations are contained in the module</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#DupleData"><strong>List&lt;DupleData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE_LOCATIONS</td>
+<td>&ldquo;movie_locations&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>CASTING</td>
+<td>&ldquo;casting&rdquo;</td>
+</tr>
+<tr>
+<td>CASTING_FASHION</td>
+<td>&ldquo;casting_fashion&rdquo;</td>
+</tr>
+<tr>
+<td>FILMOGRAPHY</td>
+<td>&ldquo;filmography&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+<tr>
+<td>FEATURED_IN</td>
+<td>&ldquo;featured_in&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="image">Image<a name='Image'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Image container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#ImageData"><strong>List&lt;ImageData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GALLERY</td>
+<td>&ldquo;gallery&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="link">Link<a name='Link'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Link container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#LinkData"><strong>List&lt;LinkData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TRAILER</td>
+<td>&ldquo;trailer&rdquo;</td>
+</tr>
+<tr>
+<td>VIDEO</td>
+<td>&ldquo;video&rdquo;</td>
+</tr>
+<tr>
+<td>MUSIC</td>
+<td>&ldquo;music&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="listing">Listing<a name='Listing'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Listing container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#ListingData"><strong>List&lt;ListingData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BASIC_DATA</td>
+<td>&ldquo;basic_data&rdquo;</td>
+</tr>
+<tr>
+<td>SPECS</td>
+<td>&ldquo;specs&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="map">Map<a name='Map'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Map container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#MapData"><strong>List&lt;MapData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LOCATION</td>
+<td>&ldquo;location&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="rating">Rating<a name='Rating'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Rating container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#RatingData"><strong>List&lt;RatingData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>RATING</td>
+<td>&ldquo;rating&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="seasons">Seasons<a name='Seasons'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Seasons container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#SeasonsData"><strong>List&lt;SeasonsData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SEASONS</td>
+<td>&ldquo;seasons&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="single">Single<a name='Single'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Single module content type, defines what kind of relations are contained in the module</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#Card"><strong>List&lt;Card&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MOVIE_VEHICLES</td>
+<td>&ldquo;movie_vehicles&rdquo;</td>
+</tr>
+<tr>
+<td>MOVIE_SONGS</td>
+<td>&ldquo;movie_songs&rdquo;</td>
+</tr>
+<tr>
+<td>MISCELLANEOUS</td>
+<td>&ldquo;miscellaneous&rdquo;</td>
+</tr>
+<tr>
+<td>HIGHLIGHTED</td>
+<td>&ldquo;highlighted&rdquo;</td>
+</tr>
+<tr>
+<td>RECOMMENDED</td>
+<td>&ldquo;recommended&rdquo;</td>
+</tr>
+<tr>
+<td>TRIVIAS</td>
+<td>&ldquo;trivias&rdquo;</td>
+</tr>
+<tr>
+<td>APPEARS_IN</td>
+<td>&ldquo;appears_in&rdquo;</td>
+</tr>
+<tr>
+<td>TRACKLIST</td>
+<td>&ldquo;tracklist&rdquo;</td>
+</tr>
+<tr>
+<td>SOUNDS_IN</td>
+<td>&ldquo;sounds_in&rdquo;</td>
+</tr>
+<tr>
+<td>FULL_LOOKS</td>
+<td>&ldquo;full_looks&rdquo;</td>
+</tr>
+<tr>
+<td>LOOK_FASHION</td>
+<td>&ldquo;look_fashion&rdquo;</td>
+</tr>
+<tr>
+<td>FASHION_SET</td>
+<td>&ldquo;fashion_set&rdquo;</td>
+</tr>
+<tr>
+<td>OTHER_LOOKS</td>
+<td>&ldquo;other_looks&rdquo;</td>
+</tr>
+<tr>
+<td>WEARS</td>
+<td>&ldquo;wears&rdquo;</td>
+</tr>
+<tr>
+<td>HOME_DECO</td>
+<td>&ldquo;home_deco&rdquo;</td>
+</tr>
+<tr>
+<td>FULL_HOME</td>
+<td>&ldquo;full_home&rdquo;</td>
+</tr>
+<tr>
+<td>IS_PART_OF</td>
+<td>&ldquo;is_part_of&rdquo;</td>
+</tr>
+<tr>
+<td>DIRECTORS</td>
+<td>&ldquo;directors&rdquo;</td>
+</tr>
+<tr>
+<td>IS_CHAPTER_OF</td>
+<td>&ldquo;is_chapter_of&rdquo;</td>
+</tr>
+<tr>
+<td>COMPOSED_OF</td>
+<td>&ldquo;composed_of&rdquo;</td>
+</tr>
+<tr>
+<td>OWNS</td>
+<td>&ldquo;owns&rdquo;</td>
+</tr>
+<tr>
+<td>BELONGS_TO</td>
+<td>&ldquo;belongs_to&rdquo;</td>
+</tr>
+<tr>
+<td>FILMED_IN</td>
+<td>&ldquo;filmed_in&rdquo;</td>
+</tr>
+<tr>
+<td>REPRESENTS</td>
+<td>&ldquo;represents&rdquo;</td>
+</tr>
+<tr>
+<td>WORN_BY</td>
+<td>&ldquo;worn_by&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYS</td>
+<td>&ldquo;plays&rdquo;</td>
+</tr>
+<tr>
+<td>PLAYED_BY</td>
+<td>&ldquo;played_by&rdquo;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="text">Text<a name='Text'></a></h1>
+
+<h2 id="properties">Properties</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>contentType</strong></td>
+<td><a href="#ContentTypeEnum"><strong>ContentTypeEnum</strong></a></td>
+<td>Text container content type</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td><a href="#TextData"><strong>List&lt;TextData&gt;</strong></a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><a name="ContentTypeEnum"></a></p>
+
+<h2 id="enum-contenttypeenum">Enum: ContentTypeEnum</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OVERVIEW</td>
+<td>&ldquo;overview&rdquo;</td>
+</tr>
+<tr>
+<td>CURIOSITY</td>
+<td>&ldquo;curiosity&rdquo;</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>&ldquo;description&rdquo;</td>
+</tr>
+<tr>
+<td>BIOGRAPHY</td>
+<td>&ldquo;biography&rdquo;</td>
+</tr>
+<tr>
+<td>REFERENCE</td>
+<td>&ldquo;reference&rdquo;</td>
+</tr>
+<tr>
+<td>QUOTE</td>
+<td>&ldquo;quote&rdquo;</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
